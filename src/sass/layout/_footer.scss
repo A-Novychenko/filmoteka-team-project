@@ -1,0 +1,34 @@
+.footer {
+  padding-top: 29px;
+  padding-bottom: 29px;
+
+  background-color: var(--footer-bgc-color);
+}
+
+.footer__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  //   column-gap: 10px;
+}
+
+.footer__icon {
+  width: 14px;
+  height: 12.75px;
+}
+
+.footer__text {
+  text-align: center;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.15;
+
+  color: var(--footer-text-color);
+}
+
+.footer__link {
+  color: var(--footer-text-color);
+}
