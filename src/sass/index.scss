@@ -1,2 +1,15 @@
-@import './common';
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
 @import './example';
+
+@import './utils/variables';
+@import './utils/visually-hidden';
+
+@import './base/common';
+@import './base/container';
+
+@import './components/btn';
+
+@import './layout/header';
+@import './layout/gallery';
+@import './layout/footer';
