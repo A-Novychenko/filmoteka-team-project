@@ -1,0 +1,28 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 5px;
+  border: 1px solid var(--light-color);
+  background-color: transparent;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13.3;
+  text-transform: uppercase;
+
+  color: var(--light-color);
+
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-color);
+  filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  border-color: transparent;
+}
