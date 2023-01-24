@@ -6,15 +6,15 @@ changePage();
 
 
 
-//тестую роботу ApiService:
+// // тестую роботу ApiService:
 // import ApiService from './js/apiService';
 
 // const service = new ApiService();
 // //популярні:
-// service.fetchTrendFilms().then(data => console.log(data.results));
+// service.fetchTrendFilms();
 // //жанри:
-// service.fetchGenres().then(data => console.log(data.genres));
+// service.fetchGenres();
 // //по ключовому слову:
 // service.query = 'cat';
-// service.fetchFilmsByKeyWord().then(data => console.log(data.results));
+// service.fetchFilmsByKeyWord();
 
