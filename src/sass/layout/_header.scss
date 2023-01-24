@@ -119,6 +119,12 @@
     margin-bottom: 40px;
   }
 }
+.header_library .header__wrap {
+  margin-bottom: 62px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 38px;
+  }
+}
 
 .header__nav {
   display: flex;
@@ -127,6 +133,7 @@
 
 .header__link {
   position: relative;
+
   padding-top: 5px;
   padding-bottom: 5px;
 
