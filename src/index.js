@@ -1,3 +1,4 @@
+import * as searchByKeyWord from './js/searchByKeyWord';
 import { changePage } from './js/change-page';
 changePage();
 
