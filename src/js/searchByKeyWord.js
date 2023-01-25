@@ -1,28 +1,29 @@
-import { headerForm, errorSearch } from './refs';
-import ApiService from './apiService'; 
+import { headerForm, errorText } from './refs';
+import ApiService from './apiService';
 
 const apiService = new ApiService();
 
-headerForm.addEventListener('submit', onHeaderFormClick);
+export async function onHeaderFormClick(evt) {
+  try {
+    evt.preventDefault();
+    apiService.query = evt.currentTarget.keyword.value;
 
-async function onHeaderFormClick(evt) {
-    try {
-        evt.preventDefault();
-        apiService.query = evt.currentTarget.elements.keyword.value;
-        page = 1;
-        if (!apiService.query.trim()) {
-            return;
-        }
-        const response = await apiService.fetchFilmsByKeyWord();
-        errorSearch.hidden = true;
-        headerForm.reset();
-       
-        if (response.data.results.length === 0) {
-            errorSearch.hidden = false;
-            headerForm.reset();
-        }
-       
-    } catch (err) {
-        console.log(err)
+    page = 1;
+    if (!apiService.query.trim()) {
+      errorText.classList.remove('header__error_hidden');
+      setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
+      return;
     }
+    const response = await apiService.fetchFilmsByKeyWord();
+
+    headerForm.reset();
+
+    if (response.data.results.length === 0) {
+      errorText.classList.remove('header__error_hidden');
+      setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
+      headerForm.reset();
+    }
+  } catch (err) {
+    console.log(err);
+  }
 }

@@ -1,4 +1,7 @@
-import * as searchByKeyWord from './js/searchByKeyWord';
+// import * as searchByKeyWord from './js/searchByKeyWord';
+import { headerForm, errorSearch } from './js/refs';
+import { onHeaderFormClick } from './js/searchByKeyWord';
+headerForm.addEventListener('submit', onHeaderFormClick);
 
 // // тестую роботу ApiService:
 // import ApiService from './js/apiService';
@@ -11,3 +14,5 @@ import * as searchByKeyWord from './js/searchByKeyWord';
 // //по ключовому слову:
 // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
+
+import {showMovies} from './js/gallery'

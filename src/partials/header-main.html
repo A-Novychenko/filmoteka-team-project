@@ -17,8 +17,8 @@
     </div>
 
     <form class="header__form js-header-form">
-      <input class="header__input" type="text" placeholder="Movie search">
-      <button class="header__search" type="submit">
+      <input class="header__input" type="text" name="keyword" placeholder="Movie search">
+      <button class="header__search js-error-search" type="submit">
         <svg class="header__search-icon">
           <use href="./images/sprite.svg#icon-search"></use>
         </svg></button>
@@ -26,7 +26,7 @@
 
     <div class="eror__wrap">
       <!-- для вiдображення достатньо прибрати клас "header__error_hidden" -->
-      <p class="header__error header__error_hidden js-error-search">Search result not successful. Enter the
+      <p class="header__error header__error_hidden js-error-text">Search result not successful. Enter the
         correct
         movie name and search again
       </p>
