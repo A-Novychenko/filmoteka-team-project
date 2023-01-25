@@ -1,3 +1,4 @@
+import { movieContainer } from "./refs"
 const API_URL_POPULAR =
     "https://api.themoviedb.org/3/trending/movie/week?api_key=6b1b36ecf2f3f3c0d27307e18cbffcb3&page=1";
 
@@ -8,7 +9,7 @@ async function getMovies(url) {
     const respData = await resp.json();
     showMovies(respData)
     const movie = respData.results
-    localStorage.setItem('Movie', JSON.stringify(movie))
+    localStorage.setItem('movie', JSON.stringify(movie))
     const localMovie = JSON.parse(localStorage.getItem('Movie'));
     // console.log(localMovie)
     return respData
@@ -23,7 +24,6 @@ function getYear(date) {
 }
 
 export function showMovies(data) {
-    const movieContainer = document.querySelector('.movies-list')
     const movie = data.results
         .map(({
         title,
@@ -33,7 +33,7 @@ export function showMovies(data) {
         release_date,
         }) => {
         let posterPath = ``
-          if (poster_path) { posterPath = `https://image.tmdb.org/t/p/w300${poster_path}` }
+          if (poster_path) { posterPath = `https://image.tmdb.org/t/p/w500${poster_path}` }
             else { posterPath = 'https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png' }
       return `
       <li class="movie__item">
@@ -53,18 +53,18 @@ export function showMovies(data) {
     }).join('');
     movieContainer.innerHTML = movie;
 
-    addClickListenerToMovie();
+    // addClickListenerToMovie();
 }
 
-function addClickListenerToMovie() {
-  document.querySelectorAll('.movie__item').forEach(element => {
-    element.addEventListener('click', event => {
-      try {
-        console.log(element)
-      } catch (error) {
-          console.log(error)
-      }
-      event.preventDefault();
-    });
-  });
-}
+// function addClickListenerToMovie() {
+//   document.querySelectorAll('.movie__item').forEach(element => {
+//     element.addEventListener('click', event => {
+//       try {
+//         console.log(element)
+//       } catch (error) {
+//           console.log(error)
+//       }
+//       event.preventDefault();
+//     });
+//   });
+// }

@@ -1,7 +1,9 @@
-.movies-list {
+.gallery__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    gap: 15px;
+}
 
+.movie__item {
+    width: 395px;
 }
