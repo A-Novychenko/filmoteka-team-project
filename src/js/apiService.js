@@ -9,27 +9,39 @@ export default class ApiService {
     this.keyword = '';
   }
 
-    async fetchTrendFilms() {
+  async fetchTrendFilms() {
+    try {
       const URL = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this.page}`;
-    const responce = await axios.get(URL);
-    // const result = await responce.json();
-    localStorage.setItem('currentFilms', JSON.stringify(responce));
+      const responce = await axios.get(URL);
+      // const result = await responce.json();
+      localStorage.setItem('currentFilms', JSON.stringify(responce));
+    } catch (error) {
+      console.log(error.message);
+    }
     return responce;
   }
 
   async fetchFilmsByKeyWord() {
-    const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.keyword}&page=${this.page}`;
-    const responce = await axios.get(URL);
-    // const result = await responce.json();
-    localStorage.setItem('currentFilms', JSON.stringify(responce));
+    try {
+      const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.keyword}&page=${this.page}`;
+      const responce = await axios.get(URL);
+      // const result = await responce.json();
+      localStorage.setItem('currentFilms', JSON.stringify(responce));
+    } catch (error) {
+      console.log(error.message);
+    }
     return responce;
   }
 
   async fetchGenres() {
-    const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
-    const responce = await axios.get(URL);
-    // const result = await responce.json();
-    localStorage.setItem('genres', JSON.stringify(responce));
+    try {
+      const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
+      const responce = await axios.get(URL);
+      // const result = await responce.json();
+      localStorage.setItem('genres', JSON.stringify(responce));
+    } catch (error) {
+      console.log(error.message);
+    }
     return responce;
   }
 
