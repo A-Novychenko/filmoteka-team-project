@@ -14,3 +14,5 @@ headerForm.addEventListener('submit', onHeaderFormClick);
 // //по ключовому слову:
 // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
+
+import {showMovies} from './js/gallery'
