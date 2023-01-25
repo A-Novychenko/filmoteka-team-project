@@ -55,31 +55,3 @@ export function showMovies(data) {
 
     // addClickListenerToMovie();
 }
-
-<<<<<<< HEAD
-// function addClickListenerToMovie() {
-//   document.querySelectorAll('.movie__item').forEach(element => {
-//     element.addEventListener('click', event => {
-//       try {
-//         console.log(element)
-//       } catch (error) {
-//           console.log(error)
-//       }
-//       event.preventDefault();
-//     });
-//   });
-// }
-=======
-function addClickListenerToMovie() {
-  document.querySelectorAll('.movie__item').forEach(element => {
-    element.addEventListener('click', event => {
-      try {
-        console.log(element)
-      } catch (error) {
-          console.log(error)
-      }
-      event.preventDefault();
-    });
-  });
-}
->>>>>>> 1db97c04414cf1db4be14d15432e006b6f649687
