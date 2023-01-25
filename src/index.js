@@ -4,7 +4,7 @@ import * as searchByKeyWord from './js/searchByKeyWord';
 // import ApiService from './js/apiService';
 
 // const service = new ApiService();
-// //популярні:
+// // //популярні:
 // service.fetchTrendFilms();
 // //жанри:
 // service.fetchGenres();
