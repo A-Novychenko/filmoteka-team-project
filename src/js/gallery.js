@@ -8,7 +8,7 @@ async function getMovies(url) {
     const respData = await resp.json();
     showMovies(respData)
     const movie = respData.results
-    localStorage.setItem('Movie', JSON.stringify(movie))
+    localStorage.setItem('movie', JSON.stringify(movie))
     const localMovie = JSON.parse(localStorage.getItem('Movie'));
     // console.log(localMovie)
     return respData
