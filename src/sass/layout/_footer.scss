@@ -32,3 +32,27 @@
 .footer__link {
   color: var(--footer-text-color);
 }
+
+
+
+/////// прижимаю футер вниз
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.example {
+  flex: 1 0 auto;
+}
+
+.library-contaner {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
