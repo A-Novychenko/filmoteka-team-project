@@ -12,37 +12,39 @@ export default class ApiService {
   async fetchTrendFilms() {
     try {
       const URL = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this.page}`;
-      const responce = await axios.get(URL);
-      // const result = await responce.json();
-      localStorage.setItem('currentFilms', JSON.stringify(responce));
+      const response = await axios.get(URL);
+      // const result = await response.json();
+      localStorage.setItem('currentFilms', JSON.stringify(response));
+      return response;
     } catch (error) {
       console.log(error.message);
     }
-    return responce;
   }
 
   async fetchFilmsByKeyWord() {
     try {
       const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.keyword}&page=${this.page}`;
-      const responce = await axios.get(URL);
-      // const result = await responce.json();
-      localStorage.setItem('currentFilms', JSON.stringify(responce));
+      const response = await axios.get(URL);
+
+      // const result = await response.json();
+      localStorage.setItem('currentFilms', JSON.stringify(response));
+
+      return response;
     } catch (error) {
       console.log(error.message);
     }
-    return responce;
   }
 
   async fetchGenres() {
     try {
       const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
-      const responce = await axios.get(URL);
-      // const result = await responce.json();
-      localStorage.setItem('genres', JSON.stringify(responce));
+      const response = await axios.get(URL);
+      // const result = await response.json();
+      localStorage.setItem('genres', JSON.stringify(response));
+      return response;
     } catch (error) {
       console.log(error.message);
     }
-    return responce;
   }
 
   resetPage() {
