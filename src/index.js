@@ -4,14 +4,20 @@ import { onHeaderFormClick } from './js/searchByKeyWord';
 headerForm.addEventListener('submit', onHeaderFormClick);
 
 // // тестую роботу ApiService:
-// import ApiService from './js/apiService';
+import ApiService from './js/apiService';
+
+
+const service = new ApiService();
+//популярні:
 
 // const service = new ApiService();
 // // //популярні:
+
 // service.fetchTrendFilms();
-// //жанри:
-// service.fetchGenres();
-// //по ключовому слову:
+//жанри:
+console.log(service.fetchGenres());
+
+//по ключовому слову:
 // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
 
