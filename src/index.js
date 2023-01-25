@@ -1,3 +1,5 @@
+import * as searchByKeyWord from './js/searchByKeyWord';
+
 // // тестую роботу ApiService:
 // import ApiService from './js/apiService';
 
