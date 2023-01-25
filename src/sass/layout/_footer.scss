@@ -33,8 +33,6 @@
   color: var(--footer-text-color);
 }
 
-
-
 /////// прижимаю футер вниз
 html,
 body {
@@ -45,7 +43,7 @@ body {
   flex-direction: column;
   min-height: 100%;
 }
-.example {
+.gallery__page {
   flex: 1 0 auto;
 }
 
