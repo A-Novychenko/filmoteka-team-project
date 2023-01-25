@@ -1,11 +1,4 @@
 import * as searchByKeyWord from './js/searchByKeyWord';
-import { changePage } from './js/change-page';
-changePage();
-
-
-
-
-
 
 // // тестую роботу ApiService:
 // import ApiService from './js/apiService';
@@ -18,4 +11,3 @@ changePage();
 // //по ключовому слову:
 // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
-
