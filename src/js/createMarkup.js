@@ -21,21 +21,19 @@ export function createMarkup(data) {
             let posterPath = ``
             if (poster_path) { posterPath = `https://image.tmdb.org/t/p/w500${poster_path}` }
             else { posterPath = 'https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png' }
+            
             return `
-      <li class="movie__item">
-        <a href="#show-moovie=${id}" 
-         class="movie__link" data-movie="${id}">
-        <div class="movie__img-wrap">
-        <img class="movie__image"src='${posterPath}'
-              alt='${title}'
-              />
-        </div>
-        </a>
-        <div class="movie__info-wrap">
-        <h2 class="movie__title">${title}</h2>
-        <p class="movie__description">${genre_names} | <span>${getYear(release_date)}</span></p>
-        </div>
-        </li>`;
+            <li class="movie__item">
+                    <a href="#show-moovie=${id}" class="movie__link" data-movie="${id}">
+                       <div class="movie__img-wrap">
+                          <img class="movie__image"src='${posterPath}' alt='${title}'/>
+                       </div>
+                    </a>
+                     <div class="movie__info-wrap">
+                          <h2 class="movie__title">${title}</h2>
+                          <p class="movie__description">${genre_names} | <span>${getYear(release_date)}</span></p>
+                     </div>
+              </li>`;
         }).join('');
     movieContainer.innerHTML = movie;
 }
