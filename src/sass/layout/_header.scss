@@ -265,8 +265,9 @@
   opacity: 1;
   pointer-events: visible;
 
-  transition: transform var(--animation), visibility var(--animation),
-    opacity var(--animation);
+  transition: transform var(--transition-dur-and-func),
+    visibility var(--transition-dur-and-func),
+    opacity var(--transition-dur-and-func);
 
   @media screen and (min-width: 320px) {
     width: 280px;

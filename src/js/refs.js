@@ -14,3 +14,10 @@ export const movieContainer = document.querySelector('.js-movies-list');
 export const libraryContainer = document.querySelector('.js-library-list');
 
 
+export const openModalTeamBtn = document.querySelector(
+  '[data-team-modal-open]'
+);
+export const closeModalTeamBtn = document.querySelector(
+  '[data-team-modal-close]'
+);
+export const modalTeam = document.querySelector('[data-team-modal]');
