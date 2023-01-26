@@ -114,6 +114,7 @@ import { renderMarkupSearch } from './markupSearch';
 
 // localStorage.setItem('watched', JSON.stringify(www));
 // localStorage.setItem('queue', JSON.stringify(qqq));
+localStorage.removeItem('queue');
 
 //   clearMainContainer();
 //   pagination.innerHTML = '';
@@ -131,13 +132,20 @@ function onBtnWatchedClick() {
 
   try {
     // const watchedList = localStorage.getItem('watched');
-    const watchedList = localStorage.getItem('movie');
+    const watchedList = localStorage.getItem('currentFilms');
+    // console.log('watchedList: ', watchedList);
+
     // console.log('watchedList: ', watchedList);
     // console.log(watchedList.length);
     if (watchedList) {
       // const watchedListToRender = JSON.parse(watchedList);
 
-      const watchedListToRen_____ = JSON.parse(watchedList);
+      const watchedListToRen_____ = JSON.parse(watchedList).data.results;
+      console.log(
+        'watchedListToRen_____: ',
+        watchedListToRen_____
+      );
+
       const watchedListToRender = [
         ...watchedListToRen_____,
         ...watchedListToRen_____,
