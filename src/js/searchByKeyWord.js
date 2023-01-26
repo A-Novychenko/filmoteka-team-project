@@ -1,6 +1,7 @@
 import { headerForm, errorText } from './refs';
 import ApiService from './apiService';
 import { renderMarkupSearch } from './markupSearch';
+import { cleanHtml } from './markupSearch';
 
 const gallery = document.querySelector('.js-movies-list')
 const apiService = new ApiService();
@@ -9,6 +10,7 @@ export async function onHeaderFormClick(evt) {
   try {
     evt.preventDefault();
     apiService.query = evt.currentTarget.keyword.value;
+    cleanHtml()
 
     page = 1;
     if (!apiService.query.trim()) {
