@@ -20,6 +20,7 @@
 }
 
 .footer__text {
+  display: flex;
   text-align: center;
 
   font-weight: 400;
@@ -34,7 +35,6 @@
 }
 
 .footer__btn {
-  display: inline-block;
   outline: none;
   border: none;
 
