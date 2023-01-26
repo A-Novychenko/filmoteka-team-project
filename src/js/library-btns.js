@@ -189,7 +189,7 @@ function onBtnWatchedClick() {
         try {
           // for (let i = 0; i < sliced_array.length; i += 1) {
 
-          let newMurkup = MYrenderMarkup(sliced_array[0]);
+          let newMurkup = renderMarkupSearch(sliced_array[0]);
           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
 
           let i = 1;
@@ -198,7 +198,7 @@ function onBtnWatchedClick() {
               clearInterval(timerId);
             }
             // setTimeout(() => {
-            let newMurkup = MYrenderMarkup(sliced_array[i]);
+            let newMurkup = renderMarkupSearch(sliced_array[i]);
             libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
             // }, 2000);
             // console.log(i);
@@ -285,28 +285,28 @@ export function onBtnQueueClick() {
 
 // const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
-function MYrenderMarkup(movies) {
-  // console.log(movies);
-  const markup = movies
-    .map(movie => {
-      // console.log(movie.genre_ids);
-      return `<li class="movie__item">
-         <img src="${
-           'https://image.tmdb.org/t/p/w500/' + movie.poster_path
-         }" alt="${movie.original_title}">
-                <h3 class="card_title">${movie.title}</h3>
-                    <p class="card_genres">${movie.genre_ids}</p>
-                    <p class="card_release_date">${movie.release_date}</p>
-                    <p class="card_release_date">${movie.vote_average.toFixed(
-                      1
-                    )}</p>
-                </li>`;
-    })
-    .join('');
+// function MYrenderMarkup(movies) {
+//   // console.log(movies);
+//   const markup = movies
+//     .map(movie => {
+//       // console.log(movie.genre_ids);
+//       return `<li class="movie__item">
+//          <img src="${
+//            'https://image.tmdb.org/t/p/w500/' + movie.poster_path
+//          }" alt="${movie.original_title}">
+//                 <h3 class="card_title">${movie.title}</h3>
+//                     <p class="card_genres">${movie.genre_ids}</p>
+//                     <p class="card_release_date">${movie.release_date}</p>
+//                     <p class="card_release_date">${movie.vote_average.toFixed(
+//                       1
+//                     )}</p>
+//                 </li>`;
+//     })
+//     .join('');
 
-  // console.log('beforeend', markup);
-  return markup;
-}
+//   // console.log('beforeend', markup);
+//   return markup;
+// }
 
 // .card-film_scale {
 //   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
