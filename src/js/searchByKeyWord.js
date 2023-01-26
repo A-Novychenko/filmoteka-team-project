@@ -12,7 +12,7 @@ export async function onHeaderFormClick(evt) {
     apiService.query = evt.currentTarget.keyword.value;
     cleanHtml()
 
-    page = 1;
+    // page = 1;
     if (!apiService.query.trim()) {
       errorText.classList.remove('header__error_hidden');
       setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
