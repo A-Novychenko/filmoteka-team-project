@@ -2,6 +2,7 @@ import { headerForm, errorText } from './refs';
 import ApiService from './apiService';
 import { renderMarkupSearch } from './markupSearch';
 
+const gallery = document.querySelector('.js-movies-list')
 const apiService = new ApiService();
 
 export async function onHeaderFormClick(evt) {
@@ -24,8 +25,7 @@ export async function onHeaderFormClick(evt) {
       setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
       headerForm.reset();
     } else {
-      console.log(response.data.results);
-      renderMarkupSearch(response.data.results)
+       gallery.insertAdjacentHTML('beforeend',renderMarkupSearch(response.data.results))
     }
   } catch (err) {
     console.log(err);
