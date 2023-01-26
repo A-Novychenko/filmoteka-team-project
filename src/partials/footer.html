@@ -10,8 +10,57 @@
                 <use href="./images/sprite.svg#icon-heart"></use>
             </svg>
             by&nbsp
-            <student href="">GoIT Students</a>
+            <button type="button" class="btn footer__btn" data-team-modal-open>GoIT Students</button>
         </p>
     </div>
 
 </footer>
+
+<!-- backdrop-modal -->
+<div class="team-modal__backdrop is-hidden" data-modal>
+    <div class="team-modal">
+        <button class="team-modal__close-btn" data-team-modal-close>
+            <svg lang="en" aria-label="close icon" class="team-modal__icon" width="18" height="18">
+                <use href="./images/sprite.svg#icon-close"></use>
+            </svg>
+        </button>
+
+        <div class="team-modal__gallery">
+            <h2 class="team-modal__title">Our team</h2>
+            <ul class="team-modal__list"></ul>
+            <li class="team__item">
+
+                <div class="team-modal__img-wrap">
+                    <img src="./images/team-av-m.jpg" alt="фото Михайла" class="team-modal__img" width="240">
+                </div>
+
+                <div class="team-modal__inner">
+                    <h3 class="team-modal__name">Новиченко Олександр</h3>
+                    <p class="team-modal__text" lang="en">Developer</p>
+
+                    <ul class="social-networks list">
+
+                        <li class="social-networks__item">
+                            <a href="" class="social-networks__link">
+                                <svg lang="en" aria-label="github icon" class="social-networks__icon" width="20"
+                                    height="20">
+                                    <!-- <use href="./images/icons.svg#icon-instagram"></use> -->
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="social-networks__item">
+                            <a href="" class="social-networks__link">
+                                <svg lang="en" aria-label="linkedin icon" class="social-networks__icon" width="20"
+                                    height="20">
+                                    <!-- <use href="./images/icons.svg#icon-linkedin"></use> -->
+                                </svg>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+        </div>
+    </div>

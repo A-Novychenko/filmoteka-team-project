@@ -33,6 +33,12 @@
   color: var(--footer-text-color);
 }
 
+.footer__btn {
+  display: inline-block;
+  padding: 0;
+  color: var(--footer-text-color);
+}
+
 /////// прижимаю футер вниз
 html,
 body {
@@ -58,3 +64,5 @@ body {
 .footer {
   flex: 0 0 auto;
 }
+
+//backdrop-modal

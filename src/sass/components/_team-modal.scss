@@ -1,0 +1,54 @@
+.modal {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+
+  background: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  @media screen and (min-width: 480px) {
+    max-width: 450px;
+    min-height: 609px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 528px;
+    height: 581px;
+    max-width: 100%;
+    min-height: auto;
+  }
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  //   @extend %align;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  fill: var(--black-color);
+
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  transition: fill var(--animation);
+
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+  }
+}

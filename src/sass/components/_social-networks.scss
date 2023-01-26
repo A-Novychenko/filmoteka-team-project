@@ -1,0 +1,36 @@
+.social-networks {
+  // @extend %align;
+  column-gap: 10px;
+}
+
+.social-networks__link {
+  width: 44px;
+  height: 44px;
+  // @extend %align;
+  border-radius: 50%;
+
+  transition: background-color var(--animation);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-color);
+  }
+}
+.social-networks__link_gray-background {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-networks__icon {
+  fill: #afb1b8;
+
+  transition: fill var(--animation);
+
+  .social-networks__link:hover &,
+  .social-networks__link:focus & {
+    fill: var(--white-color);
+  }
+}
+
+.social-networks__icon-white {
+  fill: var(--white-color);
+}
