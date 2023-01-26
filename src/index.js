@@ -1,11 +1,11 @@
 // import * as searchByKeyWord from './js/searchByKeyWord';
 import { headerForm, errorSearch } from './js/refs';
 import { onHeaderFormClick } from './js/searchByKeyWord';
+
 headerForm.addEventListener('submit', onHeaderFormClick);
 
 // // тестую роботу ApiService:
 import ApiService from './js/apiService';
-
 
 const service = new ApiService();
 //популярні:
@@ -21,4 +21,7 @@ console.log(service.fetchGenres());
 // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
 
-import {showMovies} from './js/gallery'
+import { showMovies } from './js/gallery';
+
+import { teamModal } from './js/team-modal';
+teamModal();

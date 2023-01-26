@@ -35,8 +35,20 @@
 
 .footer__btn {
   display: inline-block;
-  padding: 0;
+  outline: none;
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+  text-decoration: underline;
+  text-transform: none;
+
   color: var(--footer-text-color);
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
 }
 
 /////// прижимаю футер вниз

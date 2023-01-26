@@ -1,15 +1,19 @@
 .social-networks {
-  // @extend %align;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   column-gap: 10px;
 }
 
 .social-networks__link {
   width: 44px;
   height: 44px;
-  // @extend %align;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
 
-  transition: background-color var(--animation);
+  transition: background-color var(--transition-dur-and-func);
 
   &:hover,
   &:focus {
@@ -23,14 +27,14 @@
 .social-networks__icon {
   fill: #afb1b8;
 
-  transition: fill var(--animation);
+  transition: fill var(--transition-dur-and-func);
 
   .social-networks__link:hover &,
   .social-networks__link:focus & {
-    fill: var(--white-color);
+    fill: var(--light-color);
   }
 }
 
 .social-networks__icon-white {
-  fill: var(--white-color);
+  fill: var(--light-color);
 }

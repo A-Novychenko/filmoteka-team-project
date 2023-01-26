@@ -1,4 +1,4 @@
-.backdrop {
+.team-modal__backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,8 +14,9 @@
   transform: scale(1);
   visibility: visible;
   opacity: 1;
-  transition: transform var(--animation), visibility var(--animation),
-    opacity var(--animation);
+  transition: transform var(--transition-dur-and-func),
+    visibility var(--transition-dur-and-func),
+    opacity var(--transition-dur-and-func);
 
   &.is-hidden {
     visibility: hidden;

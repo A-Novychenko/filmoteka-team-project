@@ -15,6 +15,7 @@ export default class ApiService {
       const response = await axios.get(URL);
       // const result = await response.json();
       localStorage.setItem('currentFilms', JSON.stringify(response));
+
       return response;
     } catch (error) {
       console.log(error.message);

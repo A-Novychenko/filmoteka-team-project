@@ -12,3 +12,10 @@ export const libraryData = document.querySelector('.js-library-data');
 export const errorText = document.querySelector('.js-error-text');
 export const movieContainer = document.querySelector('.js-movies-list');
 
+export const openModalTeamBtn = document.querySelector(
+  '[data-team-modal-open]'
+);
+export const closeModalTeamBtn = document.querySelector(
+  '[data-team-modal-close]'
+);
+export const modalTeam = document.querySelector('[data-team-modal]');

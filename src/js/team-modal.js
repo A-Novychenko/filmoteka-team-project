@@ -1,20 +1,16 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-team-modal-open]'),
-    closeModalBtn: document.querySelector('[data-team-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './refs';
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-  refs.modal.addEventListener('click', clickBackdropCloseModal);
+export function teamModal() {
+  openModalTeamBtn.addEventListener('click', toggleModal);
+  closeModalTeamBtn.addEventListener('click', toggleModal);
+  modalTeam.addEventListener('click', clickBackdropCloseModal);
 
   function toggleModal() {
     window.addEventListener('keydown', keyPressEscCloseModal);
     document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+    modalTeam.classList.toggle('is-hidden');
 
-    if (refs.modal.classList.contains('is-hidden')) {
+    if (modalTeam.classList.contains('is-hidden')) {
       window.removeEventListener('keydown', keyPressEscCloseModal);
     }
   }
@@ -31,7 +27,7 @@
     if (e.code === ESC_KEY_CODE) {
       window.removeEventListener('keydown', keyPressEscCloseModal);
       document.body.classList.toggle('modal-open');
-      refs.modal.classList.toggle('is-hidden');
+      modalTeam.classList.toggle('is-hidden');
     }
   }
-})();
+}
