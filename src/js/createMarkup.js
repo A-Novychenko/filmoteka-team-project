@@ -10,7 +10,7 @@ export function getYear(date) {
 
 
 export function createMarkup(data) {
-    const movie = data.results
+    const movie = data
         .map(({
             title,
             poster_path,
