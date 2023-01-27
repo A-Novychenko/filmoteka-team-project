@@ -21,7 +21,7 @@ import ApiService from './js/apiService';
 // // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
 
-import { showMovies } from './js/gallery';
+import { getMovies } from './js/renderingGalleryMarkup';
 
 /// ////////////footer-modal
 import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';

@@ -1,3 +1,5 @@
+import { getYear } from "./getYear";
+
 const gallery = document.querySelector('.js-movies-list');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
@@ -13,7 +15,8 @@ export function renderMarkupSearch(movies) {
         <img src="${imgUrl}" alt="${movie.original_title}">
                 <h3 class="card_title">${movie.title}</h3>
                     <p class="card_genres">${Object.values(movie.genre_ids)}</p>
-                    <p class="card_release_date">${movie.release_date}</p>
+                    <p class="card_release_date">${getYear(movie.release_date)}</p>
+                    <p class="card_release_date">${movie.vote_average.toFixed(1)}</p>
                 </li>`;
     })
     .join('');
