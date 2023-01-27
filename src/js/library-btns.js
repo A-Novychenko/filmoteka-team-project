@@ -125,7 +125,7 @@ btnQueue.addEventListener('click', onBtnQueueClick);
 onBtnWatchedClick();
 
 
-function libraryListRenrer(list) {
+function libraryListRender(list) {
 
   let watchedList;
 
@@ -242,7 +242,7 @@ function onBtnWatchedClick() {
 
   const whatToRender = 'watched';
   // console.log('whatToRender: ', whatToRender);
-libraryListRenrer(whatToRender);
+libraryListRender(whatToRender);
 
   // try {
   //   // const watchedList = localStorage.getItem('watched');
@@ -377,7 +377,7 @@ export function onBtnQueueClick() {
 
     const whatToRender = 'queue';
     // console.log('whatToRender: ', whatToRender);
-    libraryListRenrer(whatToRender);
+    libraryListRender(whatToRender);
 
   // try {
   //   const queueList = localStorage.getItem('queuequeue');
@@ -432,4 +432,25 @@ export function onBtnQueueClick() {
 //   &:hover {
 //     transform: scale(1.03);
 //   }
+// }
+
+
+// window.addEventListener('click', e => {
+//   alert('1111');
+// });
+
+// const clicks = document.querySelector('.wrapper');
+// console.log('clicks: ', clicks);
+// clicks.addEventListener('click', onBClick);
+
+// function onBClick(evt) {
+//   // alert(evt);
+//   console.log(evt.target);
+// }
+
+// const clicks = document.querySelector('.wrapper');
+// clicks.addEventListener('click', onBClick);
+// function onBClick(evt) {
+//   const li = evt.target.closest('.movie__item');
+//   console.log(li.dataset.movie);
 // }

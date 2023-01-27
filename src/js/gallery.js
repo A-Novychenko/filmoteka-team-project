@@ -34,3 +34,15 @@ async function getMovies() {
 //     const localMovie = JSON.parse(localStorage.getItem('Movie'));
 //     return respData
 // }
+
+
+// const clicks = document.querySelector('.wrapper');
+// // console.log('clicks: ', clicks);
+// clicks.addEventListener('click', onBClick);
+
+// function onBClick(evt) {
+//   // alert(evt);
+//   const li = evt.target.closest('.movie__item');
+//   // console.log('li: ', li);
+//   console.log(li.dataset.movie);
+// }
