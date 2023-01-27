@@ -7,7 +7,7 @@
 }
 
 .no-data {
-  padding-top: 100px;
+  margin-top: 100px;
   // height: 100%;
   font-size: 20px;
   text-align: center;
@@ -19,11 +19,11 @@
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    padding-top: 60px;
+    margin-top: 60px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 36px;
-    padding-top: 160px;
+    margin-top: 160px;
   }
 }
 
@@ -42,5 +42,3 @@
   opacity: 0.8;
   text-decoration: none;
 }
-
-

@@ -18,19 +18,20 @@ export function renderMarkupSearch(movies) {
       let finalGenres = [];
       findGenres(genre_ids, genersLocalStore, finalGenres);
       if (finalGenres.length > 3) {
-        finalGenres = finalGenres.slice(0, 3).concat(['Other']);
+        finalGenres = finalGenres.slice(0, 2).concat(['Other']);
       }
 
       return `<li class="movie__item" data-movie="${movie.id}">
-        <img src="${imgUrl}" alt="${movie.original_title}">
+        <img class="card_img" src="${imgUrl}" alt="${movie.original_title}">
                 <h3 class="card_title">${movie.title}</h3>
-                    <p class="card_genres">${finalGenres.join(', ')}</p>
-                    <p class="card_release_date">${getYear(
+                <div class="card_descr">
+                  <p class="card_genres">${finalGenres.join(', ')}</p>
+                    <p class="card_release_date">&nbsp;|&nbsp;${getYear(
                       movie.release_date
                     )}</p>
-                    <p class="card_release_date">${movie.vote_average.toFixed(
+                    <p class="card_rating">${movie.vote_average.toFixed(
                       1
-                    )}</p>
+                    )}</p></div>
                 </li>`;
     })
     .join('');

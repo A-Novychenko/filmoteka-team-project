@@ -1,0 +1,77 @@
+.card_img {
+  border-radius: 5px;
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 12px;
+  }
+}
+
+.card_title {
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 500;
+
+  font-size: 12px;
+  line-height: 1.17;
+
+  //   @media screen and (min-width: 768px) {
+  //     font-size: 12px;
+  //     line-height: 1.33;
+  //   }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.card_genres,
+.card_release_date {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #ff6b08;
+
+  //   @media screen and (min-width: 768px) {
+  //     font-size: 12px;
+  //     line-height: 1.2;
+  //   }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.card_descr {
+  display: flex;
+  align-items: center;
+}
+
+.card_rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6b08;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 10px;
+  width: 36px;
+  height: 16px;
+  font-size: 12px;
+  line-height: 1.17;
+
+  //   @media screen and (min-width: 768px) {
+  //     margin-left: 10px;
+  //     width: 36px;
+  //     height: 16px;
+  //     font-size: 12px;
+  //     line-height: 1.17;
+  //   }
+  @media screen and (min-width: 1280px) {
+    margin-left: 10px;
+    width: 40px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
