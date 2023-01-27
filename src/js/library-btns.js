@@ -448,9 +448,9 @@ export function onBtnQueueClick() {
 //   console.log(evt.target);
 // }
 
-const clicks = document.querySelector('.wrapper');
-clicks.addEventListener('click', onBClick);
-function onBClick(evt) {
-  const li = evt.target.closest('.movie__item');
-  console.log(li.dataset.movie);
-}
+// const clicks = document.querySelector('.wrapper');
+// clicks.addEventListener('click', onBClick);
+// function onBClick(evt) {
+//   const li = evt.target.closest('.movie__item');
+//   console.log(li.dataset.movie);
+// }
