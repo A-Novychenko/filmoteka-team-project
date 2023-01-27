@@ -35,3 +35,7 @@ openModalTeamBtn.addEventListener('click', toggleTeamModal);
 closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
+
+// сетить жанри в локальне сховище
+import { getGenres } from './js/genres';
+getGenres();
