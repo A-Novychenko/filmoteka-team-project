@@ -1,7 +1,7 @@
 import { btnWatched, btnQueue, libraryData } from './refs';
-import { createMarkup } from './createMarkup';
+// import { createMarkup } from './createMarkup';
 // console.log('createMarkup: ', createMarkup);
-import { getYear } from './createMarkup';
+// import { getYear } from './createMarkup';
 // console.log('getYear: ', getYear);
 
 import { renderMarkupSearch } from './markupSearch';
@@ -73,48 +73,48 @@ import { renderMarkupSearch } from './markupSearch';
 //   },
 // ];
 
-// const qqq = [
-//   {
-//     adult: false,
-//     backdrop_path: '/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg',
-//     id: 76600,
-//     title: 'Avatar: The Way of Water',
-//     original_language: 'en',
-//     original_title: 'Avatar: The Way of Water',
-//     overview:
-//       'Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
-//     poster_path: '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
-//     media_type: 'movie',
-//     genre_ids: [878, 12, 28],
-//     popularity: 2623.833,
-//     release_date: '2022-12-14',
-//     video: false,
-//     vote_average: 7.723,
-//     vote_count: 4599,
-//   },
-//   {
-//     adult: false,
-//     backdrop_path: '/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
-//     id: 315162,
-//     title: 'Puss in Boots: The Last Wish',
-//     original_language: 'en',
-//     original_title: 'Puss in Boots: The Last Wish',
-//     overview:
-//       'Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
-//     poster_path: '/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
-//     media_type: 'movie',
-//     genre_ids: [16, 28, 12, 35, 10751, 14],
-//     popularity: 6689.647,
-//     release_date: '2022-12-07',
-//     video: false,
-//     vote_average: 8.6,
-//     vote_count: 2556,
-//   },
-// ];
+const qqq = [
+  {
+    adult: false,
+    backdrop_path: '/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg',
+    id: 76600,
+    title: 'Avatar: The Way of Water',
+    original_language: 'en',
+    original_title: 'Avatar: The Way of Water',
+    overview:
+      'Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
+    poster_path: '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
+    media_type: 'movie',
+    genre_ids: [878, 12, 28],
+    popularity: 2623.833,
+    release_date: '2022-12-14',
+    video: false,
+    vote_average: 7.723,
+    vote_count: 4599,
+  },
+  {
+    adult: false,
+    backdrop_path: '/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
+    id: 315162,
+    title: 'Puss in Boots: The Last Wish',
+    original_language: 'en',
+    original_title: 'Puss in Boots: The Last Wish',
+    overview:
+      'Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
+    poster_path: '/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
+    media_type: 'movie',
+    genre_ids: [16, 28, 12, 35, 10751, 14],
+    popularity: 6689.647,
+    release_date: '2022-12-07',
+    video: false,
+    vote_average: 8.6,
+    vote_count: 2556,
+  },
+];
 
 // localStorage.setItem('watched', JSON.stringify(www));
-// localStorage.setItem('queue', JSON.stringify(qqq));
-localStorage.removeItem('queue');
+localStorage.setItem('queue', JSON.stringify(qqq));
+// localStorage.removeItem('queue');
 
 //   clearMainContainer();
 //   pagination.innerHTML = '';
@@ -124,35 +124,39 @@ btnQueue.addEventListener('click', onBtnQueueClick);
 
 onBtnWatchedClick();
 
-function onBtnWatchedClick() {
-  btnWatched.classList.add('btnIsActive');
-  btnQueue.classList.remove('btnIsActive');
 
+function libraryListRenrer(list) {
+
+  let watchedList;
+
+    try {
+      if (list === 'watched') {
+       watchedList = localStorage.getItem('currentFilms');
+      } else {
+        watchedList = localStorage.getItem('queue');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  // console.log('watchedList888: ', watchedList);
   libraryData.innerHTML = '';
 
   try {
-    // const watchedList = localStorage.getItem('watched');
-    const watchedList = localStorage.getItem('currentFilms');
-    // console.log('watchedList: ', watchedList);
 
-    // console.log('watchedList: ', watchedList);
-    // console.log(watchedList.length);
     if (watchedList) {
-      // const watchedListToRender = JSON.parse(watchedList);
 
-      const watchedListToRen_____ = JSON.parse(watchedList).data.results;
-      console.log(
-        'watchedListToRen_____: ',
-        watchedListToRen_____
-      );
+      let watchedListToRender;
 
-      const watchedListToRender = [
-        ...watchedListToRen_____,
-        ...watchedListToRen_____,
-        ...watchedListToRen_____,
-      ];
+       if (list === 'watched') {
+          watchedListToRender = JSON.parse(watchedList).data.results;
+       } else {
+          watchedListToRender = JSON.parse(watchedList);
+      }
+      
+      // const watchedListToRender = JSON.parse(watchedList).data.results;
 
-      console.log(watchedListToRender.length);
+
+      console.log('films To Render ', watchedListToRender.length);
       // let watchedListToRender_1 = (watchedListToRender.length > 9) ? watchedListToRender.slice(0, 9) : watchedListToRender;
 
       console.log('window.screen.width', window.screen.width);
@@ -180,14 +184,14 @@ function onBtnWatchedClick() {
         for (let i = 0; i < watchedListToRender.length; i += array_size) {
           sliced_array.push(watchedListToRender.slice(i, i + array_size));
         }
-        console.log(sliced_array.length);
+        console.log('pages to paginate', sliced_array.length);
 
         // console.log(sliced_array.length);
 
         // let newMurkup = MYrenderMarkup(sliced_array[1]);
         // libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
         try {
-          // for (let i = 0; i < sliced_array.length; i += 1) {
+
 
           let newMurkup = renderMarkupSearch(sliced_array[0]);
           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
@@ -197,44 +201,19 @@ function onBtnWatchedClick() {
             if (i === sliced_array.length - 1) {
               clearInterval(timerId);
             }
-            // setTimeout(() => {
+
             let newMurkup = renderMarkupSearch(sliced_array[i]);
             libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-            // }, 2000);
-            // console.log(i);
+
             i += 1;
           }, 1500);
-          // }
 
-          // for (let i = 0; i < sliced_array.length; i += 1) {
-          //   setTimeout(() => {
-          //     let newMurkup = MYrenderMarkup(sliced_array[i]);
-          //     libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-          //   }, 2000);
-          // }
         } catch (err) {
           console.log(err);
         }
 
-        // setTimeout(() => {
-
-        // }, 2000);
-
-        // timerId = setInterval(() => {
-        //   console.log(`I love async JS!  ${Math.random()}`);
-        // }, 1000);
-
-        // sliced_array.forEach(array => {
-        // timerId = setInterval(() => {
-        // setTimeout(() => {
-        //   console.log('array: ', array);
-        //   let newMurkup = MYrenderMarkup(array);
-        //   libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-        // }, 1000);
-        // }, 1000);
-        // });
       } else {
-        const newMurkup = MYrenderMarkup(watchedListToRender);
+        const newMurkup = renderMarkupSearch(watchedListToRender);
         // console.log('newMurkup: ', newMurkup);
         //  libraryContainer.insertAdjacentHTML('beforeend', newMurkup);
         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
@@ -250,6 +229,142 @@ function onBtnWatchedClick() {
   } catch (err) {
     console.log(err);
   }
+  
+}
+
+
+
+function onBtnWatchedClick() {
+  btnWatched.classList.add('btnIsActive');
+  btnQueue.classList.remove('btnIsActive');
+
+  // libraryData.innerHTML = '';
+
+  const whatToRender = 'watched';
+  // console.log('whatToRender: ', whatToRender);
+libraryListRenrer(whatToRender);
+
+  // try {
+  //   // const watchedList = localStorage.getItem('watched');
+  //   const watchedList = localStorage.getItem('currentFilms');
+  //   // console.log('watchedList: ', watchedList);
+
+  //   // console.log('watchedList: ', watchedList);
+  //   // console.log(watchedList.length);
+  //   if (watchedList) {
+  //     const watchedListToRender = JSON.parse(watchedList).data.results;
+
+  //     // const watchedListToRen_____ = JSON.parse(watchedList).data.results;
+  //     // console.log(
+  //     //   'watchedListToRen_____: ',
+  //     //   watchedListToRen_____
+  //     // );
+
+  //     // const watchedListToRender = [
+  //     //   ...watchedListToRen_____,
+  //     //   ...watchedListToRen_____,
+  //     //   ...watchedListToRen_____,
+  //     // ];
+
+  //     console.log('films To Render ', watchedListToRender.length);
+  //     // let watchedListToRender_1 = (watchedListToRender.length > 9) ? watchedListToRender.slice(0, 9) : watchedListToRender;
+
+  //     console.log('window.screen.width', window.screen.width);
+
+  //     const screenWidth = window.screen.width;
+
+  //     let array_size;
+
+  //     if (screenWidth < 767) {
+  //       array_size = 4;
+  //       console.log('mobile');
+  //     } else if (screenWidth > 767 && screenWidth < 1280) {
+  //       array_size = 8;
+  //       console.log('tablet');
+  //     } else {
+  //       array_size = 9;
+  //       console.log('desc');
+  //     }
+
+  //     console.log('array_size: ', array_size);
+
+  //     if (watchedListToRender.length > array_size) {
+  //       // const array_size = 9;
+  //       const sliced_array = [];
+  //       for (let i = 0; i < watchedListToRender.length; i += array_size) {
+  //         sliced_array.push(watchedListToRender.slice(i, i + array_size));
+  //       }
+  //       console.log('pages to paginate', sliced_array.length);
+
+  //       // console.log(sliced_array.length);
+
+  //       // let newMurkup = MYrenderMarkup(sliced_array[1]);
+  //       // libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //       try {
+  //         // for (let i = 0; i < sliced_array.length; i += 1) {
+
+  //         let newMurkup = renderMarkupSearch(sliced_array[0]);
+  //         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+
+
+  //         let i = 1;
+  //         timerId = setInterval(() => {
+  //           if (i === sliced_array.length - 1) {
+  //             clearInterval(timerId);
+  //           }
+  //           // setTimeout(() => {
+  //           let newMurkup = renderMarkupSearch(sliced_array[i]);
+  //           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //           // }, 2000);
+  //           // console.log(i);
+  //           i += 1;
+  //         }, 1500);
+  //         // }
+
+  //         // for (let i = 0; i < sliced_array.length; i += 1) {
+  //         //   setTimeout(() => {
+  //         //     let newMurkup = MYrenderMarkup(sliced_array[i]);
+  //         //     libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //         //   }, 2000);
+  //         // }
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+
+  //       // setTimeout(() => {
+
+  //       // }, 2000);
+
+  //       // timerId = setInterval(() => {
+  //       //   console.log(`I love async JS!  ${Math.random()}`);
+  //       // }, 1000);
+
+  //       // sliced_array.forEach(array => {
+  //       // timerId = setInterval(() => {
+  //       // setTimeout(() => {
+  //       //   console.log('array: ', array);
+  //       //   let newMurkup = MYrenderMarkup(array);
+  //       //   libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //       // }, 1000);
+  //       // }, 1000);
+  //       // });
+  //     } else {
+  //       const newMurkup = renderMarkupSearch(watchedListToRender);
+  //       // console.log('newMurkup: ', newMurkup);
+  //       //  libraryContainer.insertAdjacentHTML('beforeend', newMurkup);
+  //       libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //     }
+  //   } else {
+  //     libraryData.innerHTML = `<div class="no-data">
+  //     <p>
+  //       It's empty here now
+  //     </p>
+  //     <a class="no-data-btn" href="./index.html">Let's fix it</a>
+  //   </div>`;
+  //   }
+  // } catch (err) {
+  //   console.log(err);
+  // }
 }
 
 export function onBtnQueueClick() {
@@ -258,29 +373,33 @@ export function onBtnQueueClick() {
   btnWatched.classList.remove('btnIsActive');
   btnQueue.classList.add('btnIsActive');
 
-  libraryData.innerHTML = '';
+  // libraryData.innerHTML = '';
 
-  try {
-    const queueList = localStorage.getItem('queue');
-    if (queueList) {
-      const queueListToRender = JSON.parse(queueList);
-      // console.log('queueListToRender: ', queueListToRender);
-      // console.log('queueListToRender: ', queueListToRender.length);
-      const newMurkup = MYrenderMarkup(queueListToRender);
-      // console.log('newMurkup: ', newMurkup);
-      //  libraryContainer.insertAdjacentHTML('beforeend', newMurkup);
-      libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-    } else {
-      libraryData.innerHTML = `<div class="no-data">
-      <p>
-        It's empty here now (queueList)
-      </p>
-      <a class="no-data-btn" href="./index.html">Let's fix it</a>
-    </div>`;
-    }
-  } catch (err) {
-    console.log(err);
-  }
+    const whatToRender = 'queue';
+    // console.log('whatToRender: ', whatToRender);
+    libraryListRenrer(whatToRender);
+
+  // try {
+  //   const queueList = localStorage.getItem('queuequeue');
+  //   if (queueList) {
+  //     const queueListToRender = JSON.parse(queueList);
+  //     // console.log('queueListToRender: ', queueListToRender);
+  //     // console.log('queueListToRender: ', queueListToRender.length);
+  //     const newMurkup = renderMarkupSearch(queueListToRender);
+  //     // console.log('newMurkup: ', newMurkup);
+  //     //  libraryContainer.insertAdjacentHTML('beforeend', newMurkup);
+  //     libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+  //   } else {
+  //     libraryData.innerHTML = `<div class="no-data">
+  //     <p>
+  //       It's empty here now (queueList)
+  //     </p>
+  //     <a class="no-data-btn" href="./index.html">Let's fix it</a>
+  //   </div>`;
+  //   }
+  // } catch (err) {
+  //   console.log(err);
+  // }
 }
 
 // const IMG_URL = 'https://image.tmdb.org/t/p/w500/';

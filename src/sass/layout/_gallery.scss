@@ -22,6 +22,13 @@
 .movie__item {
   width: 280px;
 
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
+  }
+
   @media screen and (min-width: 768px) {
     width: 336px;
   }
