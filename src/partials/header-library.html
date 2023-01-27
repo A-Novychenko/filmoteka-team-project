@@ -1,26 +1,28 @@
-<header class="header header_library  js-header">
+<header class="header header_library js-header">
+  <div class="container">
+    <div class="header__wrap header__wrap_library">
+      <a href="./index.html" class="logo">
+        <svg class="logo__img">
+          <use class="logo__icon" href="./images/sprite.svg#icon-film"></use>
+        </svg>
+        <span class="logo__name">Filmoteka</span>
+      </a>
 
-    <div class="container">
-
-        <div class="header__wrap header__wrap_library">
-            <a href="./index.html" class="logo">
-                <svg class="logo__img">
-                    <use class="logo__icon" href="./images/sprite.svg#icon-film"></use>
-                </svg>
-                <span class="logo__name">Filmoteka</span>
-            </a>
-
-            <nav class="header__nav">
-                <a href='./index.html' class="header__link  js-home-btn">home</a>
-                <a href='./library.html' class="header__link header__link_current js-my-library-btn">my library</a>
-            </nav>
-        </div>
-
-        <div class="header__btns js-header-btns">
-            <button class="btn header__btn js-btn-watched" type="button">watched</button>
-            <button class="btn header__btn js-btn-queue" type="button">queue</button>
-        </div>
-
+      <nav class="header__nav">
+        <a href="./index.html" class="header__link js-home-btn">home</a>
+        <a
+          href="./library.html"
+          class="header__link header__link_current js-my-library-btn"
+          >my library</a
+        >
+      </nav>
     </div>
 
+    <div class="header__btns js-header-btns">
+      <button class="btn header__btn js-btn-watched" type="button">
+        watched
+      </button>
+      <button class="btn header__btn js-btn-queue" type="button">queue</button>
+    </div>
+  </div>
 </header>

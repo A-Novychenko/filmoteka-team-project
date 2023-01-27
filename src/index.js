@@ -6,6 +6,9 @@ headerForm.addEventListener('submit', onHeaderFormClick);
 
 // // тестую роботу ApiService:
 import ApiService from './js/apiService';
+import onChangeTheme from './js/theme-switch';
+
+// theme-switch.js
 
 // const service = new ApiService();
 // //популярні:
