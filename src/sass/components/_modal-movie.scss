@@ -1,0 +1,121 @@
+.movie_modal {
+    position: relative;
+
+
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    padding: 40px 12px;
+
+    background-color: var(--light-color);
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    text-align: center;
+
+    @media screen and (min-width: 320px) {
+        max-width: 450px;
+        max-height: 940px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        max-width: 552px;
+        max-height: 704px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 806px;
+        height: 558px;
+        max-width: 100%;
+        min-height: auto;
+    }
+}
+
+.movie_modal_gallery {
+
+    @media screen and (min-width: 320px) {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        gap: 68px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        gap: 16px;
+    }
+}
+
+.movie_modal_info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.movie_modal_title {
+    margin-bottom: 20px;
+}
+
+.btn_modal {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #000000;
+    background: #FFFFFF;
+}
+
+.btn_modal:hover,
+.btn_modal:focus {
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    border-color: var(--accent-color);
+}
+
+.modal_btn_list {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.modal_img{
+   
+    @media screen and (min-width: 320px) {
+            width: 240px;
+            height: 357px;
+            border-radius: 5px;
+        }
+    
+        @media screen and (min-width: 768px) {
+            width: 264px;
+            height: 373px;
+        }
+    
+        @media screen and (min-width: 1024px) {
+            width: 375px;
+            height: 478px;
+        }
+}
