@@ -35,3 +35,5 @@ openModalTeamBtn.addEventListener('click', toggleTeamModal);
 closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
+
+import { onClick } from './js/modal-btns-library';
