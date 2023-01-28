@@ -2,6 +2,7 @@ import { headerForm, errorText } from './refs';
 import ApiService from './apiService';
 import { renderMarkupSearch } from './markupSearch';
 import { cleanHtml } from './markupSearch';
+import { getMovies } from './renderingGalleryMarkup';
 
 const gallery = document.querySelector('.js-movies-list')
 const apiService = new ApiService();
@@ -25,6 +26,7 @@ export async function onHeaderFormClick(evt) {
     if (response.data.results.length === 0) {
       errorText.classList.remove('header__error_hidden');
       setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
+      getMovies();
       headerForm.reset();
     } else {
        gallery.insertAdjacentHTML('beforeend',renderMarkupSearch(response.data.results))

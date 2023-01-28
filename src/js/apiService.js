@@ -16,6 +16,12 @@ export default class ApiService {
       // const result = await response.json();
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
+      let totalPagesToPaginate = response.data.total_pages;
+      if (totalPagesToPaginate > 1) {
+        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // pagination(totalPagesToPaginate);
+      }
+
       return response;
     } catch (error) {
       console.log(error.message);
@@ -29,6 +35,12 @@ export default class ApiService {
 
       // const result = await response.json();
       localStorage.setItem('currentFilms', JSON.stringify(response));
+
+      let totalPagesToPaginate = response.data.total_pages;
+      if (totalPagesToPaginate > 1) {
+        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // pagination(totalPagesToPaginate);
+      }
 
       return response;
     } catch (error) {

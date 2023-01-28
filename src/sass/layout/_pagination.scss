@@ -1,0 +1,32 @@
+.pagination {
+  padding-bottom: 60px;
+  padding-top: 60px;
+}
+
+.pagination__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pagination__item {
+  width: 40px;
+  height: 40px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* identical to box height, or 133% */
+}
+
+.pagination__item.current {
+  background: #ff6b08;
+  border-radius: 5px;
+}

@@ -6,6 +6,9 @@ headerForm.addEventListener('submit', onHeaderFormClick);
 
 // // тестую роботу ApiService:
 import ApiService from './js/apiService';
+import onChangeTheme from './js/theme-switch';
+
+// theme-switch.js
 
 // const service = new ApiService();
 // //популярні:
@@ -21,7 +24,7 @@ import ApiService from './js/apiService';
 // // service.query = 'cat';
 // service.fetchFilmsByKeyWord();
 
-import { showMovies } from './js/gallery';
+import { getMovies } from './js/renderingGalleryMarkup';
 
 /// ////////////footer-modal
 import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';
@@ -36,4 +39,9 @@ closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
 
+feature/modal-btns-library
 import { onClick } from './js/modal-btns-library';
+
+// сетить жанри в локальне сховище
+import { getGenres } from './js/genres';
+getGenres();
