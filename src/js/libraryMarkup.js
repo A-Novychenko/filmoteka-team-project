@@ -1,5 +1,27 @@
+const paginationBox = document.querySelector('.pagination');
+import pagination from './pagination';
+import ApiService from './apiService';
+// console.log('123: ', pagination);
+
+// try {
+//   console.log('777');
+//   pagination(7);
+//   console.log('888');
+// } catch (err) {
+//   console.log(err);
+// }
+
+// console.log('pagination: ', pagination);
+// console.log('1');
+
+// console.log('2');
+
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
+
+// import findGenres from './genres';
+// console.log('findGenres: ', findGenres);
+// console.log('pagination: ', pagination);
 
 // const qqq = [
 //   {
@@ -40,7 +62,6 @@ import { renderMarkupSearch } from './markupSearch';
 //   },
 // ];
 
-
 // localStorage.setItem('queue', JSON.stringify(qqq));
 // localStorage.removeItem('queue');
 
@@ -49,25 +70,34 @@ import { renderMarkupSearch } from './markupSearch';
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
 
+let libBlockToShow;
+
 function onBtnWatchedClick() {
+  // pagination();
   btnWatched.classList.add('btnIsActive');
   btnQueue.classList.remove('btnIsActive');
-  libraryListRenrer('watched');
+  libBlockToShow = 'watched';
+  libraryListRender();
 }
 
-export function onBtnQueueClick() {
+function onBtnQueueClick() {
   btnWatched.classList.remove('btnIsActive');
   btnQueue.classList.add('btnIsActive');
-  libraryListRenrer('queue');
+  libBlockToShow = 'queue';
+  libraryListRender();
 }
 
 onBtnWatchedClick();
 
-function libraryListRenrer(list) {
+let curentPageToRender;
+
+export default function libraryListRender(curentPageToRender) {
+  // curentPageToRender = curentPage;
+  console.log('curentPageToRender: ', curentPageToRender);
   let watchedList;
 
   try {
-    if (list === 'watched') {
+    if (libBlockToShow === 'watched') {
       watchedList = localStorage.getItem('currentFilms');
     } else {
       watchedList = localStorage.getItem('queue');
@@ -82,7 +112,7 @@ function libraryListRenrer(list) {
     if (watchedList) {
       let watchedListToRender;
 
-      if (list === 'watched') {
+      if (libBlockToShow === 'watched') {
         watchedListToRender = JSON.parse(watchedList).data.results;
       } else {
         watchedListToRender = JSON.parse(watchedList);
@@ -90,10 +120,10 @@ function libraryListRenrer(list) {
 
       // const watchedListToRender = JSON.parse(watchedList).data.results;
 
-      console.log('films To Render ', watchedListToRender.length);
+      // console.log('films To Render ', watchedListToRender.length);
       // let watchedListToRender_1 = (watchedListToRender.length > 9) ? watchedListToRender.slice(0, 9) : watchedListToRender;
 
-      console.log('window.screen.width', window.screen.width);
+      // console.log('window.screen.width', window.screen.width);
 
       const screenWidth = window.screen.width;
 
@@ -101,13 +131,13 @@ function libraryListRenrer(list) {
 
       if (screenWidth < 767) {
         array_size = 4;
-        console.log('mobile');
+        // console.log('mobile');
       } else if (screenWidth > 767 && screenWidth < 1280) {
         array_size = 8;
-        console.log('tablet');
+        // console.log('tablet');
       } else {
         array_size = 9;
-        console.log('desc');
+        // console.log('desc');
       }
 
       console.log('array_size: ', array_size);
@@ -120,25 +150,19 @@ function libraryListRenrer(list) {
         }
         console.log('pages to paginate', sliced_array.length);
 
+        // export const TTT = sliced_array.length;
+
+        pagination(sliced_array.length);
+
         // console.log(sliced_array.length);
 
         // let newMurkup = MYrenderMarkup(sliced_array[1]);
         // libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
         try {
-          let newMurkup = renderMarkupSearch(sliced_array[1]);
+          // pagination();
+
+          let newMurkup = renderMarkupSearch(sliced_array[0]);
           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-
-          // let i = 1;
-          // timerId = setInterval(() => {
-          //   if (i === sliced_array.length - 1) {
-          //     clearInterval(timerId);
-          //   }
-
-          //   let newMurkup = renderMarkupSearch(sliced_array[i]);
-          //   libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-
-          //   i += 1;
-          // }, 1500);
         } catch (err) {
           console.log(err);
         }
@@ -160,4 +184,3 @@ function libraryListRenrer(list) {
     console.log(err);
   }
 }
-

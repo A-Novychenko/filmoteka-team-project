@@ -42,3 +42,9 @@ modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 // сетить жанри в локальне сховище
 import { getGenres } from './js/genres';
 getGenres();
+
+// import './js/apiService';
+// import './js/libraryMarkup';
+// import './js/pagination';
+import './js/refs';
+// import './js/searchByKeyWord';

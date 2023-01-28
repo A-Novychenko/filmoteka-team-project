@@ -1,8 +1,15 @@
 // import ApiService from './apiService';
 import ApiService from './apiService';
 import renderMarkupSearch from './markupSearch';
-import { getMovies } from './renderingGalleryMarkup';
+import libraryListRender from './libraryMarkup';
+// console.log('libraryListRenrer: ', libraryListRender);
+
+// import { getMovies } from './renderingGalleryMarkup';
 //test
+
+
+// console.log('libraryListRenrer(): ', libraryListRenrer());
+
 const paginationList = document.querySelector('.pagination__list');
 
 const paginationBox = document.querySelector('.pagination');
@@ -12,20 +19,28 @@ paginationBox.addEventListener('click', clickFunction);
 
 const apiService = new ApiService();
 
-export default async function pagination() {
+let totalPages;
+
+export default function pagination(totalP = 10) {
+  totalPages = totalP;
+  console.log('totalPages: ', totalPages);
   paginationBox.addEventListener('click', clickFunction);
 
-  let totalPages = await apiService
-    .fetchTrendFilms()
-    .then(res => res.data.total_pages);
+  // console.log('totalPagesToPaginate', totalPages);
+
+  // let totalPages = await apiService
+  //   .fetchTrendFilms()
+  //   .then(res => res.data.total_pages);
 
   let murkup = '';
+
+  // console.log('apiService.page', apiService.page);
 
   let beforeTwoPage = apiService.page - 2;
   let beforePage = apiService.page - 1;
   let afterPage = apiService.page + 1;
   let afterTwoPage = apiService.page + 2;
-  console.log(apiService.page);
+  // console.log('(apiService.page', apiService.page);
 
   if (apiService.page > 1) {
     murkup += `<li class="pagination__item">◄</li> `;
@@ -67,6 +82,8 @@ export default async function pagination() {
 }
 
 function clickFunction(e) {
+  // console.log('clickFunction: ', clickFunction);
+
   //   console.log(e.target.tagName);
   //   console.log(typeof e.target.textContent);
   if (e.target.tagName !== 'LI') {
@@ -78,7 +95,7 @@ function clickFunction(e) {
 
   if (e.target.textContent === '►') {
     apiService.page += 1;
-    pagination();
+    pagination(totalPages);
     console.log(apiService.page);
 
     return;
@@ -86,7 +103,7 @@ function clickFunction(e) {
 
   if (e.target.textContent === '◄') {
     apiService.page -= 1;
-    pagination();
+    pagination(totalPages);
     console.log(apiService.page);
 
     return;
@@ -95,7 +112,8 @@ function clickFunction(e) {
   if (true) {
     console.log(e.target.textContent);
     apiService.page = Number(e.target.textContent);
-    getMovies();
-    pagination();
+    // getMovies();
+    pagination(totalPages);
+    // libraryListRenrer(apiService.page);
   }
 }

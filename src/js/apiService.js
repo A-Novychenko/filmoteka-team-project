@@ -1,4 +1,23 @@
 import axios from 'axios';
+// import pagination from './pagination';
+
+// console.log(1);
+
+// try {
+//   console.log('777');
+//   // pagination(10);
+//   // import pagination from './pagination';
+//   // console.log('pagination: ', pagination);
+//   console.log('888');
+// } catch (err) {
+//   console.log(err);
+// }
+
+// const paginationBox = document.querySelector('.pagination');
+// import pagination from './pagination';
+// console.log('pagination: ', pagination);
+
+// console.log(2);
 
 export default class ApiService {
   API_KEY = '6b1b36ecf2f3f3c0d27307e18cbffcb3';
@@ -18,7 +37,7 @@ export default class ApiService {
 
       let totalPagesToPaginate = response.data.total_pages;
       if (totalPagesToPaginate > 1) {
-        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
         // pagination(totalPagesToPaginate);
       }
 
@@ -38,7 +57,7 @@ export default class ApiService {
 
       let totalPagesToPaginate = response.data.total_pages;
       if (totalPagesToPaginate > 1) {
-        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
         // pagination(totalPagesToPaginate);
       }
 
