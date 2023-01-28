@@ -1,0 +1,19 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.spinner {
+    transform-origin: center;
+    animation: spinner_svv2 .75s infinite linear
+}
+
+@keyframes spinner_svv2 {
+    100% {
+        transform: rotate(360deg)
+    }
+}
