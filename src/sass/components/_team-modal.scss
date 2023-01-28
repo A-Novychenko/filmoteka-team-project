@@ -109,8 +109,9 @@
 }
 
 .team-modal__img-wrap {
-  width: 164px;
-  height: 164px;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
 }
 
 .team-modal__inner {
@@ -123,7 +124,8 @@
   height: 100%;
   width: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .team-modal__name {
