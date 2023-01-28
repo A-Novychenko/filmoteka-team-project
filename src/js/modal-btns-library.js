@@ -1,6 +1,6 @@
 import ApiService from './apiService';
 
-refs = {
+const refs = {
   modal: document.querySelector('.js-test-modal'),
   watched: document.querySelector('.js-test-add'),
   delete: document.querySelector('.js-test-del'),
