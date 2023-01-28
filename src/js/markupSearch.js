@@ -17,7 +17,7 @@ export function renderMarkupSearch(movies) {
       const genersLocalStore = parseGenres.data.genres;
       let finalGenres = [];
       findGenres(genre_ids, genersLocalStore, finalGenres);
-      if (finalGenres.length > 3) {
+      if (finalGenres.length > 2) {
         finalGenres = finalGenres.slice(0, 2).concat(['Other']);
       }
 
