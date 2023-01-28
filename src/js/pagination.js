@@ -1,7 +1,7 @@
 // import ApiService from './apiService';
 import ApiService from './apiService';
 import renderMarkupSearch from './markupSearch';
-
+import { getMovies } from './renderingGalleryMarkup';
 //test
 const paginationList = document.querySelector('.pagination__list');
 
@@ -14,6 +14,7 @@ const apiService = new ApiService();
 
 export default async function pagination() {
   paginationBox.addEventListener('click', clickFunction);
+
   let totalPages = await apiService
     .fetchTrendFilms()
     .then(res => res.data.total_pages);
@@ -65,11 +66,9 @@ export default async function pagination() {
   paginationList.innerHTML = murkup;
 }
 
-pagination();
-
 function clickFunction(e) {
-  console.log(e.target.tagName);
-  console.log(typeof e.target.textContent);
+  //   console.log(e.target.tagName);
+  //   console.log(typeof e.target.textContent);
   if (e.target.tagName !== 'LI') {
     return;
   }
@@ -96,7 +95,7 @@ function clickFunction(e) {
   if (true) {
     console.log(e.target.textContent);
     apiService.page = Number(e.target.textContent);
-
+    getMovies();
     pagination();
   }
 }
