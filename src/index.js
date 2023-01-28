@@ -39,6 +39,9 @@ closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
 
+feature/modal-btns-library
+import { onClick } from './js/modal-btns-library';
+
 // сетить жанри в локальне сховище
 import { getGenres } from './js/genres';
 getGenres();
