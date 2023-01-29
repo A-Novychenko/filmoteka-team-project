@@ -24,7 +24,7 @@ export default async function pagination(currentPage, totalPages) {
 
   if (currentPage > 4) {
     murkup += `...`;
-  }
+
 
   if (currentPage > 3) {
     murkup += `<li class="pagination__item">${beforeTwoPage}</li>`;
@@ -46,11 +46,10 @@ export default async function pagination(currentPage, totalPages) {
 
   if (totalPages - 3 > currentPage) {
     murkup += `...`;
-  }
 
   if (totalPages > currentPage) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
-    murkup += `<li class="pagination__item">►</li>`;
+    murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
 
   paginationList.innerHTML = murkup;

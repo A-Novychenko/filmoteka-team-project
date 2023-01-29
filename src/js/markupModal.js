@@ -1,32 +1,31 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
-import { findGenres } from './genres';
-
+import { findGenres, isEmptyGanres } from './genres';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
-    
-export function renderMarkupModal(movies) {
-       const { genre_ids } = movies;
-      const imgUrl = movies.poster_path
-        ? `${IMG_URL + movies.poster_path}`
-        : 'https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png';
 
-      const parseGenres = JSON.parse(localStorage.getItem('genres'));
-      const genersLocalStore = parseGenres.data.genres;
-      let finalGenres = [];
-      findGenres(genre_ids, genersLocalStore, finalGenres);
-    //   if (finalGenres.length > 3) {
-    //     finalGenres = finalGenres.slice(0, 2).concat(['Other']);
-    //   }
-    
-      return   ` <img class = "modal_img" src="${imgUrl}"   alt="">
+export function renderMarkupModal(movies) {
+  const { genre_ids } = movies;
+  const imgUrl = movies.poster_path
+    ? `${IMG_URL + movies.poster_path}`
+    : 'https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png';
+
+  const parseGenres = JSON.parse(localStorage.getItem('genres'));
+  const genersLocalStore = parseGenres.data.genres;
+  let finalGenres = [];
+  findGenres(genre_ids, genersLocalStore, finalGenres);
+  isEmptyGanres(finalGenres);
+
+  return ` <img class = "modal_img" src="${imgUrl}"   alt="">
             <ul class="movie_modal_info">
                 <li>
                     <h2 class="movie_modal_title">${movies.original_title}</h2>
                     <table class="modal_table">
                         <tr>
                             <td class="table-header">Vote / Votes</td>
-                            <td><span class="table-votes">${movies.vote_average.toFixed(1)}</span> / ${movies.vote_count}</td>
+                            <td><span class="table-votes">${movies.vote_average.toFixed(
+                              1
+                            )}</span> / ${movies.vote_count}</td>
                         </tr>
                         <tr>
                             <td class="table-header">Popularity</td>
@@ -56,7 +55,5 @@ export function renderMarkupModal(movies) {
                 <li>
                     <button class="btn_modal btn_trailer">MOVIE TRAILER</button>
                 </li>
-            </ul>`
-    
+            </ul>`;
 }
-
