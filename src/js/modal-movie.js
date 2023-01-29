@@ -58,8 +58,9 @@ export function keyPressEscCloseMovieModal(evt) {
   }
 }
 
-export function closeBtn(){
-    openModalMovie.classList.toggle('is-hidden')
+export function closeBtn() {
+  // openModalMovie.classList.toggle('is-hidden')
+  setTimeout(() => openModalMovie.classList.add('is-hidden'), 150); 
 }
 
 export function cleanHtml() {
