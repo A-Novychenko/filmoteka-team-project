@@ -26,7 +26,7 @@ export function oneToggle(evt) {
     const liId = li.dataset.movie;
     console.log(liId);
 
-    //  cleanHtml()
+    cleanHtml();
     const arrId = localArray.find(arr => arr.id == liId);
     console.log(arrId);
     if (arrId == undefined) {
