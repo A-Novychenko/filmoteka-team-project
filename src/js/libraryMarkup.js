@@ -40,9 +40,9 @@ function libraryListRender(curentPage = 1) {
 
   try {
     if (libBlockToShow === 'watched') {
-      watchedList = localStorage.getItem('currentFilms');
+      watchedList = localStorage.getItem('currentFilms'); //watchedFilms
     } else {
-      watchedList = localStorage.getItem('queue');
+      watchedList = localStorage.getItem('queuedFilms');
     }
   } catch (err) {
     console.log(err);

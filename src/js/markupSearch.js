@@ -25,10 +25,9 @@ export function renderMarkupSearch(movies) {
         <img class="card_img" src="${imgUrl}" alt="${movie.original_title}">
                 <h3 class="card_title">${movie.title}</h3>
                 <div class="card_descr">
-                  <p class="card_genres">${finalGenres.join(', ')}</p>
-                    <p class="card_release_date">&nbsp;|&nbsp;${getYear(
-                      movie.release_date
-                    )}</p>
+                  <p class="card_genres">${finalGenres.join(
+                    ', '
+                  )}&nbsp;|&nbsp;${getYear(movie.release_date)}</p>
                     <p class="card_rating">${movie.vote_average.toFixed(
                       1
                     )}</p></div>
