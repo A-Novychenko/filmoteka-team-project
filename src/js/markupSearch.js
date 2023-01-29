@@ -1,6 +1,6 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
-import { findGenres } from './genres';
+import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
 
 const gallery = document.querySelector('.js-movies-list');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
@@ -17,9 +17,8 @@ export function renderMarkupSearch(movies) {
       const genersLocalStore = parseGenres.data.genres;
       let finalGenres = [];
       findGenres(genre_ids, genersLocalStore, finalGenres);
-      if (finalGenres.length > 3) {
-        finalGenres = finalGenres.slice(0, 2).concat(['Other']);
-      }
+      isMoreThenTwoGanres(finalGenres);
+      isEmptyGanres(finalGenres);
 
       return `<li class="movie__item" data-movie="${movie.id}">
         <img class="card_img" src="${imgUrl}" alt="${movie.original_title}">
