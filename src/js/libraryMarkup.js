@@ -205,17 +205,26 @@ function librPagination(total) {
   window.scrollBy(0, 0);
 }
 
+// const clickToSckroll = document.querySelector('.pagination__item');
+// clickToSckroll.addEventListener('click', up);
+
+// document.getElementById(IDelemen).onclick = up();
+
+// {/* <a href="#" onclick="return up()">наверх</a> */}
+
 //////////////////плавна прокрутка
-// function up() {
+
+// var t;
+// // function up() {
 //   var top = Math.max(
 //     document.body.scrollTop,
 //     document.documentElement.scrollTop
 //   );
 //   if (top > 0) {
-//     window.scrollBy(0, (top + 100) / -10);
-//     t = setTimeout('up()', 20);
+//     window.scrollBy(0, -100);
+//    let t = setTimeout('up()', 20);
 //   } else clearTimeout(t);
-//   return false;
+//   // return false;
 // }
 
 // ..........................................................
