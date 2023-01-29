@@ -38,12 +38,12 @@ export default async function pagination(total) {
   console.log('apiService.page', apiService.page);
 
   if (apiService.page > 1) {
-    murkup += `<li class="pagination__item">◄</li> `;
+    murkup += `<li class="pagination__item pagination__item_arrows">◄</li> `;
     murkup += `<li class="pagination__item">1</li>`;
   }
 
   if (apiService.page > 4) {
-    murkup += `...`;
+    murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
   if (apiService.page > 3) {
@@ -65,12 +65,12 @@ export default async function pagination(total) {
   }
 
   if (totalPages - 3 > apiService.page) {
-    murkup += `...`;
+    murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
   if (totalPages > apiService.page) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
-    murkup += `<li class="pagination__item">►</li>`;
+    murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
 
   paginationList.innerHTML = murkup;
