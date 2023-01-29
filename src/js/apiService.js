@@ -1,39 +1,19 @@
 import axios from 'axios';
-// import { pagination } from './pagination';
-
-// console.log(1);
-
-// try {
-//   console.log('777');
-//   // pagination(10);
-//   // import pagination from './pagination';
-//   // console.log('pagination: ', pagination);
-//   console.log('888');
-// } catch (err) {
-//   console.log(err);
-// }
-
-// const paginationBox = document.querySelector('.pagination');
-// import pagination from './pagination';
-// console.log('pagination: ', pagination);
-
-// console.log(2);
 
 export default class ApiService {
-
-
   constructor() {
     this.keyword = '';
     this.page = 1;
     this.API_KEY = '6b1b36ecf2f3f3c0d27307e18cbffcb3';
-     this.BASE_URL = 'https://api.themoviedb.org/3';
+    this.BASE_URL = 'https://api.themoviedb.org/3';
   }
 
   async fetchTrendFilms() {
     try {
       const URL = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this.page}`;
       const response = await axios.get(URL);
-      // const result = await response.json();
+
+      localStorage.setItem('searchSource', 'byTrend');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
       //////////////////////пушу для тестування
@@ -41,12 +21,6 @@ export default class ApiService {
         'watchedFilms',
         JSON.stringify(response.data.results)
       );
-
-      let totalPagesToPaginate = response.data.total_pages;
-      if (totalPagesToPaginate > 1) {
-        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
-        // pagination(totalPagesToPaginate);
-      }
 
       return response;
     } catch (error) {
@@ -56,19 +30,15 @@ export default class ApiService {
 
   async fetchFilmsByKeyWord() {
     try {
-      const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${this.keyword}&page=${this.page}`;
+      const keyword = localStorage.getItem('keyWord');
+
+      const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${keyword}&page=${this.page}`;
       const response = await axios.get(URL);
 
-      // const result = await response.json();
+      localStorage.setItem('searchSource', 'byKeyWord');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
-      let totalPagesToPaginate = response.data.total_pages;
-      if (totalPagesToPaginate > 1) {
-        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
-        // pagination(totalPagesToPaginate);
-      }
-
-      return response;
+       return response;
     } catch (error) {
       console.log(error.message);
     }
@@ -78,7 +48,6 @@ export default class ApiService {
     try {
       const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
       const response = await axios.get(URL);
-      // const result = await response.json();
       localStorage.setItem('genres', JSON.stringify(response));
       return response;
     } catch (error) {
@@ -88,6 +57,10 @@ export default class ApiService {
 
   resetPage() {
     this.page = 1;
+  }
+
+  currentPage() {
+    return this.page;
   }
 
   increamentPage() {
