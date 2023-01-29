@@ -40,7 +40,8 @@ function libraryListRender(curentPage = 1) {
 
   try {
     if (libBlockToShow === 'watched') {
-      watchedList = localStorage.getItem('currentFilms'); //watchedFilms
+      watchedList = localStorage.getItem('watchedFilms'); //watchedFilms
+      // console.log('watchedList: ', watchedList);
     } else {
       watchedList = localStorage.getItem('queuedFilms');
     }
@@ -55,7 +56,7 @@ function libraryListRender(curentPage = 1) {
       let watchedListToRender;
 
       if (libBlockToShow === 'watched') {
-        watchedListToRender = JSON.parse(watchedList).data.results;
+        watchedListToRender = JSON.parse(watchedList);
       } else {
         watchedListToRender = JSON.parse(watchedList);
       }
