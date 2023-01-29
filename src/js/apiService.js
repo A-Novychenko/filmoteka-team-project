@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import pagination from './pagination';
+// import { pagination } from './pagination';
 
 // console.log(1);
 
@@ -20,12 +20,13 @@ import axios from 'axios';
 // console.log(2);
 
 export default class ApiService {
-  API_KEY = '6b1b36ecf2f3f3c0d27307e18cbffcb3';
-  BASE_URL = 'https://api.themoviedb.org/3';
+
 
   constructor() {
-    this.page = 1;
     this.keyword = '';
+    this.page = 1;
+    this.API_KEY = '6b1b36ecf2f3f3c0d27307e18cbffcb3';
+     this.BASE_URL = 'https://api.themoviedb.org/3';
   }
 
   async fetchTrendFilms() {
