@@ -4,15 +4,16 @@ import { renderMarkupSearch } from './markupSearch';
 import { cleanHtml } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
 import { hideLoader, showLoader } from './loader';
+import pagination from './pagination';
 
-const gallery = document.querySelector('.js-movies-list')
+const gallery = document.querySelector('.js-movies-list');
 const apiService = new ApiService();
 
 export async function onHeaderFormClick(evt) {
   try {
     evt.preventDefault();
     apiService.query = evt.currentTarget.keyword.value;
-    cleanHtml()
+    cleanHtml();
 
     // page = 1;
     if (!apiService.query.trim()) {
@@ -31,7 +32,12 @@ export async function onHeaderFormClick(evt) {
       getMovies();
       headerForm.reset();
     } else {
-      gallery.insertAdjacentHTML('beforeend', renderMarkupSearch(response.data.results))
+      gallery.insertAdjacentHTML(
+        'beforeend',
+        renderMarkupSearch(response.data.results)
+      );
+      // alert(response.data.total_pages);
+      pagination(response.data.total_pages);
       hideLoader();
     }
   } catch (err) {

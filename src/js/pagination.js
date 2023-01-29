@@ -12,10 +12,11 @@ paginationBox.addEventListener('click', clickFunction);
 
 const apiService = new ApiService();
 
-export default async function pagination() {
+export default async function pagination(total) {
   paginationBox.addEventListener('click', clickFunction);
 
-  let totalPages;
+  let totalPages = total;
+  console.log('paginationTotalPages: ', totalPages);
 
   // let totalPages = await apiService
   //   .fetchTrendFilms()
@@ -79,16 +80,18 @@ function clickFunction(e) {
   }
 
   if (e.target.textContent === '►') {
-    apiService.page += 1;
-    pagination();
+    apiService.increamentPage;
+    getMovies();
+    pagination(totalPages);
     console.log(apiService.page);
 
     return;
   }
 
   if (e.target.textContent === '◄') {
-    apiService.page -= 1;
-    pagination();
+    apiService.decrementPage;
+    getMovies();
+    pagination(totalPages);
     console.log(apiService.page);
 
     return;
@@ -98,6 +101,6 @@ function clickFunction(e) {
     console.log(e.target.textContent);
     apiService.page = Number(e.target.textContent);
     getMovies();
-    pagination();
+    pagination(totalPages);
   }
 }

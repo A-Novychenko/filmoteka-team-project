@@ -12,9 +12,10 @@ export async function getMovies() {
     showLoader();
     const response = await apiService.fetchTrendFilms();
     const results = response.data.results;
+    // alert(response.data.total_pages);
     movieContainer.innerHTML = renderMarkupSearch(results);
     hideLoader();
-    pagination();
+    pagination(response.data.total_pages);
   } catch (err) {
     console.log(err);
   }
