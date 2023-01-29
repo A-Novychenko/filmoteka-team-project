@@ -1,14 +1,3 @@
-import ApiService from './apiService';
-
-const apiservis = new ApiService();
-async function getGenres() {
-  try {
-    await apiservis.fetchGenres();
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 function findGenres(genersArr, localArr, arr) {
   genersArr.forEach(el => {
     localArr.forEach(({ id, name }) => {
@@ -18,6 +7,5 @@ function findGenres(genersArr, localArr, arr) {
     });
   });
 }
-getGenres();
 
 export { findGenres, getGenres };
