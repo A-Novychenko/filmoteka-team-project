@@ -15,9 +15,11 @@ const apiService = new ApiService();
 export default async function pagination() {
   paginationBox.addEventListener('click', clickFunction);
 
-  let totalPages = await apiService
-    .fetchTrendFilms()
-    .then(res => res.data.total_pages);
+  let totalPages;
+
+  // let totalPages = await apiService
+  //   .fetchTrendFilms()
+  //   .then(res => res.data.total_pages);
 
   let murkup = '';
 
