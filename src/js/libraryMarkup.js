@@ -1,73 +1,45 @@
+import ApiService from './apiService';
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
 
-// const qqq = [
-//   {
-//     adult: false,
-//     backdrop_path: '/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg',
-//     id: 76600,
-//     title: 'Avatar: The Way of Water',
-//     original_language: 'en',
-//     original_title: 'Avatar: The Way of Water',
-//     overview:
-//       'Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
-//     poster_path: '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
-//     media_type: 'movie',
-//     genre_ids: [878, 12, 28],
-//     popularity: 2623.833,
-//     release_date: '2022-12-14',
-//     video: false,
-//     vote_average: 7.723,
-//     vote_count: 4599,
-//   },
-//   {
-//     adult: false,
-//     backdrop_path: '/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
-//     id: 315162,
-//     title: 'Puss in Boots: The Last Wish',
-//     original_language: 'en',
-//     original_title: 'Puss in Boots: The Last Wish',
-//     overview:
-//       'Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
-//     poster_path: '/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
-//     media_type: 'movie',
-//     genre_ids: [16, 28, 12, 35, 10751, 14],
-//     popularity: 6689.647,
-//     release_date: '2022-12-07',
-//     video: false,
-//     vote_average: 8.6,
-//     vote_count: 2556,
-//   },
-// ];
+const apiService = new ApiService();
 
+const paginationList = document.querySelector('.pagination__list');
+const paginationBox = document.querySelector('.pagination');
 
-// localStorage.setItem('queue', JSON.stringify(qqq));
-// localStorage.removeItem('queue');
-
-//   pagination.innerHTML = '';
+let totalPages;
+let libBlockToShow;
 
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
 
 function onBtnWatchedClick() {
+  paginationList.innerHTML = '';
+  apiService.resetPage();
   btnWatched.classList.add('btnIsActive');
   btnQueue.classList.remove('btnIsActive');
-  libraryListRenrer('watched');
+  libBlockToShow = 'watched';
+  libraryListRender();
 }
 
-export function onBtnQueueClick() {
+function onBtnQueueClick() {
+  paginationList.innerHTML = '';
+  apiService.resetPage();
   btnWatched.classList.remove('btnIsActive');
   btnQueue.classList.add('btnIsActive');
-  libraryListRenrer('queue');
+  libBlockToShow = 'queue';
+  libraryListRender();
 }
 
 onBtnWatchedClick();
 
-function libraryListRenrer(list) {
+function libraryListRender(curentPage = 1) {
+  let curentPageToRender = curentPage;
+  console.log('перемальовую: ', curentPageToRender);
   let watchedList;
 
   try {
-    if (list === 'watched') {
+    if (libBlockToShow === 'watched') {
       watchedList = localStorage.getItem('currentFilms');
     } else {
       watchedList = localStorage.getItem('queue');
@@ -75,25 +47,18 @@ function libraryListRenrer(list) {
   } catch (err) {
     console.log(err);
   }
-  // console.log('watchedList888: ', watchedList);
+
   libraryData.innerHTML = '';
 
   try {
     if (watchedList) {
       let watchedListToRender;
 
-      if (list === 'watched') {
+      if (libBlockToShow === 'watched') {
         watchedListToRender = JSON.parse(watchedList).data.results;
       } else {
         watchedListToRender = JSON.parse(watchedList);
       }
-
-      // const watchedListToRender = JSON.parse(watchedList).data.results;
-
-      console.log('films To Render ', watchedListToRender.length);
-      // let watchedListToRender_1 = (watchedListToRender.length > 9) ? watchedListToRender.slice(0, 9) : watchedListToRender;
-
-      console.log('window.screen.width', window.screen.width);
 
       const screenWidth = window.screen.width;
 
@@ -101,16 +66,15 @@ function libraryListRenrer(list) {
 
       if (screenWidth < 767) {
         array_size = 4;
-        console.log('mobile');
+        // console.log('mobile');
       } else if (screenWidth > 767 && screenWidth < 1280) {
         array_size = 8;
-        console.log('tablet');
+        // console.log('tablet');
       } else {
         array_size = 9;
-        console.log('desc');
+        // console.log('desc');
       }
-
-      console.log('array_size: ', array_size);
+      // console.log('array_size: ', array_size);
 
       if (watchedListToRender.length > array_size) {
         // const array_size = 9;
@@ -118,34 +82,21 @@ function libraryListRenrer(list) {
         for (let i = 0; i < watchedListToRender.length; i += array_size) {
           sliced_array.push(watchedListToRender.slice(i, i + array_size));
         }
-        console.log('pages to paginate', sliced_array.length);
+        // console.log('pages to paginate', sliced_array.length);
 
-        // console.log(sliced_array.length);
+        totalPages = sliced_array.length;
+        librPagination(totalPages);
 
-        // let newMurkup = MYrenderMarkup(sliced_array[1]);
-        // libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
         try {
-          let newMurkup = renderMarkupSearch(sliced_array[1]);
+          let newMurkup = renderMarkupSearch(
+            sliced_array[curentPageToRender - 1]
+          );
           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-
-          // let i = 1;
-          // timerId = setInterval(() => {
-          //   if (i === sliced_array.length - 1) {
-          //     clearInterval(timerId);
-          //   }
-
-          //   let newMurkup = renderMarkupSearch(sliced_array[i]);
-          //   libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
-
-          //   i += 1;
-          // }, 1500);
         } catch (err) {
           console.log(err);
         }
       } else {
-        const newMurkup = renderMarkupSearch(watchedListToRender);
-        // console.log('newMurkup: ', newMurkup);
-        //  libraryContainer.insertAdjacentHTML('beforeend', newMurkup);
+        newMurkup = renderMarkupSearch(watchedListToRender);
         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
       }
     } else {
@@ -161,3 +112,91 @@ function libraryListRenrer(list) {
   }
 }
 
+// ..........................................................
+
+function librPagination(total) {
+  totalPages = total;
+  let murkup = '';
+
+  let beforeTwoPage = apiService.page - 2;
+  let beforePage = apiService.page - 1;
+  let afterPage = apiService.page + 1;
+  let afterTwoPage = apiService.page + 2;
+
+  if (apiService.page > 1) {
+    murkup += `<li class="pagination__item">◄</li> `;
+    murkup += `<li class="pagination__item">1</li>`;
+  }
+
+  if (apiService.page > 4) {
+    murkup += `...`;
+  }
+
+  if (apiService.page > 3) {
+    murkup += `<li class="pagination__item">${beforeTwoPage}</li>`;
+  }
+
+  if (apiService.page > 2) {
+    murkup += `<li class="pagination__item">${beforePage}</li>`;
+  }
+
+  murkup += `<li class="pagination__item current">${apiService.page}</li>`;
+
+  if (totalPages - 1 > apiService.page) {
+    murkup += `<li class="pagination__item">${afterPage}</li>`;
+  }
+
+  if (totalPages - 2 > apiService.page) {
+    murkup += `<li class="pagination__item">${afterTwoPage}</li>`;
+  }
+
+  if (totalPages - 3 > apiService.page) {
+    murkup += `...`;
+  }
+
+  if (totalPages > apiService.page) {
+    murkup += `<li class="pagination__item">${totalPages}</li>`;
+    murkup += `<li class="pagination__item">►</li>`;
+  }
+
+  paginationList.innerHTML = murkup;
+}
+
+// ..........................................................
+
+paginationBox.addEventListener('click', onLibrPaginationClick);
+
+function onLibrPaginationClick(e) {
+  if (e.target.tagName !== 'LI') {
+    return;
+  }
+  if (e.target.textContent === '...') {
+    return;
+  }
+
+  if (e.target.textContent === '►') {
+    apiService.page += 1;
+    libraryListRender(apiService.page);
+    librPagination(totalPages);
+    console.log('apiService.page: ', apiService.page);
+
+    return;
+  }
+
+  if (e.target.textContent === '◄') {
+    apiService.page -= 1;
+    libraryListRender(apiService.page);
+    librPagination(totalPages);
+    console.log('apiService.page: ', apiService.page);
+
+    return;
+  }
+
+  if (true) {
+    // console.log(e.target.textContent);
+    apiService.page = Number(e.target.textContent);
+    libraryListRender(apiService.page);
+    librPagination(totalPages);
+    console.log('apiService.page: ', apiService.page);
+  }
+}

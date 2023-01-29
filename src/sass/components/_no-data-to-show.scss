@@ -1,13 +1,13 @@
-.js-library-data {
-  // background-color: #f084bf;
-  //    height: 100vh;
-  //    vertical-align: middle;
-  //    display: flex;
-  //    align-items: center;
-}
+// .js-library-data {
+// background-color: #f084bf;
+// //    height: 100vh;
+// //    vertical-align: middle;
+// //    display: flex;
+// //    align-items: center;
+// }
 
 .no-data {
-  margin-top: 100px;
+  padding-top: 100px;
   // height: 100%;
   font-size: 20px;
   text-align: center;
@@ -19,11 +19,11 @@
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    margin-top: 60px;
+    padding-top: 60px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 36px;
-    margin-top: 160px;
+    padding-top: 160px;
   }
 }
 
@@ -42,3 +42,6 @@
   opacity: 0.8;
   text-decoration: none;
 }
+
+
+
