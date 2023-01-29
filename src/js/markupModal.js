@@ -15,9 +15,9 @@ export function renderMarkupModal(movies) {
       const genersLocalStore = parseGenres.data.genres;
       let finalGenres = [];
       findGenres(genre_ids, genersLocalStore, finalGenres);
-      if (finalGenres.length > 3) {
-        finalGenres = finalGenres.slice(0, 2).concat(['Other']);
-      }
+    //   if (finalGenres.length > 3) {
+    //     finalGenres = finalGenres.slice(0, 2).concat(['Other']);
+    //   }
     
       return   ` <img class = "modal_img" src="${imgUrl}"   alt="">
             <ul class="movie_modal_info">
@@ -38,7 +38,7 @@ export function renderMarkupModal(movies) {
                         </tr>
                         <tr>
                             <td class="table-header">Genre</td>
-                            <td>${finalGenres}</td>
+                            <td>${finalGenres.join(', ')}</td>
                         </tr>
                     </table>
                 </li>
