@@ -1,4 +1,7 @@
 import './js/libraryMarkup';
+import './js/libraryModal';
+import './js/markupModal';
+
 
 /// ////////////footer-modal
 import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';
