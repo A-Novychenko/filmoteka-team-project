@@ -1,21 +1,28 @@
 // import ApiService from './apiService';
 import ApiService from './apiService';
-import renderMarkupSearch from './markupSearch';
+import { renderMarkupSearch } from './markupSearch';
+// console.log('renderMarkupSearch: ', renderMarkupSearch);
 import { getMovies } from './renderingGalleryMarkup';
+import { movieContainer } from './refs';
+// console.log('movieContainer: ', movieContainer);
+// console.log('movieContainer: ', movieContainer);
 //test
 const paginationList = document.querySelector('.pagination__list');
 
 const paginationBox = document.querySelector('.pagination');
-console.log(paginationBox);
+// console.log(paginationBox);
 paginationBox.addEventListener('click', clickFunction);
 //test
 
 const apiService = new ApiService();
 
+let totalPages;
+
 export default async function pagination(total) {
   paginationBox.addEventListener('click', clickFunction);
 
-  let totalPages = total;
+  totalPages = total;
+  // console.log('totalPages: ', totalPages);
   console.log('paginationTotalPages: ', totalPages);
 
   // let totalPages = await apiService
@@ -28,7 +35,7 @@ export default async function pagination(total) {
   let beforePage = apiService.page - 1;
   let afterPage = apiService.page + 1;
   let afterTwoPage = apiService.page + 2;
-  console.log(apiService.page);
+  console.log('apiService.page', apiService.page);
 
   if (apiService.page > 1) {
     murkup += `<li class="pagination__item">◄</li> `;
@@ -69,9 +76,7 @@ export default async function pagination(total) {
   paginationList.innerHTML = murkup;
 }
 
-function clickFunction(e) {
-  //   console.log(e.target.tagName);
-  //   console.log(typeof e.target.textContent);
+async function clickFunction(e) {
   if (e.target.tagName !== 'LI') {
     return;
   }
@@ -80,27 +85,37 @@ function clickFunction(e) {
   }
 
   if (e.target.textContent === '►') {
-    apiService.increamentPage;
-    getMovies();
+    apiService.increamentPage();
+    const response = await apiService.fetchTrendFilms();
+    const results = response.data.results;
+    // console.log('results: ', results);
+    movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(totalPages);
-    console.log(apiService.page);
+    // console.log(apiService.page);
 
     return;
   }
 
   if (e.target.textContent === '◄') {
-    apiService.decrementPage;
-    getMovies();
+    apiService.decrementPage();
+    const response = await apiService.fetchTrendFilms();
+    const results = response.data.results;
+    // console.log('results: ', results);
+    movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(totalPages);
-    console.log(apiService.page);
+    // console.log(apiService.page);
 
     return;
   }
 
   if (true) {
-    console.log(e.target.textContent);
+    // console.log(e.target.textContent);
     apiService.page = Number(e.target.textContent);
-    getMovies();
+    const response = await apiService.fetchTrendFilms();
+    const results = response.data.results;
+    // console.log('results: ', results);
+    movieContainer.innerHTML = renderMarkupSearch(results);
+
     pagination(totalPages);
   }
 }
