@@ -1,6 +1,11 @@
+@media screen and (max-width: 767px) {
+  .pagination__item.three-drops {
+    display: none;
+  }
+}
+
 .pagination {
   padding-bottom: 60px;
-  padding-top: 60px;
 }
 
 .pagination__list {
@@ -29,5 +34,11 @@
 
 .pagination__item.current {
   background: #ff6b08;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.pagination__item_arrows {
+  background: #f7f7f7;
   border-radius: 5px;
 }
