@@ -6,7 +6,7 @@ import { getMovies } from './renderingGalleryMarkup';
 const paginationList = document.querySelector('.pagination__list');
 
 const paginationBox = document.querySelector('.pagination');
-console.log(paginationBox);
+// console.log(paginationBox);
 paginationBox.addEventListener('click', clickFunction);
 //test
 
@@ -25,7 +25,7 @@ export default async function pagination() {
   let beforePage = apiService.page - 1;
   let afterPage = apiService.page + 1;
   let afterTwoPage = apiService.page + 2;
-  console.log(apiService.page);
+  // console.log(apiService.page);
 
   if (apiService.page > 1) {
     murkup += `<li class="pagination__item">◄</li> `;

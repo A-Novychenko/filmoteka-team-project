@@ -18,7 +18,7 @@ export default class ApiService {
 
       let totalPagesToPaginate = response.data.total_pages;
       if (totalPagesToPaginate > 1) {
-        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
         // pagination(totalPagesToPaginate);
       }
 
@@ -38,7 +38,7 @@ export default class ApiService {
 
       let totalPagesToPaginate = response.data.total_pages;
       if (totalPagesToPaginate > 1) {
-        alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
+        // alert('робим пагінацію на ' + totalPagesToPaginate + ' сторінок');
         // pagination(totalPagesToPaginate);
       }
 
