@@ -16,11 +16,13 @@ export default class ApiService {
       localStorage.setItem('searchSource', 'byTrend');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
+
       //////////////////////пушу для тестування
       // localStorage.setItem(
       //   'watchedFilms',
       //   JSON.stringify(response.data.results)
       // );
+
 
       return response;
     } catch (error) {
@@ -38,7 +40,9 @@ export default class ApiService {
       localStorage.setItem('searchSource', 'byKeyWord');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
+
        return response;
+
     } catch (error) {
       console.log(error.message);
     }
