@@ -10,12 +10,18 @@ getMovies();
 export async function getMovies() {
   try {
     showLoader();
+    // apiService.resetPage();
     const response = await apiService.fetchTrendFilms();
     const results = response.data.results;
     // alert(response.data.total_pages);
     movieContainer.innerHTML = renderMarkupSearch(results);
     hideLoader();
-    pagination(response.data.total_pages);
+
+    // console.log('response.data.total_pages01: ', response.data.total_pages);
+
+    pagination(1, response.data.total_pages);
+    
+    
   } catch (err) {
     console.log(err);
   }

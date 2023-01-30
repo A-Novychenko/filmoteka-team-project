@@ -5,39 +5,39 @@ import { cleanHtml } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
 import { hideLoader, showLoader } from './loader';
 import pagination from './pagination';
+import { movieContainer } from './refs';
 
-const gallery = document.querySelector('.js-movies-list');
 const apiService = new ApiService();
 
 export async function onHeaderFormClick(evt) {
   try {
     evt.preventDefault();
     apiService.query = evt.currentTarget.keyword.value;
+    const keyWord = evt.currentTarget.keyword.value;
+    console.log('keyWord: ', keyWord);
+    localStorage.setItem('keyWord', keyWord);
     cleanHtml();
 
-    // page = 1;
     if (!apiService.query.trim()) {
       errorText.classList.remove('header__error_hidden');
       setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
       return;
     }
+
     showLoader();
     const response = await apiService.fetchFilmsByKeyWord();
-
+    const results = response.data.results;
     headerForm.reset();
 
-    if (response.data.results.length === 0) {
+    if (results.length === 0) {
       errorText.classList.remove('header__error_hidden');
       setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
       getMovies();
       headerForm.reset();
     } else {
-      gallery.insertAdjacentHTML(
-        'beforeend',
-        renderMarkupSearch(response.data.results)
-      );
-      // alert(response.data.total_pages);
-      pagination(response.data.total_pages);
+      movieContainer.innerHTML = renderMarkupSearch(results);
+
+      pagination(1, response.data.total_pages);
       hideLoader();
     }
   } catch (err) {

@@ -1,9 +1,14 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
+
+import { findGenres } from './genres';
+import { movieContainer } from './refs';
+
 import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
 import noPoster from '../images/no-poster.jpg'
 
-const gallery = document.querySelector('.js-movies-list');
+
+// const gallery = document.querySelector('.js-movies-list');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export function renderMarkupSearch(movies) {
@@ -38,5 +43,5 @@ export function renderMarkupSearch(movies) {
 }
 
 export function cleanHtml() {
-  gallery.innerHTML = '';
+  movieContainer.innerHTML = '';
 }
