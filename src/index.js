@@ -1,6 +1,7 @@
 // import * as searchByKeyWord from './js/searchByKeyWord';
 import { headerForm, errorSearch } from './js/refs';
 import { onHeaderFormClick } from './js/searchByKeyWord';
+import * as trailer from './js/trailer';
 
 headerForm.addEventListener('submit', onHeaderFormClick);
 

@@ -54,7 +54,7 @@ export function renderMarkupModal(movies) {
                     
                 </li>
                 <li>
-                    <button class="btn_modal btn_trailer">MOVIE TRAILER</button>
+                    <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
                 </li>
             </ul>`;
 }
