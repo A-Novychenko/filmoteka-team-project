@@ -9,7 +9,11 @@ paginationBox.addEventListener('click', clickFunction);
 
 const apiService = new ApiService();
 
-export default async function pagination(currentPage, totalPages) {
+let currentPage;
+
+export default async function pagination(currentP, totalPages) {
+  currentPage = currentP;
+
   let murkup = '';
 
   let beforeTwoPage = currentPage - 2;
@@ -67,6 +71,7 @@ async function clickFunction(e) {
   const searchToSource = localStorage.getItem('searchSource'); // , 'byTrend'  byKeyWord
 
   if (e.target.textContent === '►') {
+    apiService.page = currentPage;
     apiService.increamentPage();
 
     if (searchToSource === 'byTrend') {
