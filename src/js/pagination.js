@@ -22,12 +22,12 @@ export default async function pagination(currentP, totalPages) {
   let afterTwoPage = currentPage + 2;
 
   if (currentPage > 1) {
-    murkup += `<li class="pagination__item">◄</li> `;
+    murkup += `<li class="pagination__item pagination__item_arrows">◄</li> `;
     murkup += `<li class="pagination__item">1</li>`;
   }
 
   if (currentPage > 4) {
-    murkup += `...`;
+    murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
   if (currentPage > 3) {
@@ -49,7 +49,7 @@ export default async function pagination(currentP, totalPages) {
   }
 
   if (totalPages - 3 > currentPage) {
-    murkup += `...`;
+    murkup += `<li class="pagination__item three-drops">...</li>`;
   }
   if (totalPages > currentPage) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
