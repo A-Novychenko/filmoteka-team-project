@@ -130,7 +130,7 @@ function libraryListRender(curentPage = 1) {
         librPagination(totalPages);
 
         try {
-          let newMurkup = renderMarkupSearch(
+          const newMurkup = renderMarkupSearch(
             sliced_array[curentPageToRender - 1]
           );
           libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
@@ -138,7 +138,7 @@ function libraryListRender(curentPage = 1) {
           console.log(err);
         }
       } else {
-        newMurkup = renderMarkupSearch(watchedListToRender);
+        const newMurkup = renderMarkupSearch(watchedListToRender);
         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
       }
     } else {
@@ -202,8 +202,8 @@ function librPagination(total) {
   }
 
   paginationList.innerHTML = murkup;
-  //  window.scrollBy(0, -10000);
-  window.scrollBy(0, -window.pageYOffset + 270);
+   window.scrollBy(0, -10000);
+  // window.scrollBy(0, -window.pageYOffset + 270);
 }
 
 // const clickToSckroll = document.querySelector('.pagination__item');
@@ -245,7 +245,7 @@ function onLibrPaginationClick(e) {
     apiService.page += 1;
     libraryListRender(apiService.page);
     librPagination(totalPages);
-    console.log('apiService.page: ', apiService.page);
+    // console.log('apiService.page: ', apiService.page);
 
     return;
   }
@@ -254,7 +254,7 @@ function onLibrPaginationClick(e) {
     apiService.page -= 1;
     libraryListRender(apiService.page);
     librPagination(totalPages);
-    console.log('apiService.page: ', apiService.page);
+    // console.log('apiService.page: ', apiService.page);
 
     return;
   }
@@ -264,6 +264,6 @@ function onLibrPaginationClick(e) {
     apiService.page = Number(e.target.textContent);
     libraryListRender(apiService.page);
     librPagination(totalPages);
-    console.log('apiService.page: ', apiService.page);
+    // console.log('apiService.page: ', apiService.page);
   }
 }
