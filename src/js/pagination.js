@@ -1,74 +1,66 @@
-// import ApiService from './apiService';
 import ApiService from './apiService';
-import renderMarkupSearch from './markupSearch';
+import { renderMarkupSearch } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
-//test
-const paginationList = document.querySelector('.pagination__list');
+import { movieContainer } from './refs';
 
+const paginationList = document.querySelector('.pagination__list');
 const paginationBox = document.querySelector('.pagination');
-// console.log(paginationBox);
 paginationBox.addEventListener('click', clickFunction);
-//test
 
 const apiService = new ApiService();
 
-export default async function pagination() {
-  paginationBox.addEventListener('click', clickFunction);
+let currentPage;
 
-  let totalPages = await apiService
-    .fetchTrendFilms()
-    .then(res => res.data.total_pages);
+export default async function pagination(currentP, totalPages) {
+  currentPage = currentP;
 
   let murkup = '';
 
-  let beforeTwoPage = apiService.page - 2;
-  let beforePage = apiService.page - 1;
-  let afterPage = apiService.page + 1;
-  let afterTwoPage = apiService.page + 2;
-  // console.log(apiService.page);
+  let beforeTwoPage = currentPage - 2;
+  let beforePage = currentPage - 1;
+  let afterPage = currentPage + 1;
+  let afterTwoPage = currentPage + 2;
 
-  if (apiService.page > 1) {
+  if (currentPage > 1) {
     murkup += `<li class="pagination__item">◄</li> `;
     murkup += `<li class="pagination__item">1</li>`;
   }
 
-  if (apiService.page > 4) {
+  if (currentPage > 4) {
     murkup += `...`;
   }
 
-  if (apiService.page > 3) {
+  if (currentPage > 3) {
     murkup += `<li class="pagination__item">${beforeTwoPage}</li>`;
   }
 
-  if (apiService.page > 2) {
+  if (currentPage > 2) {
     murkup += `<li class="pagination__item">${beforePage}</li>`;
   }
 
-  murkup += `<li class="pagination__item current">${apiService.page}</li>`;
+  murkup += `<li class="pagination__item current">${currentPage}</li>`;
 
-  if (totalPages - 1 > apiService.page) {
+  if (totalPages - 1 > currentPage) {
     murkup += `<li class="pagination__item">${afterPage}</li>`;
   }
 
-  if (totalPages - 2 > apiService.page) {
+  if (totalPages - 2 > currentPage) {
     murkup += `<li class="pagination__item">${afterTwoPage}</li>`;
   }
 
-  if (totalPages - 3 > apiService.page) {
+  if (totalPages - 3 > currentPage) {
     murkup += `...`;
   }
-
-  if (totalPages > apiService.page) {
+  if (totalPages > currentPage) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
-    murkup += `<li class="pagination__item">►</li>`;
+    murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
-
   paginationList.innerHTML = murkup;
 }
 
-function clickFunction(e) {
-  //   console.log(e.target.tagName);
-  //   console.log(typeof e.target.textContent);
+async function clickFunction(e) {
+  let response;
+
   if (e.target.tagName !== 'LI') {
     return;
   }
@@ -76,26 +68,50 @@ function clickFunction(e) {
     return;
   }
 
-  if (e.target.textContent === '►') {
-    apiService.page += 1;
-    pagination();
-    console.log(apiService.page);
+  const searchToSource = localStorage.getItem('searchSource'); // , 'byTrend'  byKeyWord
 
+  if (e.target.textContent === '►') {
+    apiService.page = currentPage;
+    apiService.increamentPage();
+
+    if (searchToSource === 'byTrend') {
+      response = await apiService.fetchTrendFilms();
+    } else {
+      response = await apiService.fetchFilmsByKeyWord();
+    }
+    const results = response.data.results;
+
+    movieContainer.innerHTML = renderMarkupSearch(results);
+    pagination(response.data.page, response.data.total_pages);
     return;
   }
 
   if (e.target.textContent === '◄') {
-    apiService.page -= 1;
-    pagination();
-    console.log(apiService.page);
+    apiService.decrementPage();
 
+    if (searchToSource === 'byTrend') {
+      response = await apiService.fetchTrendFilms();
+    } else {
+      response = await apiService.fetchFilmsByKeyWord();
+    }
+
+    const results = response.data.results;
+    movieContainer.innerHTML = renderMarkupSearch(results);
+    pagination(response.data.page, response.data.total_pages);
     return;
   }
 
   if (true) {
-    console.log(e.target.textContent);
     apiService.page = Number(e.target.textContent);
-    getMovies();
-    pagination();
+
+    if (searchToSource === 'byTrend') {
+      response = await apiService.fetchTrendFilms();
+    } else {
+      response = await apiService.fetchFilmsByKeyWord();
+    }
+
+    const results = response.data.results;
+    movieContainer.innerHTML = renderMarkupSearch(results);
+    pagination(response.data.page, response.data.total_pages);
   }
 }

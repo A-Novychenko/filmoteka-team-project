@@ -4,6 +4,11 @@ import { onHeaderFormClick } from './js/searchByKeyWord';
 
 headerForm.addEventListener('submit', onHeaderFormClick);
 
+import { oneToggle } from './js/modal-movie';
+import { closeBtn } from './js/modal-movie';
+import { keyPressEscCloseMovieModal } from './js/modal-movie';
+import { clickBackdropCloseTeamModal } from './js/modal-movie';
+import { renderMarkupModal } from './js/markupModal';
 // // тестую роботу ApiService:
 import ApiService from './js/apiService';
 import onChangeTheme from './js/theme-switch';
@@ -43,5 +48,4 @@ modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 import { onClick } from './js/modal-btns-library';
 
 // сетить жанри в локальне сховище
-import { getGenres } from './js/genres';
-getGenres();
+import './js/getGenres';
