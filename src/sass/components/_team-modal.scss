@@ -21,18 +21,23 @@
     margin-left: auto;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 768px) {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    // width: 1144px;
-    // height: 780px;
-    width: 1144px;
-    height: 700px;
+    width: 700px;
+    height: 1000px;
     max-width: 100%;
     min-height: auto;
+
+    overflow-y: scroll;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1144px;
+    height: 700px;
   }
 }
 
@@ -111,9 +116,17 @@
 }
 
 .team-modal__img-wrap {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 .team-modal__inner {
