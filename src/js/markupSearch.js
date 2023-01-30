@@ -1,6 +1,7 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
 import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
+import noPoster from '../images/no-poster.jpg'
 
 const gallery = document.querySelector('.js-movies-list');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
@@ -11,7 +12,7 @@ export function renderMarkupSearch(movies) {
       const { genre_ids } = movie;
       const imgUrl = movie.poster_path
         ? `${IMG_URL + movie.poster_path}`
-        : 'https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png';
+        : noPoster;
 
       const parseGenres = JSON.parse(localStorage.getItem('genres'));
       const genersLocalStore = parseGenres.data.genres;
