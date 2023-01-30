@@ -56,6 +56,13 @@ export default async function pagination(currentP, totalPages) {
     murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
   paginationList.innerHTML = murkup;
+
+  // let element = document.getElementById('container');
+  // console.log(window.pageYOffset);
+  // alert(height);
+
+  // let element = document.getElementById('header');
+  // alert(element.getBoundingClientRect().height);
 }
 
 async function clickFunction(e) {
@@ -69,7 +76,10 @@ async function clickFunction(e) {
   }
 
   const searchToSource = localStorage.getItem('searchSource'); // , 'byTrend'  byKeyWord
-  window.scrollBy(0, -10000);
+
+  // console.log(window.pageYOffset);
+  // window.scrollBy(0, -window.pageYOffset + 270);
+
   if (e.target.textContent === '►') {
     apiService.page = currentPage;
     apiService.increamentPage();
@@ -83,6 +93,8 @@ async function clickFunction(e) {
 
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
+    // console.log(window.pageYOffset);
+    window.scrollBy(0, -window.pageYOffset + 270);
     // window.scrollBy(0, -1000);
     return;
   }
@@ -100,6 +112,7 @@ async function clickFunction(e) {
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
+    window.scrollBy(0, -window.pageYOffset + 270);
     return;
   }
 
@@ -116,6 +129,8 @@ async function clickFunction(e) {
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
+    console.log(window.pageYOffset);
+    window.scrollBy(0, -window.pageYOffset + 270);
     return;
   }
 }
