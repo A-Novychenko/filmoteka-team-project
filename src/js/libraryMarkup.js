@@ -202,7 +202,7 @@ function librPagination(total) {
   }
 
   paginationList.innerHTML = murkup;
-  window.scrollBy(0, 0);
+   window.scrollBy(0, -10000);
 }
 
 // const clickToSckroll = document.querySelector('.pagination__item');

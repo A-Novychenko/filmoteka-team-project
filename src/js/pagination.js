@@ -69,7 +69,7 @@ async function clickFunction(e) {
   }
 
   const searchToSource = localStorage.getItem('searchSource'); // , 'byTrend'  byKeyWord
-
+  window.scrollBy(0, -10000);
   if (e.target.textContent === '►') {
     apiService.page = currentPage;
     apiService.increamentPage();
@@ -83,6 +83,7 @@ async function clickFunction(e) {
 
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
+    // window.scrollBy(0, -1000);
     return;
   }
 
@@ -98,6 +99,7 @@ async function clickFunction(e) {
     const results = response.data.results;
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
+    // window.scrollBy(0, -1000);
     return;
   }
 
@@ -113,5 +115,7 @@ async function clickFunction(e) {
     const results = response.data.results;
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
+    // window.scrollBy(0, -1000);
+    return;
   }
 }
