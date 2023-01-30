@@ -14,7 +14,7 @@ export async function onHeaderFormClick(evt) {
     evt.preventDefault();
     apiService.query = evt.currentTarget.keyword.value;
     const keyWord = evt.currentTarget.keyword.value;
-    console.log('keyWord: ', keyWord);
+    // console.log('keyWord: ', keyWord);
     localStorage.setItem('keyWord', keyWord);
     cleanHtml();
 

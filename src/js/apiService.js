@@ -17,10 +17,10 @@ export default class ApiService {
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
       //////////////////////пушу для тестування
-      localStorage.setItem(
-        'watchedFilms',
-        JSON.stringify(response.data.results)
-      );
+      // localStorage.setItem(
+      //   'watchedFilms',
+      //   JSON.stringify(response.data.results)
+      // );
 
       return response;
     } catch (error) {
@@ -57,10 +57,6 @@ export default class ApiService {
 
   resetPage() {
     this.page = 1;
-  }
-
-  currentPage() {
-    return this.page;
   }
 
   increamentPage() {
