@@ -80,8 +80,10 @@
 .logo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:baseline;
   text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 .logo__name {
