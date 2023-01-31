@@ -18,8 +18,7 @@ export function renderMarkupModal(movies) {
   isEmptyGanres(finalGenres);
 
   return ` <img class = "modal_img" src="${imgUrl}"   alt="">
-            <ul class="movie_modal_info">
-                <li>
+            <div class="movie_modal_info">
                     <h2 class="movie_modal_title">${movies.original_title}</h2>
                     <table class="modal_table">
                         <tr>
@@ -41,20 +40,15 @@ export function renderMarkupModal(movies) {
                             <td>${finalGenres.join(', ')}</td>
                         </tr>
                     </table>
-                </li>
-                <li>
                     <div class="about-container">
                         <h3 class="about-header">ABOUT</h3>
                         <p class="about-text">${movies.overview}</p>
                     </div>
-                </li>
-                <li class="modal_btn_list">
+                <div class="modal_btn_list">
                     <button class="btn_modal">ADD TO WATCHED</button>
                     <button class="btn_modal">ADD TO QUEUE</button>
                     
-                </li>
-                <li>
+                </div>
                     <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
-                </li>
-            </ul>`;
+            </div>`;
 }
