@@ -8,7 +8,6 @@ const refs = {
 };
 const WATCHED_KEY = 'watchedFilms';
 const QUEUED_KEY = 'queuedFilms';
-const OBJ_KEY = 'obj';
 
 let watchedArr = [];
 let queueArr = [];
@@ -18,12 +17,11 @@ returnSavedWatched();
 returnSavedQueue();
 
 clicksMovie.addEventListener('click', onMovieClick);
+refs.queue.addEventListener('click', onQueueClick);
+refs.watched.addEventListener('click', onWatchedClick);
 
 function onMovieClick(evt) {
-  // if (openModalMovie.classList.contains('is-hidden')) {
-  //   // localStorage.removeItem(OBJ_KEY);
-
-  // }
+  obj = [];
 
   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
   const localArray = localMovie.data.results;
@@ -36,58 +34,7 @@ function onMovieClick(evt) {
   console.log(arrId);
   obj.push(arrId);
   console.log(obj);
-  // localStorage.setItem(OBJ_KEY, JSON.stringify(obj));
 }
-
-// function onMovieClick(evt) {
-//   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-//   const localArray = localMovie.data.results;
-//   console.log(localArray);
-//   const li = evt.target.closest('.movie__item');
-//   const liId = li.dataset.movie;
-//   console.log(liId);
-
-//   const arrId = localArray.find(arr => arr.id == liId);
-//   console.log(arrId);
-
-//   refs.watched.addEventListener('click', () => {
-//     onAddBtnClick(arrId, watchedArr, WATCHED_KEY);
-//     refs.watched.textContent = 'DELETE FROM WATCHED';
-
-//     refs.watched.removeEventListener('click', () => {
-//       onAddBtnClick(arrId, watchedArr, WATCHED_KEY);
-
-//       // refs.watched.addEventListener('click', () => {
-//       //   onDeleteBtnClick(arrId, watchedArr, WATCHED_KEY);
-//       // });
-//     });
-//   });
-// }
-
-// const filmToAdd = watchedFilm1;
-// const filmToDelete = watchedFilm1;
-
-// function changeToDeleteWatchedBtn() {
-//   refs.watched.textContent = 'DELETE FROM WATCHED';
-//   refs.watched.addEventListener('click', onDeleteWatchedBtnClick123);
-//   refs.watched.removeEventListener('click', onAddToWatchedBtnClick123);
-// }
-
-// function changeToAddWatchedBtn() {
-//   refs.watched.textContent = 'ADD TO WATCHED';
-//   refs.watched.addEventListener('click', onAddToWatchedBtnClick123);
-//   refs.watched.removeEventListener('click', onDeleteWatchedBtnClick123);
-// }
-
-// function onDeleteWatchedBtnClick123(filmToDelete) {
-//   onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
-//   changeToAddWatchedBtn();
-// }
-
-// function onAddToWatchedBtnClick123(filmToDelete) {
-//   onAddBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
-//   changeToDeleteWatchedBtn();
-// }
 
 function onAddBtnClick(filmToAdd, arr, key) {
   arr = arr || [];
@@ -105,41 +52,28 @@ function onDeleteBtnClick(filmToDelete, arr, key) {
   // Перерисовка интерфейса ???
 }
 
-refs.queue.addEventListener('click', onAlexVar);
-
-function onAlexVar() {
+function onQueueClick() {
   if (refs.queue.textContent === 'ADD TO QUEUE') {
-    onAddBtnClick(obj[0], queueArr, QUEUED_KEY);
+    const lastMovieIndex = obj.length - 1;
+    onAddBtnClick(obj[lastMovieIndex], queueArr, QUEUED_KEY);
     refs.queue.textContent = 'DELETE FROM QUEUE';
   } else if (refs.queue.textContent === 'DELETE FROM QUEUE') {
-    onDeleteBtnClick(obj[0], queueArr, QUEUED_KEY);
+    const lastMovieIndex = obj.length - 1;
+    onDeleteBtnClick(obj[lastMovieIndex], queueArr, QUEUED_KEY);
     refs.queue.textContent = 'ADD TO QUEUE';
   }
 }
 
-async function onAddToQueueBtnClick123() {
-  // const object = await JSON.parse(localStorage.getItem(OBJ_KEY));
-  // console.log(object);
-  onAddBtnClick(obj, queueArr, QUEUED_KEY);
-  changeToDeleteQueueBtn();
-}
-
-async function onDeleteQueueBtnClick123() {
-  // const object = await JSON.parse(localStorage.getItem(OBJ_KEY));
-  onDeleteBtnClick(obj, queueArr, QUEUED_KEY);
-  changeToAddQueueBtn();
-}
-
-function changeToDeleteQueueBtn() {
-  refs.queue.textContent = 'DELETE FROM QUEUE';
-  refs.queue.addEventListener('click', onDeleteQueueBtnClick123);
-  refs.queue.removeEventListener('click', onAddToQueueBtnClick123);
-}
-
-function changeToAddQueueBtn() {
-  refs.queue.textContent = 'ADD TO QUEUE';
-  refs.queue.addEventListener('click', onAddToQueueBtnClick123);
-  refs.queue.removeEventListener('click', onDeleteQueueBtnClick123);
+function onWatchedClick() {
+  if (refs.watched.textContent === 'ADD TO WATCHED') {
+    const lastMovieIndex = obj.length - 1;
+    onAddBtnClick(obj[lastMovieIndex], watchedArr, WATCHED_KEY);
+    refs.watched.textContent = 'DELETE FROM WATCHED';
+  } else if (refs.watched.textContent === 'DELETE FROM WATCHED') {
+    const lastMovieIndex = obj.length - 1;
+    onDeleteBtnClick(obj[lastMovieIndex], watchedArr, WATCHED_KEY);
+    refs.watched.textContent = 'ADD TO WATCHED';
+  }
 }
 
 async function returnSavedWatched() {
@@ -170,15 +104,7 @@ async function returnSavedQueue() {
   }
 }
 
-// refs.modal.addEventListener('click', onClickCheck);
-
 export function onClickCheck(film) {
-  // localStorage.setItem(
-  //   QUEUED_KEY,
-  //   JSON.stringify([watchedFilm2, watchedFilm1])
-  // );
-  // localStorage.setItem(WATCHED_KEY, JSON.stringify([watchedFilm3]));
-
   onClickWatchedCheck(film);
   onClickQueueCheck(film);
 }
@@ -187,6 +113,7 @@ export function onClickWatchedCheck(film) {
   watchedArr = JSON.parse(localStorage.getItem(WATCHED_KEY));
   if (!watchedArr) {
     console.log('В WATCHED пусто');
+    refs.watched.textContent = 'ADD TO WATCHED';
     return;
     // Остаются кнопки 'Add to watched'
   } else if (watchedArr.length === 1) {
@@ -202,6 +129,7 @@ export function onClickWatchedCheck(film) {
       return;
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
+      refs.watched.textContent = 'ADD TO WATCHED';
       console.log('Этого фильма нет в WATCHED');
     }
   } else {
@@ -215,6 +143,7 @@ export function onClickWatchedCheck(film) {
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
       console.log('Этого фильма нет в WATCHED');
+      refs.watched.textContent = 'ADD TO WATCHED';
     }
   }
 }
@@ -224,6 +153,7 @@ function onClickQueueCheck(film) {
   // console.log(queueArr);
   if (!queueArr) {
     console.log('В QUEUE пусто');
+    refs.queue.textContent = 'ADD TO QUEUE';
     return;
     // Остаются кнопки 'Add to queue'
   } else if (queueArr.length === 1) {
@@ -241,6 +171,7 @@ function onClickQueueCheck(film) {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
       // Клик на кнопку "Add to watched"
       console.log('Этого фильма нет в QUEUE');
+      refs.queue.textContent = 'ADD TO QUEUE';
       // onAddToWatchedBtnClick(filmEvtCurrentTarget);
     }
   } else {
@@ -256,6 +187,7 @@ function onClickQueueCheck(film) {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
       // Клик на кнопку "Add to watched"
       console.log('Этого фильма нет в QUEUE');
+      refs.queue.textContent = 'ADD TO QUEUE';
       // onAddToWatchedBtnClick(filmEvtCurrentTarget);
     }
   }

@@ -5,8 +5,7 @@ import { findGenres } from './genres';
 import { movieContainer } from './refs';
 
 import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
-import noPoster from '../images/no-poster.jpg'
-
+import noPoster from '../images/no-poster.jpg';
 
 // const gallery = document.querySelector('.js-movies-list');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
