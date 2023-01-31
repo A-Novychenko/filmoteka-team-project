@@ -18,3 +18,7 @@ openModalTeamBtn.addEventListener('click', toggleTeamModal);
 closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
+
+import { modalGallery } from './js/refs';
+import { onBtnTrailer } from './js/trailer';
+modalGallery.addEventListener('click', onBtnTrailer);

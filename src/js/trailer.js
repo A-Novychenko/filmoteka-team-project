@@ -6,7 +6,7 @@ import { modalGallery } from './refs';
 modalGallery.addEventListener('click', onBtnTrailer);
 let idTrailer = '';
 
-async function onBtnTrailer(evt) {
+export async function onBtnTrailer(evt) {
   try {
     const btnTrailer = evt.target.closest('.js-btn_trailer');
     console.log(btnTrailer);
