@@ -55,7 +55,7 @@ let libBlockToShow;
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
 
-export function onBtnWatchedClick() {
+function onBtnWatchedClick() {
   paginationList.innerHTML = '';
   apiService.resetPage();
   btnWatched.classList.add('btnIsActive');
@@ -65,7 +65,7 @@ export function onBtnWatchedClick() {
   libraryListRender();
 }
 
-export function onBtnQueueClick() {
+function onBtnQueueClick() {
   paginationList.innerHTML = '';
   apiService.resetPage();
   btnWatched.classList.remove('btnIsActive');
@@ -77,7 +77,7 @@ export function onBtnQueueClick() {
 
 onBtnWatchedClick();
 
-function libraryListRender(curentPage = 1) {
+export function libraryListRender(curentPage = 1) {
   let curentPageToRender = curentPage;
   // console.log('перемальовую: ', curentPageToRender);
   let watchedList;

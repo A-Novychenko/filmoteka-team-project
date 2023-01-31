@@ -11,18 +11,19 @@ import noPoster from '../images/no-poster.jpg';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export function renderMarkupSearch(movies) {
+  // console.log('movies: ', movies);
   const markup = movies
     .map(movie => {
       const { genre_ids } = movie;
       const imgUrl = movie.poster_path
         ? `${IMG_URL + movie.poster_path}`
         : noPoster;
-
+      let finalGenres = [];
       try {
         const parseGenres = JSON.parse(localStorage.getItem('genres'));
-        console.log('parseGenres: ', parseGenres);
+        // console.log('parseGenresеееееееееееееееееееее: ', parseGenres);
         const genersLocalStore = parseGenres.data.genres;
-        let finalGenres = [];
+        // finalGenres = [];
         findGenres(genre_ids, genersLocalStore, finalGenres);
         isMoreThenTwoGanres(finalGenres);
         isEmptyGanres(finalGenres);
