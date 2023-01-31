@@ -34,9 +34,9 @@ export function oneToggle(evt) {
     let localArray;
     /////////////////  вибір джерела даних залежно від того, де відкрита модалка
 
-      const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-      localArray = localMovie.data.results;
-      // console.log('localArray: ', localArray);
+    const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+    localArray = localMovie.data.results;
+    // console.log('localArray: ', localArray);
 
     // if (sourceForModal === 'currentFilms') {
     //   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
@@ -75,7 +75,10 @@ export function oneToggle(evt) {
 export function clickBackdropCloseTeamModal(e) {
   if (e.target === e.currentTarget) {
     // libraryListRender();
-    cleanHtmlTrailer();
+    setTimeout(() => {
+      cleanHtmlTrailer();
+    }, 500);
+
     openModalMovie.classList.toggle('is-hidden');
   }
 }
@@ -87,7 +90,9 @@ export function keyPressEscCloseMovieModal(evt) {
     // libraryListRender();
 
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
-    cleanHtmlTrailer();
+    setTimeout(() => {
+      cleanHtmlTrailer();
+    }, 500);
     openModalMovie.classList.toggle('is-hidden');
   }
 }
@@ -95,7 +100,9 @@ export function keyPressEscCloseMovieModal(evt) {
 export function closeBtn() {
   // openModalMovie.classList.toggle('is-hidden')
   // libraryListRender(localArray);
-  cleanHtmlTrailer();
+  setTimeout(() => {
+    cleanHtmlTrailer();
+  }, 500);
 
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }
