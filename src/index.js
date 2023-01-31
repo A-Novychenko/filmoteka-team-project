@@ -12,7 +12,7 @@ import { clickBackdropCloseTeamModal } from './js/modal-movie';
 import { renderMarkupModal } from './js/markupModal';
 // // тестую роботу ApiService:
 import ApiService from './js/apiService';
-import onChangeTheme from './js/theme-switch';
+// import onChangeTheme from './js/theme-switch';
 
 // theme-switch.js
 
