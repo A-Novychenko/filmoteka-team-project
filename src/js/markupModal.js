@@ -1,7 +1,7 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
 import { findGenres, isEmptyGanres } from './genres';
-import noPoster from '../images/no-poster.jpg'
+import noPoster from '../images/no-poster.jpg';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
@@ -44,6 +44,7 @@ export function renderMarkupModal(movies) {
                         <h3 class="about-header">ABOUT</h3>
                         <p class="about-text">${movies.overview}</p>
                     </div>
+
                 <div class="modal_btn_list">
                     <button class="btn_modal">ADD TO WATCHED</button>
                     <button class="btn_modal">ADD TO QUEUE</button>
@@ -51,4 +52,5 @@ export function renderMarkupModal(movies) {
                 </div>
                     <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
             </div>`;
+
 }
