@@ -18,12 +18,17 @@ export function renderMarkupSearch(movies) {
         ? `${IMG_URL + movie.poster_path}`
         : noPoster;
 
-      const parseGenres = JSON.parse(localStorage.getItem('genres'));
-      const genersLocalStore = parseGenres.data.genres;
-      let finalGenres = [];
-      findGenres(genre_ids, genersLocalStore, finalGenres);
-      isMoreThenTwoGanres(finalGenres);
-      isEmptyGanres(finalGenres);
+      try {
+        const parseGenres = JSON.parse(localStorage.getItem('genres'));
+        console.log('parseGenres: ', parseGenres);
+        const genersLocalStore = parseGenres.data.genres;
+        let finalGenres = [];
+        findGenres(genre_ids, genersLocalStore, finalGenres);
+        isMoreThenTwoGanres(finalGenres);
+        isEmptyGanres(finalGenres);
+      } catch (error) {
+        console.log(error.message);
+      }
 
       return `<li class="movie__item" data-movie="${movie.id}">
         <img class="card_img" src="${imgUrl}" alt="${movie.original_title}">

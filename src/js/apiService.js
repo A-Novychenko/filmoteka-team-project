@@ -10,6 +10,7 @@ export default class ApiService {
 
   async fetchTrendFilms() {
     try {
+      localStorage.setItem('sourceForModal', 'currentFilms');
       const URL = `${this.BASE_URL}/trending/movie/day?api_key=${this.API_KEY}&page=${this.page}`;
       const response = await axios.get(URL);
 
@@ -17,9 +18,9 @@ export default class ApiService {
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
 
-      ////////////////////пушу для тестування
+      //////////////////пушу для тестування
       // localStorage.setItem(
-      //   'queuedFilms', // queuedFilms
+      //   'queuedFilms', // queuedFilms  watchedFilms
       //   JSON.stringify(response.data.results)
       // );
 
@@ -32,6 +33,7 @@ export default class ApiService {
 
   async fetchFilmsByKeyWord() {
     try {
+      localStorage.setItem('sourceForModal', 'currentFilms');
       const keyword = localStorage.getItem('keyWord');
 
       const URL = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${keyword}&page=${this.page}`;

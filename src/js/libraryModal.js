@@ -12,23 +12,40 @@ closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
+  console.log('oneToggle: ');
   try {
     openModalMovie.classList.toggle('is-hidden');
     window.addEventListener('keydown', keyPressEscCloseMovieModal);
     if (openModalMovie.classList.contains('is-hidden')) {
       window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     }
-    const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-    console.log();
-    const localArray = localMovie.data.results;
-    console.log(localArray);
+
+    let localArray;
+    const sourceForModal = localStorage.getItem('sourceForModal');
+    /////////////////  вибір джерела даних залежно від того, де відкрита модалка
+    if (sourceForModal === 'currentFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+      localArray = localMovie.data.results;
+    } else if (sourceForModal === 'watchedFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
+      localArray = localMovie;
+    }
+    if (sourceForModal === 'queuedFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('queuedFilms'));
+      localArray = localMovie;
+    }
+
+    // const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+    // // console.log();
+    // const localArray = localMovie.data.results;
+    // console.log(localArray);
     const li = evt.target.closest('.movie__item');
     const liId = li.dataset.movie;
-    console.log(liId);
+    // console.log(liId);
 
     cleanHtml();
     const arrId = localArray.find(arr => arr.id == liId);
-    console.log(arrId);
+    // console.log(arrId);
     if (arrId == undefined) {
       //  console.log(localArray);
     } else
