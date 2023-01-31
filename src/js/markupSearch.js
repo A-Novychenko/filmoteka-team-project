@@ -18,12 +18,14 @@ export function renderMarkupSearch(movies) {
       const imgUrl = movie.poster_path
         ? `${IMG_URL + movie.poster_path}`
         : noPoster;
+
       let finalGenres = [];
       try {
         const parseGenres = JSON.parse(localStorage.getItem('genres'));
         // console.log('parseGenresеееееееееееееееееееее: ', parseGenres);
         const genersLocalStore = parseGenres.data.genres;
         // finalGenres = [];
+
         findGenres(genre_ids, genersLocalStore, finalGenres);
         isMoreThenTwoGanres(finalGenres);
         isEmptyGanres(finalGenres);

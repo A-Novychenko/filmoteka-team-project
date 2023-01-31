@@ -285,7 +285,7 @@ const QUEUED_KEY = 'queuedFilms';
 
 openModalMovie.addEventListener('click', onClickModal);
 
-function onClickModal(e) {
+export function onClickModal(e) {
   const refs = {
     watched: document.querySelector('.btn_modal_watched'),
     queue: document.querySelector('.btn_modal_queued'),
@@ -416,7 +416,6 @@ function onClickModal(e) {
 
       refs.watched.textContent = 'DELETE FROM WATCHED';
     } else if (refs.watched.textContent === 'DELETE FROM WATCHED') {
- 
       // console.log('currentId: ', e.target.dataset.ttt);
 
       const currentId = e.target.dataset.ttt;
@@ -442,7 +441,9 @@ function onClickModal(e) {
       } catch (error) {
         console.log(error.message);
       }
+
           //  onBtnWatchedClick();
+
       // onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
 
       refs.watched.textContent = 'ADD TO WATCHED';
@@ -476,7 +477,7 @@ function onClickModal(e) {
         InWatchedFilmsArr.push(filmToAdd);
 
         localStorage.setItem('queuedFilms', JSON.stringify(InWatchedFilmsArr));
-      onBtnQueueClick();
+        onBtnQueueClick();
         // console.log('filmToAdd: ', filmToAdd);
       } catch (error) {
         console.log(error.message);

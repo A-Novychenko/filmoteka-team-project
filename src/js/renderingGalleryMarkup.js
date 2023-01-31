@@ -21,8 +21,6 @@ export async function getMovies() {
     // console.log('response.data.total_pages01: ', response.data.total_pages);
 
     pagination(1, response.data.total_pages);
-    
-    
   } catch (err) {
     console.log(err);
   }

@@ -17,13 +17,11 @@ export default class ApiService {
       localStorage.setItem('searchSource', 'byTrend');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
-
       //////////////////пушу для тестування
       // localStorage.setItem(
       //   'queuedFilms', // queuedFilms  watchedFilms
       //   JSON.stringify(response.data.results)
       // );
-
 
       return response;
     } catch (error) {
@@ -42,9 +40,7 @@ export default class ApiService {
       localStorage.setItem('searchSource', 'byKeyWord');
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
-
-       return response;
-
+      return response;
     } catch (error) {
       console.log(error.message);
     }
@@ -56,7 +52,7 @@ export default class ApiService {
       const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
       console.log('URL: ', URL);
       const response = await axios.get(URL);
-      console.log('response11111: ', response);
+
       localStorage.setItem('genres', JSON.stringify(response));
       return response;
     } catch (error) {
