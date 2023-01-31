@@ -1,82 +1,96 @@
+import { clicksMovie } from './refs';
+import { openModalMovie } from './refs';
+
 const refs = {
   modal: document.querySelector('.js-test-modal'),
-  watched: document.querySelector('.js-test-watched'),
-  queue: document.querySelector('.js-test-queue'),
+  watched: document.querySelector('.js-watched'),
+  queue: document.querySelector('.js-queue'),
 };
 const WATCHED_KEY = 'watchedFilms';
 const QUEUED_KEY = 'queuedFilms';
+const OBJ_KEY = 'obj';
 
 let watchedArr = [];
 let queueArr = [];
+let obj = [];
 
 returnSavedWatched();
 returnSavedQueue();
 
-const watchedFilm1 = {
-  adult: false,
-  backdrop_path: '/nAUpDd7iGfESDomaeAWKeNABw4I.jpg',
-  genre_ids: [28, 12, 878],
-  id: 545611,
-  media_type: 'movie',
-  original_language: 'en',
-  original_title: 'Everything Everywhere All at Once',
-  overview:
-    "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save what's important to her by connecting with the lives she could have led in other universes.",
-  popularity: 254.782,
-  poster_path: '/w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg',
-  release_date: '2022-03-24',
-  title: 'Everything Everywhere All at Once',
-  video: false,
-  vote_average: 8.041,
-  vote_count: 2823,
-};
-const watchedFilm2 = {
-  adult: false,
-  backdrop_path: '/1vXD5HXqkhvsXFHE7KmCPZGPR1e.jpg',
-  genre_ids: [18, 35],
-  id: 674324,
-  media_type: 'movie',
-  original_language: 'en',
-  original_title: 'The Banshees of Inisherin',
-  overview:
-    'Two lifelong friends find themselves at an impasse when one abruptly ends their relationship, with alarming consequences for both of them.',
-  popularity: 216.41,
-  poster_path: '/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg',
-  release_date: '2022-10-21',
-  title: 'The Banshees of Inisherin',
-  video: false,
-  vote_average: 7.5,
-  vote_count: 601,
-};
+clicksMovie.addEventListener('click', onMovieClick);
 
-const filmToAdd = watchedFilm1;
-const filmToDelete = watchedFilm1;
+function onMovieClick(evt) {
+  // if (openModalMovie.classList.contains('is-hidden')) {
+  //   // localStorage.removeItem(OBJ_KEY);
 
-refs.watched.addEventListener('click', onAddToWatchedBtnClick123);
+  // }
 
-function onAddToWatchedBtnClick123() {
-  onAddBtnClick(filmToAdd, watchedArr, WATCHED_KEY);
-  changeToDeleteWatchedBtn();
+  const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+  const localArray = localMovie.data.results;
+  console.log(localArray);
+  const li = evt.target.closest('.movie__item');
+  const liId = li.dataset.movie;
+  console.log(liId);
+
+  const arrId = localArray.find(arr => arr.id == liId);
+  console.log(arrId);
+  obj.push(arrId);
+  console.log(obj);
+  // localStorage.setItem(OBJ_KEY, JSON.stringify(obj));
 }
 
-function changeToDeleteWatchedBtn() {
-  refs.watched.textContent = 'DELETE FROM WATCHED';
-  refs.watched.addEventListener('click', onDeleteWatchedBtnClick123);
-  refs.watched.removeEventListener('click', onAddToWatchedBtnClick123);
-}
+// function onMovieClick(evt) {
+//   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+//   const localArray = localMovie.data.results;
+//   console.log(localArray);
+//   const li = evt.target.closest('.movie__item');
+//   const liId = li.dataset.movie;
+//   console.log(liId);
 
-function changeToAddWatchedBtn() {
-  refs.watched.textContent = 'ADD TO WATCHED';
-  refs.watched.addEventListener('click', onAddToWatchedBtnClick123);
-  refs.watched.removeEventListener('click', onDeleteWatchedBtnClick123);
-}
+//   const arrId = localArray.find(arr => arr.id == liId);
+//   console.log(arrId);
 
-function onDeleteWatchedBtnClick123() {
-  onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
-  changeToAddWatchedBtn();
-}
+//   refs.watched.addEventListener('click', () => {
+//     onAddBtnClick(arrId, watchedArr, WATCHED_KEY);
+//     refs.watched.textContent = 'DELETE FROM WATCHED';
+
+//     refs.watched.removeEventListener('click', () => {
+//       onAddBtnClick(arrId, watchedArr, WATCHED_KEY);
+
+//       // refs.watched.addEventListener('click', () => {
+//       //   onDeleteBtnClick(arrId, watchedArr, WATCHED_KEY);
+//       // });
+//     });
+//   });
+// }
+
+// const filmToAdd = watchedFilm1;
+// const filmToDelete = watchedFilm1;
+
+// function changeToDeleteWatchedBtn() {
+//   refs.watched.textContent = 'DELETE FROM WATCHED';
+//   refs.watched.addEventListener('click', onDeleteWatchedBtnClick123);
+//   refs.watched.removeEventListener('click', onAddToWatchedBtnClick123);
+// }
+
+// function changeToAddWatchedBtn() {
+//   refs.watched.textContent = 'ADD TO WATCHED';
+//   refs.watched.addEventListener('click', onAddToWatchedBtnClick123);
+//   refs.watched.removeEventListener('click', onDeleteWatchedBtnClick123);
+// }
+
+// function onDeleteWatchedBtnClick123(filmToDelete) {
+//   onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
+//   changeToAddWatchedBtn();
+// }
+
+// function onAddToWatchedBtnClick123(filmToDelete) {
+//   onAddBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
+//   changeToDeleteWatchedBtn();
+// }
 
 function onAddBtnClick(filmToAdd, arr, key) {
+  arr = arr || [];
   arr.push(filmToAdd);
   console.log('After Adding', arr);
   localStorage.setItem(`${key}`, JSON.stringify(arr));
@@ -84,7 +98,6 @@ function onAddBtnClick(filmToAdd, arr, key) {
 }
 
 function onDeleteBtnClick(filmToDelete, arr, key) {
-  // const filmToDelete = evt.currentTarget;
   const filmToDeleteId = arr.findIndex(film => film.id === filmToDelete.id);
   arr.splice(filmToDeleteId, 1);
   console.log('After Delete', arr);
@@ -92,15 +105,28 @@ function onDeleteBtnClick(filmToDelete, arr, key) {
   // Перерисовка интерфейса ???
 }
 
-refs.queue.addEventListener('click', onAddToQueueBtnClick123);
+refs.queue.addEventListener('click', onAlexVar);
 
-function onAddToQueueBtnClick123() {
-  onAddBtnClick(filmToAdd, queueArr, QUEUED_KEY);
+function onAlexVar() {
+  if (refs.queue.textContent === 'ADD TO QUEUE') {
+    onAddBtnClick(obj[0], queueArr, QUEUED_KEY);
+    refs.queue.textContent = 'DELETE FROM QUEUE';
+  } else if (refs.queue.textContent === 'DELETE FROM QUEUE') {
+    onDeleteBtnClick(obj[0], queueArr, QUEUED_KEY);
+    refs.queue.textContent = 'ADD TO QUEUE';
+  }
+}
+
+async function onAddToQueueBtnClick123() {
+  // const object = await JSON.parse(localStorage.getItem(OBJ_KEY));
+  // console.log(object);
+  onAddBtnClick(obj, queueArr, QUEUED_KEY);
   changeToDeleteQueueBtn();
 }
 
-function onDeleteQueueBtnClick123() {
-  onDeleteBtnClick(filmToDelete, queueArr, QUEUED_KEY);
+async function onDeleteQueueBtnClick123() {
+  // const object = await JSON.parse(localStorage.getItem(OBJ_KEY));
+  onDeleteBtnClick(obj, queueArr, QUEUED_KEY);
   changeToAddQueueBtn();
 }
 
@@ -144,56 +170,58 @@ async function returnSavedQueue() {
   }
 }
 
-refs.modal.addEventListener('click', onClick);
+// refs.modal.addEventListener('click', onClickCheck);
 
-async function onClick() {
-  //   localStorage.setItem(
-  //     QUEUED_KEY,
-  //     JSON.stringify([watchedFilm2, watchedFilm1])
-  //   );
-  //   localStorage.setItem(
-  //     WATCHED_KEY,
-  //     JSON.stringify([watchedFilm1, watchedFilm2])
-  //   );
+export function onClickCheck(film) {
+  // localStorage.setItem(
+  //   QUEUED_KEY,
+  //   JSON.stringify([watchedFilm2, watchedFilm1])
+  // );
+  // localStorage.setItem(WATCHED_KEY, JSON.stringify([watchedFilm3]));
 
+  onClickWatchedCheck(film);
+  onClickQueueCheck(film);
+}
+
+export function onClickWatchedCheck(film) {
   watchedArr = JSON.parse(localStorage.getItem(WATCHED_KEY));
   if (!watchedArr) {
     console.log('В WATCHED пусто');
     return;
-    // Остаются кнопки 'Add to watched' и 'Add to queue'
+    // Остаются кнопки 'Add to watched'
   } else if (watchedArr.length === 1) {
     console.log('Before Add to WATCHED', watchedArr);
-    // проверяем есть ли он в списке Watched и Queue
+    // проверяем есть ли он в списке Watched
 
-    if (watchedArr[0].id === watchedFilm1.id) {
+    if (watchedArr[0].id === film.id) {
       // на кнопке Watched должно быть написано Удалить
+      console.log(watchedArr[0].id);
+      console.log(film.id);
       console.log('Такой фильм в WATCHED уже eсть');
-      changeToDeleteWatchedBtn();
+      refs.watched.textContent = 'DELETE FROM WATCHED';
       return;
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      // Клик на кнопку "Add to watched"
       console.log('Этого фильма нет в WATCHED');
-      // onAddToWatchedBtnClick(filmEvtCurrentTarget);
     }
   } else {
-    const clickedFilmToCheckW = watchedArr.find(
-      film => film.id === watchedFilm1.id
-    );
+    const clickedFilmToCheckW = watchedArr.find(movie => movie.id === film.id);
+    console.log(film.id);
     if (clickedFilmToCheckW) {
       // на кнопке Watched должно быть написано Удалить
       console.log('Такой фильм в WATCHED уже eсть');
-      changeToDeleteWatchedBtn();
+      refs.watched.textContent = 'DELETE FROM WATCHED';
       return;
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      // Клик на кнопку "Add to watched"
       console.log('Этого фильма нет в WATCHED');
-      // onAddToWatchedBtnClick(filmEvtCurrentTarget);
     }
   }
+}
 
+function onClickQueueCheck(film) {
   queueArr = JSON.parse(localStorage.getItem(QUEUED_KEY));
+  // console.log(queueArr);
   if (!queueArr) {
     console.log('В QUEUE пусто');
     return;
@@ -202,10 +230,12 @@ async function onClick() {
     console.log('Before Add to QUEUE', queueArr);
     // проверяем есть ли он в списке Queue
 
-    if (queueArr[0].id === watchedFilm1.id) {
+    if (queueArr[0].id === film.id) {
       // на кнопке Queue должно быть написано Удалить
+      console.log(queueArr[0].id);
+      console.log(film.id);
       console.log('Такой фильм в QUEUE уже eсть');
-      changeToDeleteQueueBtn();
+      refs.queue.textContent = 'DELETE FROM QUEUE';
       return;
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
@@ -214,13 +244,13 @@ async function onClick() {
       // onAddToWatchedBtnClick(filmEvtCurrentTarget);
     }
   } else {
-    const clickedFilmToCheck = queueArr.find(
-      film => film.id === watchedFilm1.id
-    );
+    const clickedFilmToCheck = queueArr.find(movie => movie.id === film.id);
+
+    console.log(film.id);
     if (clickedFilmToCheck) {
       // на кнопке Watched должно быть написано Удалить
       console.log('Такой фильм в QUEUE уже eсть');
-      changeToDeleteQueueBtn();
+      refs.queue.textContent = 'DELETE FROM QUEUE';
       return;
     } else {
       //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
