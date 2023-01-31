@@ -285,7 +285,7 @@ const QUEUED_KEY = 'queuedFilms';
 
 openModalMovie.addEventListener('click', onClickModal);
 
-export function onClickModal(e) {
+function onClickModal(e) {
   const refs = {
     watched: document.querySelector('.btn_modal_watched'),
     queue: document.querySelector('.btn_modal_queued'),
@@ -560,94 +560,5 @@ async function returnSavedQueue() {
     }
   } catch (error) {
     console.log(error.message);
-  }
-}
-
-export function onClickCheck(film) {
-  onClickWatchedCheck(film);
-  onClickQueueCheck(film);
-}
-
-export function onClickWatchedCheck(film) {
-  watchedArr = JSON.parse(localStorage.getItem(WATCHED_KEY));
-  if (!watchedArr) {
-    console.log('В WATCHED пусто');
-    refs.watched.textContent = 'ADD TO WATCHED';
-    return;
-    // Остаются кнопки 'Add to watched'
-  } else if (watchedArr.length === 1) {
-    console.log('Before Add to WATCHED', watchedArr);
-    // проверяем есть ли он в списке Watched
-
-    if (watchedArr[0].id === film.id) {
-      // на кнопке Watched должно быть написано Удалить
-      console.log(watchedArr[0].id);
-      console.log(film.id);
-      console.log('Такой фильм в WATCHED уже eсть');
-      refs.watched.textContent = 'DELETE FROM WATCHED';
-      return;
-    } else {
-      //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      refs.watched.textContent = 'ADD TO WATCHED';
-      console.log('Этого фильма нет в WATCHED');
-    }
-  } else {
-    const clickedFilmToCheckW = watchedArr.find(movie => movie.id === film.id);
-    console.log(film.id);
-    if (clickedFilmToCheckW) {
-      // на кнопке Watched должно быть написано Удалить
-      console.log('Такой фильм в WATCHED уже eсть');
-      refs.watched.textContent = 'DELETE FROM WATCHED';
-      return;
-    } else {
-      //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      console.log('Этого фильма нет в WATCHED');
-      refs.watched.textContent = 'ADD TO WATCHED';
-    }
-  }
-}
-
-function onClickQueueCheck(film) {
-  queueArr = JSON.parse(localStorage.getItem(QUEUED_KEY));
-  // console.log(queueArr);
-  if (!queueArr) {
-    console.log('В QUEUE пусто');
-    refs.queue.textContent = 'ADD TO QUEUE';
-    return;
-    // Остаются кнопки 'Add to queue'
-  } else if (queueArr.length === 1) {
-    console.log('Before Add to QUEUE', queueArr);
-    // проверяем есть ли он в списке Queue
-
-    if (queueArr[0].id === film.id) {
-      // на кнопке Queue должно быть написано Удалить
-      console.log(queueArr[0].id);
-      console.log(film.id);
-      console.log('Такой фильм в QUEUE уже eсть');
-      refs.queue.textContent = 'DELETE FROM QUEUE';
-      return;
-    } else {
-      //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      // Клик на кнопку "Add to watched"
-      console.log('Этого фильма нет в QUEUE');
-      refs.queue.textContent = 'ADD TO QUEUE';
-      // onAddToWatchedBtnClick(filmEvtCurrentTarget);
-    }
-  } else {
-    const clickedFilmToCheck = queueArr.find(movie => movie.id === film.id);
-
-    console.log(film.id);
-    if (clickedFilmToCheck) {
-      // на кнопке Watched должно быть написано Удалить
-      console.log('Такой фильм в QUEUE уже eсть');
-      refs.queue.textContent = 'DELETE FROM QUEUE';
-      return;
-    } else {
-      //  Если фильма нет, на кнопке Watched есть ивент лисенер с ф.onAddToWatchedBtnClick
-      // Клик на кнопку "Add to watched"
-      console.log('Этого фильма нет в QUEUE');
-      refs.queue.textContent = 'ADD TO QUEUE';
-      // onAddToWatchedBtnClick(filmEvtCurrentTarget);
-    }
   }
 }

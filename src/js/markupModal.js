@@ -2,7 +2,6 @@ import { findGenres } from './genres';
 import { getYear } from './getYear';
 import { findGenres, isEmptyGanres } from './genres';
 import noPoster from '../images/no-poster.jpg';
-
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export function renderMarkupModal(movies) {
@@ -39,7 +38,6 @@ export function renderMarkupModal(movies) {
 
     // console.log(watchedBtn);
 
-
     const isInQueuedList = localStorage.getItem('queuedFilms'); //watchedFilms
     // console.log('isInQueuedList: ', isInQueuedList);
     if (isInQueuedList) {
@@ -63,7 +61,6 @@ export function renderMarkupModal(movies) {
   const mark = `<img class = "modal_img" src="${imgUrl}"   alt="">
             <ul class="movie_modal_info">
                 <li>
-
                     <h2 class="movie_modal_title">${movies.original_title}</h2>
                     <table class="modal_table">
                         <tr>
@@ -85,20 +82,20 @@ export function renderMarkupModal(movies) {
                             <td>${finalGenres.join(', ')}</td>
                         </tr>
                     </table>
+                </li>
+                <li>
                     <div class="about-container">
                         <h3 class="about-header">ABOUT</h3>
                         <p class="about-text">${movies.overview}</p>
                     </div>
-
                 </li>
                 <li class="modal_btn_list">
                     ${watchedBtn}
                     ${queueBtn}
                 </li>
                 <li>
-                    <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
+                    <button class="btn_modal btn_trailer idmovie">MOVIE TRAILER</button>
                 </li>
             </ul>`;
   return mark;
-
 }
