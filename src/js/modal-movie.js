@@ -13,8 +13,16 @@ closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
+  /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
+  // console.log(evt.target);
+  // console.log(evt.target.classList);
+  if (!evt.target.closest('.movie__item')) {
+    return;
+  }
+
   try {
-    const sourceForModal = localStorage.getItem('sourceForModal');
+    // const sourceForModal = localStorage.getItem('sourceForModal');
+    // console.log('sourceForModal: ', sourceForModal);
     // console.log('sourceForModal: ', sourceForModal);
 
     openModalMovie.classList.toggle('is-hidden');
@@ -23,21 +31,25 @@ export function oneToggle(evt) {
       window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     }
 
-    // console.log('9999999999999999999999999999999');
-
     let localArray;
     /////////////////  вибір джерела даних залежно від того, де відкрита модалка
-    if (sourceForModal === 'currentFilms') {
+
       const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
       localArray = localMovie.data.results;
-    } else if (sourceForModal === 'watchedFilms') {
-      const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
-      localArray = localMovie;
-    }
-    if (sourceForModal === 'queuedFilms') {
-      const localMovie = JSON.parse(localStorage.getItem('queuedFilms'));
-      localArray = localMovie;
-    }
+      // console.log('localArray: ', localArray);
+
+    // if (sourceForModal === 'currentFilms') {
+    //   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+    //   localArray = localMovie.data.results;
+
+    // } else if (sourceForModal === 'watchedFilms') {
+    //   const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
+    //   localArray = localMovie;
+    // }
+    // if (sourceForModal === 'queuedFilms') {
+    //   const localMovie = JSON.parse(localStorage.getItem('queuedFilms'));
+    //   localArray = localMovie;
+    // }
 
     // console.log('localArray', localArray);
 
