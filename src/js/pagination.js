@@ -1,13 +1,13 @@
-import ApiService from './apiService';
+import apiservice from './apiService';
 import { renderMarkupSearch } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
 import { movieContainer } from './refs';
 
-const paginationList = document.querySelector('.pagination__list');
+const paginationList = document.querySelector('.pagination__list');  //
 const paginationBox = document.querySelector('.pagination');
 paginationBox.addEventListener('click', clickFunction);
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 let currentPage;
 
@@ -81,13 +81,13 @@ async function clickFunction(e) {
   // window.scrollBy(0, -window.pageYOffset + 270);
 
   if (e.target.textContent === '►') {
-    apiService.page = currentPage;
-    apiService.increamentPage();
+    apiservice.page = currentPage;
+    apiservice.increamentPage();
 
     if (searchToSource === 'byTrend') {
-      response = await apiService.fetchTrendFilms();
+      response = await apiservice.fetchTrendFilms();
     } else {
-      response = await apiService.fetchFilmsByKeyWord();
+      response = await apiservice.fetchFilmsByKeyWord();
     }
     const results = response.data.results;
 
@@ -100,12 +100,12 @@ async function clickFunction(e) {
   }
 
   if (e.target.textContent === '◄') {
-    apiService.decrementPage();
+    apiservice.decrementPage();
 
     if (searchToSource === 'byTrend') {
-      response = await apiService.fetchTrendFilms();
+      response = await apiservice.fetchTrendFilms();
     } else {
-      response = await apiService.fetchFilmsByKeyWord();
+      response = await apiservice.fetchFilmsByKeyWord();
     }
 
     const results = response.data.results;
@@ -117,12 +117,12 @@ async function clickFunction(e) {
   }
 
   if (true) {
-    apiService.page = Number(e.target.textContent);
+    apiservice.page = Number(e.target.textContent);
 
     if (searchToSource === 'byTrend') {
-      response = await apiService.fetchTrendFilms();
+      response = await apiservice.fetchTrendFilms();
     } else {
-      response = await apiService.fetchFilmsByKeyWord();
+      response = await apiservice.fetchFilmsByKeyWord();
     }
 
     const results = response.data.results;

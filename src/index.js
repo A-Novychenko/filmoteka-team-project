@@ -16,7 +16,7 @@ import ApiService from './js/apiService';
 
 // theme-switch.js
 
-// const service = new ApiService();
+// const apiservice = new ApiService();
 // //популярні:
 
 // // const service = new ApiService();

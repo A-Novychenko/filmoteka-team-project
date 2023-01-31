@@ -1,50 +1,9 @@
-import ApiService from './apiService';
+import apiservice from './apiService';
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
 import { openModalMovie } from './refs';
 
-// const qqq = [
-//   {
-//     adult: false,
-//     backdrop_path: '/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg',
-//     id: 76600,
-//     title: 'Avatar: The Way of Water',
-//     original_language: 'en',
-//     original_title: 'Avatar: The Way of Water',
-//     overview:
-//       'Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
-//     poster_path: '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
-//     media_type: 'movie',
-//     genre_ids: [878, 12, 28],
-//     popularity: 2623.833,
-//     release_date: '2022-12-14',
-//     video: false,
-//     vote_average: 7.723,
-//     vote_count: 4599,
-//   },
-//   {
-//     adult: false,
-//     backdrop_path: '/faXT8V80JRhnArTAeYXz0Eutpv9.jpg',
-//     id: 315162,
-//     title: 'Puss in Boots: The Last Wish',
-//     original_language: 'en',
-//     original_title: 'Puss in Boots: The Last Wish',
-//     overview:
-//       'Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
-//     poster_path: '/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
-//     media_type: 'movie',
-//     genre_ids: [16, 28, 12, 35, 10751, 14],
-//     popularity: 6689.647,
-//     release_date: '2022-12-07',
-//     video: false,
-//     vote_average: 8.6,
-//     vote_count: 2556,
-//   },
-// ];
-
-// localStorage.setItem('queuedFilms', JSON.stringify(qqq));
-
-const apiService = new ApiService();
+// const apiservice = new ApiService();
 
 const paginationList = document.querySelector('.pagination__list');
 const paginationBox = document.querySelector('.pagination');
@@ -57,7 +16,7 @@ btnQueue.addEventListener('click', onBtnQueueClick);
 
 function onBtnWatchedClick() {
   paginationList.innerHTML = '';
-  apiService.resetPage();
+  apiservice.resetPage();
   btnWatched.classList.add('btnIsActive');
   btnQueue.classList.remove('btnIsActive');
   localStorage.setItem('sourceForModal', 'watchedFilms');
@@ -67,7 +26,7 @@ function onBtnWatchedClick() {
 
 function onBtnQueueClick() {
   paginationList.innerHTML = '';
-  apiService.resetPage();
+  apiservice.resetPage();
   btnWatched.classList.remove('btnIsActive');
   btnQueue.classList.add('btnIsActive');
   localStorage.setItem('sourceForModal', 'queuedFilms');

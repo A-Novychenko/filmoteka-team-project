@@ -1,6 +1,6 @@
-import ApiService from './apiService';
+import apiservis from './apiService';
 
-const apiservis = new ApiService();
+// const apiservis = new ApiService();
 export default async function getGenres() {
   try {
     // console.log(456);
