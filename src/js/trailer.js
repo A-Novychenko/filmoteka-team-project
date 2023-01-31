@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { modalGallery } from './refs';
 
-const movieModal = document.querySelector('.movie_modal_gallery');
+const modalGallery = document.querySelector('.movie_modal_gallery');
 
-movieModal.addEventListener('click', onBtnTrailer);
+modalGallery.addEventListener('click', onBtnTrailer);
 let idTrailer = '';
 
 async function onBtnTrailer(evt) {
@@ -20,7 +21,7 @@ async function onBtnTrailer(evt) {
         
         if (officialTrailer) {
             // console.log('є трейлер!!!')
-            movieModal.innerHTML = `<iframe 
+            modalGallery.innerHTML = `<iframe 
             class="movie_trailer"
             width='700'
             height='500'
