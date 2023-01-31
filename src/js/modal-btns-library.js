@@ -511,7 +511,7 @@ export function onClickModal(e) {
         console.log(error.message);
       }
       // onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
-      onBtnQueueClick();
+      // onBtnQueueClick();
       refs.queue.textContent = 'ADD TO QUEUE';
     }
   }
