@@ -129,7 +129,7 @@ async function clickFunction(e) {
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
-    console.log(window.pageYOffset);
+    // console.log(window.pageYOffset);
     window.scrollBy(0, -window.pageYOffset + 270);
     return;
   }
