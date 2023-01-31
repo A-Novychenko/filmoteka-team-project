@@ -58,3 +58,7 @@ async function fetchTrailer() {
     console.log(error.message);
   }
 }
+
+export function cleanHtmlTrailer() {
+  modalGallery.innerHTML = '';
+}
