@@ -9,7 +9,7 @@ let idTrailer = '';
 export async function onBtnTrailer(evt) {
   try {
     const btnTrailer = evt.target.closest('.js-btn_trailer');
-    console.log(btnTrailer);
+    // console.log(btnTrailer);
     idTrailer = btnTrailer.dataset.idmovie;
 
     const resp = await fetchTrailer();

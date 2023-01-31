@@ -108,7 +108,7 @@ export function onClickModal(e) {
         InWatchedFilmsArr.push(filmToAdd);
 
         localStorage.setItem('queuedFilms', JSON.stringify(InWatchedFilmsArr));
-        onBtnQueueClick();
+        // onBtnQueueClick();
         // console.log('filmToAdd: ', filmToAdd);
       } catch (error) {
         console.log(error.message);
