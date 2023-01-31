@@ -8,6 +8,7 @@ let idTrailer = '';
 async function onBtnTrailer(evt) {
     try {
         const btnTrailer = evt.target.closest('.js-btn_trailer');
+        console.log(btnTrailer)
         idTrailer = btnTrailer.dataset.idmovie;
 
         const resp = await fetchTrailer();
@@ -15,18 +16,30 @@ async function onBtnTrailer(evt) {
         const officialTrailer = dataMovie.find(movie =>
             movie.name.toLowerCase().includes('official trailer') || movie.name.toLowerCase().includes('official trailer 2'));
         
-        console.log(officialTrailer)
+        // console.log(officialTrailer)
         
         if (officialTrailer) {
-            console.log('є трейлер!!!')
-
-            // посилання для трейлера
-            // https://www.youtube.com/watch?v=<тут key трейлера>"
+            // console.log('є трейлер!!!')
+            movieModal.innerHTML = `<iframe 
+            class="movie_trailer"
+            width='700'
+            height='500'
+            src="https://www.youtube.com/embed/${officialTrailer.key}" 
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer;
+            autoplay; clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share"
+            allowfullscreen>
+            </iframe>`;
             
         } else {
-            console.log('немає трейлера(((')
+            // console.log('немає трейлера(((');
+            btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result not successful</p>`
         }
-
     } catch (err) {
         console.log(err)
     }

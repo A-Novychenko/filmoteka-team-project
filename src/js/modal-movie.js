@@ -4,6 +4,9 @@ import { closeModalMovieBtn } from './refs';
 import { renderMarkupModal } from './markupModal';
 import { modalGallery } from './refs';
 
+//import { onClickCheck } from './modal-btns-library';
+
+
 // console.log(localMovie.data.results);
 
 clicksMovie.addEventListener('click', oneToggle);
@@ -12,6 +15,7 @@ openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
   try {
+
     const sourceForModal = localStorage.getItem('sourceForModal');
     console.log('sourceForModal: ', sourceForModal);
 
@@ -20,6 +24,7 @@ export function oneToggle(evt) {
     if (openModalMovie.classList.contains('is-hidden')) {
       window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     }
+
 
     console.log('9999999999999999999999999999999');
 
@@ -57,6 +62,7 @@ export function oneToggle(evt) {
     console.log(err);
   }
 }
+
 
 export function clickBackdropCloseTeamModal(e) {
   if (e.target === e.currentTarget) {

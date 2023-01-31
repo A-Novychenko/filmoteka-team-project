@@ -91,6 +91,17 @@
     width: 100%;
 }
 
+.movie_trailer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.error__trailer {
+    color: #000000;
+    text-transform: uppercase;
+}
+
 @media screen and (min-width: 768px) {
     .movie_modal {
         max-width: 704px;
