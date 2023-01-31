@@ -285,7 +285,7 @@ const QUEUED_KEY = 'queuedFilms';
 
 openModalMovie.addEventListener('click', onClickModal);
 
-function onClickModal(e) {
+export function onClickModal(e) {
   const refs = {
     watched: document.querySelector('.btn_modal_watched'),
     queue: document.querySelector('.btn_modal_queued'),
