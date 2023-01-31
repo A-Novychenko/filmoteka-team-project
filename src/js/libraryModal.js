@@ -12,7 +12,7 @@ closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
-  console.log('oneToggle: ');
+  // console.log('oneToggle: ');
   try {
     openModalMovie.classList.toggle('is-hidden');
     window.addEventListener('keydown', keyPressEscCloseMovieModal);

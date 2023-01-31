@@ -13,7 +13,7 @@ openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 export function oneToggle(evt) {
   try {
     const sourceForModal = localStorage.getItem('sourceForModal');
-    console.log('sourceForModal: ', sourceForModal);
+    // console.log('sourceForModal: ', sourceForModal);
 
     openModalMovie.classList.toggle('is-hidden');
     window.addEventListener('keydown', keyPressEscCloseMovieModal);
@@ -21,7 +21,7 @@ export function oneToggle(evt) {
       window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     }
 
-    console.log('9999999999999999999999999999999');
+    // console.log('9999999999999999999999999999999');
 
     let localArray;
     /////////////////  вибір джерела даних залежно від того, де відкрита модалка
@@ -37,7 +37,7 @@ export function oneToggle(evt) {
       localArray = localMovie;
     }
 
-    console.log('localArray', localArray);
+    // console.log('localArray', localArray);
 
     // const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
     // const localArray = localMovie.data.results;

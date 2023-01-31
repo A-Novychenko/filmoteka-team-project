@@ -48,9 +48,9 @@ export default class ApiService {
 
   async fetchGenres() {
     try {
-      console.log('******');
+      // console.log('******');
       const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
-      console.log('URL: ', URL);
+      // console.log('URL: ', URL);
       const response = await axios.get(URL);
 
       localStorage.setItem('genres', JSON.stringify(response));

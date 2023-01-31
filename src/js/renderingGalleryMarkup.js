@@ -13,7 +13,7 @@ export async function getMovies() {
     // apiService.resetPage();
     const response = await apiService.fetchTrendFilms();
     const results = response.data.results;
-    console.log('results: ', results);
+    // console.log('results: ', results);
     // alert(response.data.total_pages);
     movieContainer.innerHTML = renderMarkupSearch(results);
     hideLoader();
