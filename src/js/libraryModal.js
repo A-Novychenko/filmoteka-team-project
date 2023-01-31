@@ -15,8 +15,8 @@ export function oneToggle(evt) {
   // console.log('oneToggle: ');
 
   /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
-  console.log(evt.target);
-  console.log(evt.target.classList);
+  // console.log(evt.target);
+  // console.log(evt.target.classList);
   if (
     !evt.target.closest('.movie__item')
     // evt.target.closest('.no-data') ||

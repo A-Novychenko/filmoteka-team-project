@@ -13,6 +13,13 @@ closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
+  /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
+  // console.log(evt.target);
+  // console.log(evt.target.classList);
+  if (!evt.target.closest('.movie__item')) {
+    return;
+  }
+
   try {
     const sourceForModal = localStorage.getItem('sourceForModal');
     // console.log('sourceForModal: ', sourceForModal);
