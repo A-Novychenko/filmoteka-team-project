@@ -17,9 +17,9 @@ export default class ApiService {
       localStorage.setItem('currentFilms', JSON.stringify(response));
 
 
-      //////////////////////пушу для тестування
+      ////////////////////пушу для тестування
       // localStorage.setItem(
-      //   'watchedFilms',
+      //   'queuedFilms', // queuedFilms
       //   JSON.stringify(response.data.results)
       // );
 
