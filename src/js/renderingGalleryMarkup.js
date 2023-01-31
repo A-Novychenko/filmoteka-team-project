@@ -1,17 +1,17 @@
 import { renderMarkupSearch } from './markupSearch';
 import { movieContainer } from './refs';
-import ApiService from './apiService';
+import apiservice from './apiService';
 import pagination from './pagination';
 import { hideLoader, showLoader } from './loader';
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 getMovies();
 
 export async function getMovies() {
   try {
     showLoader();
-    // apiService.resetPage();
-    const response = await apiService.fetchTrendFilms();
+    // apiservice.resetPage();
+    const response = await apiservice.fetchTrendFilms();
     const results = response.data.results;
     // console.log('results: ', results);
     // alert(response.data.total_pages);

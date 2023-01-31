@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class ApiService {
+class ApiService {
   constructor() {
     this.keyword = '';
     this.page = 1;
@@ -48,11 +48,8 @@ export default class ApiService {
 
   async fetchGenres() {
     try {
-      // console.log('******');
       const URL = `${this.BASE_URL}/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
-      // console.log('URL: ', URL);
       const response = await axios.get(URL);
-
       localStorage.setItem('genres', JSON.stringify(response));
       return response;
     } catch (error) {
@@ -80,3 +77,5 @@ export default class ApiService {
     this.keyword = newKeyword;
   }
 }
+
+export default apiservice = new ApiService();
