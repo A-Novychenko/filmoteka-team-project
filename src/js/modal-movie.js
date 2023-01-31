@@ -3,6 +3,7 @@ import { openModalMovie } from './refs';
 import { closeModalMovieBtn } from './refs';
 import { renderMarkupModal } from './markupModal';
 import { modalGallery } from './refs';
+// import { libraryListRender } from './libraryMarkup';
 
 // console.log(localMovie.data.results);
 
@@ -60,6 +61,8 @@ export function oneToggle(evt) {
 
 export function clickBackdropCloseTeamModal(e) {
   if (e.target === e.currentTarget) {
+    // libraryListRender();
+
     openModalMovie.classList.toggle('is-hidden');
   }
 }
@@ -68,6 +71,8 @@ export function keyPressEscCloseMovieModal(evt) {
   const ESC_KEY_CODE = `Escape`;
 
   if (evt.code === ESC_KEY_CODE) {
+    // libraryListRender();
+
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
 
     openModalMovie.classList.toggle('is-hidden');
@@ -76,6 +81,8 @@ export function keyPressEscCloseMovieModal(evt) {
 
 export function closeBtn() {
   // openModalMovie.classList.toggle('is-hidden')
+  // libraryListRender(localArray);
+
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }
 
