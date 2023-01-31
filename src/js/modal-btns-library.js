@@ -412,7 +412,7 @@ export function onClickModal(e) {
         console.log(error.message);
       }
 
-      onBtnWatchedClick();
+      // onBtnWatchedClick();
 
       refs.watched.textContent = 'DELETE FROM WATCHED';
     } else if (refs.watched.textContent === 'DELETE FROM WATCHED') {
@@ -441,7 +441,9 @@ export function onClickModal(e) {
       } catch (error) {
         console.log(error.message);
       }
-      onBtnWatchedClick();
+
+          //  onBtnWatchedClick();
+
       // onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
 
       refs.watched.textContent = 'ADD TO WATCHED';
@@ -514,51 +516,51 @@ export function onClickModal(e) {
     }
   }
 
-  function onAddBtnClick(filmToAdd, arr, key) {
-    onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
-    arr.push(filmToAdd);
-    console.log('After Adding', arr);
-    localStorage.setItem(`${key}`, JSON.stringify(arr));
-    // Перерисовка интерфейса ???
-  }
+//   function onAddBtnClick(filmToAdd, arr, key) {
+//     onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
+//     arr.push(filmToAdd);
+//     console.log('After Adding', arr);
+//     localStorage.setItem(`${key}`, JSON.stringify(arr));
+//     // Перерисовка интерфейса ???
+//   }
 
-  function onDeleteBtnClick(filmToDelete, arr, key) {
-    // const filmToDelete = evt.currentTarget;
-    const filmToDeleteId = arr.findIndex(film => film.id === filmToDelete.id);
-    arr.splice(filmToDeleteId, 1);
-    console.log('After Delete', arr);
-    localStorage.setItem(`${key}`, JSON.stringify(arr));
-    // Перерисовка интерфейса ???
-  }
-  ///////   що це ????   ///////////
-  returnSavedWatched();
-  returnSavedQueue();
-}
+//   function onDeleteBtnClick(filmToDelete, arr, key) {
+//     // const filmToDelete = evt.currentTarget;
+//     const filmToDeleteId = arr.findIndex(film => film.id === filmToDelete.id);
+//     arr.splice(filmToDeleteId, 1);
+//     console.log('After Delete', arr);
+//     localStorage.setItem(`${key}`, JSON.stringify(arr));
+//     // Перерисовка интерфейса ???
+//   }
+//   ///////   що це ????   ///////////
+//   returnSavedWatched();
+//   returnSavedQueue();
+// }
 
-async function returnSavedWatched() {
-  try {
-    const watchedArrData = await JSON.parse(localStorage.getItem(WATCHED_KEY));
+// async function returnSavedWatched() {
+//   try {
+//     const watchedArrData = await JSON.parse(localStorage.getItem(WATCHED_KEY));
 
-    if (!watchedArrData) {
-      return;
-    } else {
-      return watchedArrData;
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+//     if (!watchedArrData) {
+//       return;
+//     } else {
+//       return watchedArrData;
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
 
-async function returnSavedQueue() {
-  try {
-    const queueArrData = await JSON.parse(localStorage.getItem(QUEUED_KEY));
+// async function returnSavedQueue() {
+//   try {
+//     const queueArrData = await JSON.parse(localStorage.getItem(QUEUED_KEY));
 
-    if (!queueArrData) {
-      return;
-    } else {
-      return queueArrData;
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
+//     if (!queueArrData) {
+//       return;
+//     } else {
+//       return queueArrData;
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
 }

@@ -94,11 +94,13 @@ export function renderMarkupModal(movies) {
                     ${queueBtn}
                 </li>
                 <li>
+
                      </div>
                     <button class="btn_modal js-btn_trailer" data-idmovie=${
                       movies.id
                     }>TRY TO SEARCH MOVIE TRAILER</button>
                 </div>
+
                 </li>
             </ul>`;
   return mark;
