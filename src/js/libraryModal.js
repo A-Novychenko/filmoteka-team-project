@@ -13,6 +13,19 @@ openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
 export function oneToggle(evt) {
   // console.log('oneToggle: ');
+
+  /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
+  console.log(evt.target);
+  console.log(evt.target.classList);
+  if (
+    !evt.target.closest('.movie__item')
+    // evt.target.closest('.no-data') ||
+    // !evt.target.closest('.movie__item') ///movie__item    evt.target.classList.contains.contains('library__list')
+  ) {
+    // console.log('не запускаємо модалку');
+    return;
+  }
+
   try {
     openModalMovie.classList.toggle('is-hidden');
     window.addEventListener('keydown', keyPressEscCloseMovieModal);

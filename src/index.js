@@ -50,3 +50,12 @@ import { onClick } from './js/modal-btns-library';
 
 // сетить жанри в локальне сховище
 import './js/getGenres';
+
+
+
+// import { onBtnWatchedClick, onBtnQueueClick } from './js/libraryMarkup';
+// console.log('onBtnWatchedClick: ', onBtnWatchedClick);
+
+// import { closeBtn } from './js/modal-movie';
+// console.log('closeBtn: ', closeBtn);
+
