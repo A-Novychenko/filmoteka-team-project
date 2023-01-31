@@ -8,23 +8,25 @@ let idTrailer = '';
 
 export async function onBtnTrailer(evt) {
   try {
-    const btnTrailer = evt.target.closest('.js-btn_trailer');
-    // console.log(btnTrailer);
-    idTrailer = btnTrailer.dataset.idmovie;
+    if (evt.target.classList.contains('js-btn_trailer')) {
+      const btnTrailer = evt.target.closest('.js-btn_trailer');
+      // console.log(btnTrailer);
 
-    const resp = await fetchTrailer();
-    const dataMovie = resp.data.results;
-    const officialTrailer = dataMovie.find(
-      movie =>
-        movie.name.toLowerCase().includes('official trailer') ||
-        movie.name.toLowerCase().includes('official trailer 2')
-    );
+      idTrailer = btnTrailer.dataset.idmovie;
 
-    // console.log(officialTrailer)
+      const resp = await fetchTrailer();
+      const dataMovie = resp.data.results;
+      const officialTrailer = dataMovie.find(
+        movie =>
+          movie.name.toLowerCase().includes('official trailer') ||
+          movie.name.toLowerCase().includes('official trailer 2')
+      );
 
-    if (officialTrailer) {
-      // console.log('є трейлер!!!')
-      modalGallery.innerHTML = `<iframe 
+      // console.log(officialTrailer)
+
+      if (officialTrailer) {
+        // console.log('є трейлер!!!')
+        modalGallery.innerHTML = `<iframe 
             class="movie_trailer"
             width='700'
             height='500'
@@ -39,9 +41,10 @@ export async function onBtnTrailer(evt) {
             web-share"
             allowfullscreen>
             </iframe>`;
-    } else {
-      // console.log('немає трейлера(((');
-      btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result not successful</p>`;
+      } else {
+        // console.log('немає трейлера(((');
+        btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result not successful</p>`;
+      }
     }
   } catch (err) {
     console.log(err);
