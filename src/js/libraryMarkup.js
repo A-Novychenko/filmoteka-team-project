@@ -96,7 +96,10 @@ export function libraryListRender(curentPage = 1) {
   libraryData.innerHTML = '';
 
   try {
-    if (watchedList) {
+// console.log(watchedList);
+
+    if (watchedList && watchedList !== '[]') {
+      // console.log('watchedList: ', watchedList);
       let watchedListToRender;
 
       if (libBlockToShow === 'watched') {
