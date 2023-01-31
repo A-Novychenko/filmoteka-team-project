@@ -11,6 +11,7 @@ export async function getMovies() {
   try {
     showLoader();
     // apiService.resetPage();
+    await apiService.fetchGenres();
     const response = await apiService.fetchTrendFilms();
     const results = response.data.results;
     // alert(response.data.total_pages);
@@ -20,8 +21,6 @@ export async function getMovies() {
     // console.log('response.data.total_pages01: ', response.data.total_pages);
 
     pagination(1, response.data.total_pages);
-    
-    
   } catch (err) {
     console.log(err);
   }

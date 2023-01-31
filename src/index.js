@@ -47,6 +47,3 @@ modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 
 // feature/modal-btns-library
 import { onClick } from './js/modal-btns-library';
-
-// сетить жанри в локальне сховище
-import './js/getGenres';

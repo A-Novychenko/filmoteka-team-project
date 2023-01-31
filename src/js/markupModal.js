@@ -11,8 +11,8 @@ export function renderMarkupModal(movies) {
     ? `${IMG_URL + movies.poster_path}`
     : noPoster;
 
-  const parseGenres = JSON.parse(localStorage.getItem('genres'));
-  const genersLocalStore = parseGenres.data.genres;
+  const genersLocalStore = load('genres').data.genres;
+
   let finalGenres = [];
   findGenres(genre_ids, genersLocalStore, finalGenres);
   isEmptyGanres(finalGenres);
@@ -50,7 +50,8 @@ export function renderMarkupModal(movies) {
                     <button class="btn_modal">ADD TO QUEUE</button>
                     
                 </div>
-                    <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
+                    <button class="btn_modal js-btn_trailer" data-idmovie=${
+                      movies.id
+                    }>TRY TO SEARCH MOVIE TRAILER</button>
             </div>`;
-
 }

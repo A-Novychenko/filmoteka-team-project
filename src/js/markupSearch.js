@@ -5,6 +5,7 @@ import { findGenres } from './genres';
 import { movieContainer } from './refs';
 
 import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
+import { load } from './storage';
 import noPoster from '../images/no-poster.jpg';
 
 // const gallery = document.querySelector('.js-movies-list');
@@ -18,8 +19,8 @@ export function renderMarkupSearch(movies) {
         ? `${IMG_URL + movie.poster_path}`
         : noPoster;
 
-      const parseGenres = JSON.parse(localStorage.getItem('genres'));
-      const genersLocalStore = parseGenres.data.genres;
+      const genersLocalStore = load('genres').data.genres;
+
       let finalGenres = [];
       findGenres(genre_ids, genersLocalStore, finalGenres);
       isMoreThenTwoGanres(finalGenres);
