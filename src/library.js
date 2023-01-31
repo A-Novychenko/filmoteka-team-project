@@ -3,7 +3,7 @@ import './js/libraryModal';
 import './js/markupModal';
 
 import { openModalMovie } from './js/refs';
-// import { onClickModal } from './js/modal-btns-library';
+import { onClickModal } from './js/modal-btns-library';
 openModalMovie.addEventListener('click', onClickModal);
 
 /// ////////////footer-modal

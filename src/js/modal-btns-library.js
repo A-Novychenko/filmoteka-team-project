@@ -1,4 +1,3 @@
-
 // // const refs = {
 // //   modal: document.querySelector('.js-test-modal'),
 // //   watched: document.querySelector('.js-test-watched'),
@@ -286,7 +285,7 @@ const QUEUED_KEY = 'queuedFilms';
 
 openModalMovie.addEventListener('click', onClickModal);
 
-function onClickModal(e) {
+export function onClickModal(e) {
   const refs = {
     watched: document.querySelector('.btn_modal_watched'),
     queue: document.querySelector('.btn_modal_queued'),
@@ -417,7 +416,6 @@ function onClickModal(e) {
 
       refs.watched.textContent = 'DELETE FROM WATCHED';
     } else if (refs.watched.textContent === 'DELETE FROM WATCHED') {
- 
       // console.log('currentId: ', e.target.dataset.ttt);
 
       const currentId = e.target.dataset.ttt;
@@ -443,7 +441,7 @@ function onClickModal(e) {
       } catch (error) {
         console.log(error.message);
       }
-           onBtnWatchedClick();
+      onBtnWatchedClick();
       // onDeleteBtnClick(filmToDelete, watchedArr, WATCHED_KEY);
 
       refs.watched.textContent = 'ADD TO WATCHED';
@@ -477,7 +475,7 @@ function onClickModal(e) {
         InWatchedFilmsArr.push(filmToAdd);
 
         localStorage.setItem('queuedFilms', JSON.stringify(InWatchedFilmsArr));
-      onBtnQueueClick();
+        onBtnQueueClick();
         // console.log('filmToAdd: ', filmToAdd);
       } catch (error) {
         console.log(error.message);
@@ -535,7 +533,6 @@ function onClickModal(e) {
   ///////   що це ????   ///////////
   returnSavedWatched();
   returnSavedQueue();
-
 }
 
 async function returnSavedWatched() {
@@ -565,7 +562,6 @@ async function returnSavedQueue() {
     console.log(error.message);
   }
 }
-
 
 export function onClickCheck(film) {
   onClickWatchedCheck(film);
@@ -655,4 +651,3 @@ function onClickQueueCheck(film) {
     }
   }
 }
-
