@@ -2,6 +2,7 @@ import { findGenres } from './genres';
 import { getYear } from './getYear';
 import { findGenres, isEmptyGanres } from './genres';
 import noPoster from '../images/no-poster.jpg';
+import { load } from './storage';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
