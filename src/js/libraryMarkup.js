@@ -1,6 +1,7 @@
 import ApiService from './apiService';
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
+import { openModalMovie } from './refs';
 
 // const qqq = [
 //   {
@@ -54,20 +55,22 @@ let libBlockToShow;
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
 
-function onBtnWatchedClick() {
+export function onBtnWatchedClick() {
   paginationList.innerHTML = '';
   apiService.resetPage();
   btnWatched.classList.add('btnIsActive');
   btnQueue.classList.remove('btnIsActive');
+  localStorage.setItem('sourceForModal', 'watchedFilms');
   libBlockToShow = 'watched';
   libraryListRender();
 }
 
-function onBtnQueueClick() {
+export function onBtnQueueClick() {
   paginationList.innerHTML = '';
   apiService.resetPage();
   btnWatched.classList.remove('btnIsActive');
   btnQueue.classList.add('btnIsActive');
+  localStorage.setItem('sourceForModal', 'queuedFilms');
   libBlockToShow = 'queue';
   libraryListRender();
 }
@@ -202,7 +205,7 @@ function librPagination(total) {
   }
 
   paginationList.innerHTML = murkup;
-   window.scrollBy(0, -10000);
+  window.scrollBy(0, -10000);
   // window.scrollBy(0, -window.pageYOffset + 270);
 }
 

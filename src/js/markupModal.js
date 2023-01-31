@@ -1,8 +1,7 @@
 import { findGenres } from './genres';
 import { getYear } from './getYear';
 import { findGenres, isEmptyGanres } from './genres';
-import noPoster from '../images/no-poster.jpg'
-
+import noPoster from '../images/no-poster.jpg';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export function renderMarkupModal(movies) {
@@ -10,14 +9,56 @@ export function renderMarkupModal(movies) {
   const imgUrl = movies.poster_path
     ? `${IMG_URL + movies.poster_path}`
     : noPoster;
-
   const parseGenres = JSON.parse(localStorage.getItem('genres'));
   const genersLocalStore = parseGenres.data.genres;
   let finalGenres = [];
   findGenres(genre_ids, genersLocalStore, finalGenres);
   isEmptyGanres(finalGenres);
+  let watchedBtn = '';
+  let queueBtn = '';
 
-  return ` <img class = "modal_img" src="${imgUrl}"   alt="">
+  try {
+    const isInWatchedList = localStorage.getItem('watchedFilms'); //watchedFilms
+    // console.log('isInWatchedList: ', isInWatchedList);
+    if (isInWatchedList) {
+      if (isInWatchedList) {
+        // console.log('(isInWatchedList.typeOf.: ', typeOf.isInWatchedList);
+        const isInArray = JSON.parse(isInWatchedList).find(
+          movie => movie.id === movies.id
+        );
+        if (isInArray) {
+          watchedBtn = `<button class="btn_modal btn_modal_watched current" data-ttt="${movies.id}">DELETE FROM WATCHED</button>`;
+        } else {
+          watchedBtn = `<button class="btn_modal btn_modal_watched" data-ttt="${movies.id}">ADD TO WATCHED</button>`;
+        }
+      }
+    } else {
+      watchedBtn = `<button class="btn_modal btn_modal_watched" data-ttt="${movies.id}">ADD TO WATCHED</button>`;
+    }
+
+    // console.log(watchedBtn);
+
+    const isInQueuedList = localStorage.getItem('queuedFilms'); //watchedFilms
+    // console.log('isInQueuedList: ', isInQueuedList);
+    if (isInQueuedList) {
+      if (isInQueuedList.length) {
+        const isInArray = JSON.parse(isInQueuedList).find(
+          movie => movie.id === movies.id
+        );
+        //   console.log(isInArray);
+        if (isInArray) {
+          queueBtn = `<button class="btn_modal btn_modal_queued current" data-ttt="${movies.id}">DELETE FROM QUEUE</button>`;
+        } else {
+          queueBtn = `<button class="btn_modal btn_modal_queued" data-ttt="${movies.id}">ADD TO QUEUE</button>`;
+        }
+      }
+    } else {
+      queueBtn = `<button class="btn_modal btn_modal_queued" data-ttt="${movies.id}">ADD TO QUEUE</button>`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  const mark = `<img class = "modal_img" src="${imgUrl}"   alt="">
             <ul class="movie_modal_info">
                 <li>
                     <h2 class="movie_modal_title">${movies.original_title}</h2>
@@ -49,12 +90,12 @@ export function renderMarkupModal(movies) {
                     </div>
                 </li>
                 <li class="modal_btn_list">
-                    <button class="btn_modal">ADD TO WATCHED</button>
-                    <button class="btn_modal">ADD TO QUEUE</button>
-                    
+                    ${watchedBtn}
+                    ${queueBtn}
                 </li>
                 <li>
-                    <button class="btn_modal js-btn_trailer" data-idmovie=${movies.id}>TRY TO SEARCH MOVIE TRAILER</button>
+                    <button class="btn_modal btn_trailer">MOVIE TRAILER</button>
                 </li>
             </ul>`;
+  return mark;
 }
