@@ -35,11 +35,9 @@ export function oneToggle(evt) {
 
     let localArray;
     const sourceForModal = localStorage.getItem('sourceForModal');
+    // console.log('sourceForModal: ', sourceForModal);
     /////////////////  вибір джерела даних залежно від того, де відкрита модалка
-    if (sourceForModal === 'currentFilms') {
-      const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-      localArray = localMovie.data.results;
-    } else if (sourceForModal === 'watchedFilms') {
+    if (sourceForModal === 'watchedFilms') {
       const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
       localArray = localMovie;
     }
