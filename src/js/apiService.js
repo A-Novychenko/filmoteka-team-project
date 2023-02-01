@@ -77,5 +77,5 @@ class ApiService {
     this.keyword = newKeyword;
   }
 }
-
-export default apiservice = new ApiService();
+const apiservice = new ApiService();
+export default apiservice;
