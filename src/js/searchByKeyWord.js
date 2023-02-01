@@ -17,6 +17,7 @@ export async function onHeaderFormClick(evt) {
     // console.log('keyWord: ', keyWord);
     localStorage.setItem('keyWord', keyWord);
     cleanHtml();
+    apiservice.page = 1;
 
     if (!apiservice.query.trim()) {
       errorText.classList.remove('header__error_hidden');
