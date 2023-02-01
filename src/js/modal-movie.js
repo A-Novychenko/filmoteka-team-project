@@ -75,9 +75,8 @@ export function oneToggle(evt) {
 export function clickBackdropCloseTeamModal(e) {
   if (e.target === e.currentTarget) {
     // libraryListRender();
-    setTimeout(() => {
-      cleanHtmlTrailer();
-    }, 199);
+
+    cleanHtmlTrailer();
 
     openModalMovie.classList.toggle('is-hidden');
   }
@@ -90,9 +89,9 @@ export function keyPressEscCloseMovieModal(evt) {
     // libraryListRender();
 
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
-    setTimeout(() => {
-      cleanHtmlTrailer();
-    }, 199);
+
+    cleanHtmlTrailer();
+
     openModalMovie.classList.toggle('is-hidden');
   }
 }
@@ -100,9 +99,8 @@ export function keyPressEscCloseMovieModal(evt) {
 export function closeBtn() {
   // openModalMovie.classList.toggle('is-hidden')
   // libraryListRender(localArray);
-  setTimeout(() => {
-    cleanHtmlTrailer();
-  }, 199);
+
+  cleanHtmlTrailer();
 
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }

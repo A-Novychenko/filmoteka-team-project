@@ -34,7 +34,7 @@ export async function onBtnTrailer(evt) {
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer;
-            autoplay; clipboard-write;
+            autoplay = 0; clipboard-write;
             encrypted-media;
             gyroscope;
             picture-in-picture;
@@ -63,5 +63,21 @@ async function fetchTrailer() {
 }
 
 export function cleanHtmlTrailer() {
-  modalGallery.innerHTML = '';
+  // modalGallery.innerHTML = '';
+  // modalGallery.innerHTML = `<div width="700" height="500">HELLO</div>`;
+  modalGallery.innerHTML = `<iframe 
+            class="movie_trailer"
+            width='700'
+            height='500'
+            
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer;
+            autoplay = 0; clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share"
+            allowfullscreen>
+            </iframe>`;
 }
