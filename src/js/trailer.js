@@ -64,7 +64,6 @@ async function fetchTrailer() {
 
 export function cleanHtmlTrailer() {
   // modalGallery.innerHTML = '';
-  // modalGallery.innerHTML = `<div width="700" height="500">HELLO</div>`;
   modalGallery.innerHTML = `<iframe 
             class="movie_trailer"
             width='700'
