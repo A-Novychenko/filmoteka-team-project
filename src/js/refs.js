@@ -4,7 +4,7 @@ export const myLibraryBtn = document.querySelector('.js-my-library-btn');
 export const headerForm = document.querySelector('.js-header-form');
 export const headerBtns = document.querySelector('.js-header-btns');
 export const errorSearch = document.querySelector('.js-error-search');
-export const pagination = document.querySelector('.pagination');
+export const paginationDiv = document.querySelector('.pagination');
 export const sadEror = document.querySelector('.sad__eror-wrap');
 
 export const btnWatched = document.querySelector('.js-btn-watched');
