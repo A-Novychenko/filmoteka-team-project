@@ -8,19 +8,29 @@ export function onClickModal(e) {
     queue: document.querySelector('.btn_modal_queued'),
   };
 
+  // console.log('currentFilms');
+
   if (e.target.classList.contains('btn_modal_watched')) {
     const currentId = Number(e.target.dataset.ttt);
 
     if (refs.watched.textContent === 'ADD TO WATCHED') {
       refs.watched.classList.toggle('current');
-
+      let filmToAdd;
       try {
         const currentFilms = localStorage.getItem('currentFilms');
-        const filmToAdd = JSON.parse(currentFilms).data.results.find(
+        filmToAdd = JSON.parse(currentFilms).data.results.find(
           movie => movie.id === currentId
         );
         const watchedFilms = localStorage.getItem('watchedFilms');
         const InWatchedFilmsArr = JSON.parse(watchedFilms) || [];
+
+        /////////////////// перевірка чи є фільм у карентах
+        if (!filmToAdd) {
+          const currentFilms = localStorage.getItem('queuedFilms');
+          filmToAdd = JSON.parse(currentFilms).find(
+            movie => movie.id === currentId
+          );
+        }
 
         InWatchedFilmsArr.push(filmToAdd);
 
@@ -55,14 +65,24 @@ export function onClickModal(e) {
     if (refs.queue.textContent === 'ADD TO QUEUE') {
       refs.queue.classList.toggle('current');
 
+      let filmToAdd;
       try {
         const currentFilms = localStorage.getItem('currentFilms');
-        const filmToAdd = JSON.parse(currentFilms).data.results.find(
+        filmToAdd = JSON.parse(currentFilms).data.results.find(
           movie => movie.id === currentId
         );
 
         const queuedFilms = localStorage.getItem('queuedFilms');
         const InWatchedFilmsArr = JSON.parse(queuedFilms) || [];
+
+        /////////////////// перевірка чи є фільм у карентах
+        if (!filmToAdd) {
+          const currentFilms = localStorage.getItem('watchedFilms');
+          filmToAdd = JSON.parse(currentFilms).find(
+            movie => movie.id === currentId
+          );
+        }
+        // console.log('filmToAdd', filmToAdd);
 
         InWatchedFilmsArr.push(filmToAdd);
 
