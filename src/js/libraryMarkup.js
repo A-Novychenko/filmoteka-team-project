@@ -16,7 +16,7 @@ btnQueue.addEventListener('click', onBtnQueueClick);
 
 onBtnWatchedClick();
 
-function onBtnWatchedClick() {
+export function onBtnWatchedClick() {
   paginationList.innerHTML = '';
   apiservice.resetPage();
   btnWatched.classList.add('btnIsActive');
@@ -36,8 +36,17 @@ function onBtnQueueClick() {
   libraryListRender();
 }
 
-export function libraryListRender(curentPage = 1) {
-  let curentPageToRender = curentPage;
+let curentPageToRender;
+
+export function libraryListRender(curentPage, totalPage) {
+  // console.log('curentPage: ', curentPage);
+  let curentPageToRender = curentPage || apiservice.page;
+  // console.log('apiservice.page: ', apiservice.page);
+  let totalPages = totalPage || 1;
+
+  // console.log('libraryListRender___curentPageToRender: ', curentPageToRender);
+  // console.log('libraryListRender___totalPages: ', totalPages);
+
   // console.log('curentPageToRender: ', curentPageToRender);
   // console.log('перемальовую: ', curentPageToRender);
   let watchedList;
@@ -93,7 +102,8 @@ export function libraryListRender(curentPage = 1) {
         // console.log('pages to paginate', sliced_array.length);
 
         totalPages = sliced_array.length;
-        librPagination(totalPages);
+        // console.log('totalPages777: ', totalPages);
+        librPagination(curentPageToRender, totalPages);
 
         try {
           const newMurkup = renderMarkupSearch(
@@ -105,6 +115,9 @@ export function libraryListRender(curentPage = 1) {
         }
       } else {
         const newMurkup = renderMarkupSearch(watchedListToRender);
+        paginationList.innerHTML = '';
+        apiservice.page = 1;
+        curentPageToRender = 1;
         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
       }
     } else {
@@ -122,47 +135,49 @@ export function libraryListRender(curentPage = 1) {
 
 // ..........................................................
 
-function librPagination(total = 1) {
-  totalPages = total;
+function librPagination(curentPageToRender, totalPage) {
+  totalPages = totalPage;
+  // console.log('librPagination___curentPageToRender: ', curentPageToRender);
+  // console.log('librPagination___totalPages: ', totalPages);
   let murkup = '';
 
-  let beforeTwoPage = apiservice.page - 2;
-  let beforePage = apiservice.page - 1;
-  let afterPage = apiservice.page + 1;
-  let afterTwoPage = apiservice.page + 2;
+  let beforeTwoPage = curentPageToRender - 2;
+  let beforePage = curentPageToRender - 1;
+  let afterPage = curentPageToRender + 1;
+  let afterTwoPage = curentPageToRender + 2;
 
-  if (apiservice.page > 1) {
+  if (curentPageToRender > 1) {
     murkup += `<li class="pagination__item pagination__item_arrows">◄</li> `;
     murkup += `<li class="pagination__item">1</li>`;
   }
 
-  if (apiservice.page > 4) {
+  if (curentPageToRender > 4) {
     murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
-  if (apiservice.page > 3) {
+  if (curentPageToRender > 3) {
     murkup += `<li class="pagination__item">${beforeTwoPage}</li>`;
   }
 
-  if (apiservice.page > 2) {
+  if (curentPageToRender > 2) {
     murkup += `<li class="pagination__item">${beforePage}</li>`;
   }
 
-  murkup += `<li class="pagination__item current">${apiservice.page}</li>`;
+  murkup += `<li class="pagination__item current">${curentPageToRender}</li>`;
 
-  if (totalPages - 1 > apiservice.page) {
+  if (totalPages - 1 > curentPageToRender) {
     murkup += `<li class="pagination__item">${afterPage}</li>`;
   }
 
-  if (totalPages - 2 > apiservice.page) {
+  if (totalPages - 2 > curentPageToRender) {
     murkup += `<li class="pagination__item">${afterTwoPage}</li>`;
   }
 
-  if (totalPages - 3 > apiservice.page) {
+  if (totalPages - 3 > curentPageToRender) {
     murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
-  if (totalPages > apiservice.page) {
+  if (totalPages > curentPageToRender) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
     murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
@@ -208,28 +223,29 @@ function onLibrPaginationClick(e) {
   }
 
   if (e.target.textContent === '►') {
-    apiservice.page += 1;
-    libraryListRender(apiservice.page);
-    librPagination(totalPages);
-    // console.log('apiservice.page: ', apiservice.page);
-
+    curentPageToRender += 1;
+    libraryListRender(curentPageToRender, totalPages);
+    // librPagination(totalPages);
+    // console.log('curentPageToRender: ', curentPageToRender);
+    apiservice.page = curentPageToRender;
     return;
   }
 
   if (e.target.textContent === '◄') {
-    apiservice.page -= 1;
-    libraryListRender(apiservice.page);
-    librPagination(totalPages);
-    // console.log('apiservice.page: ', apiservice.page);
-
+    curentPageToRender -= 1;
+    libraryListRender(curentPageToRender, totalPages);
+    // librPagination(totalPages);
+    // console.log('curentPageToRender: ', curentPageToRender);
+    apiservice.page = curentPageToRender;
     return;
   }
 
   if (true) {
     // console.log(e.target.textContent);
-    apiservice.page = Number(e.target.textContent);
-    libraryListRender(apiservice.page);
-    librPagination(totalPages);
-    // console.log('apiservice.page: ', apiservice.page);
+    curentPageToRender = Number(e.target.textContent);
+    libraryListRender(curentPageToRender);
+    // librPagination(totalPages);
+    // console.log('curentPageToRender: ', curentPageToRender);
+    apiservice.page = curentPageToRender;
   }
 }
