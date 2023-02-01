@@ -20,9 +20,15 @@ export async function onHeaderFormClick(evt) {
 
     if (!apiservice.query.trim()) {
       errorText.classList.remove('header__error_hidden');
-      setTimeout(() => errorText.classList.add('header__error_hidden'), 2500);
-      pagination.classList.add('visually-hidden');
       sadEror.classList.remove('header__error_hidden');
+      pagination.classList.add('visually-hidden');
+      setTimeout(() => {
+        errorText.classList.add('header__error_hidden');
+        sadEror.classList.add('header__error_hidden');
+        pagination.classList.remove('visually-hidden');
+
+        getMovies();
+      }, 2500);
       headerForm.reset();
       return;
     }
@@ -45,8 +51,6 @@ export async function onHeaderFormClick(evt) {
         getMovies();
       }, 2500);
 
-      // setTimeout(() => sadEror.classList.remove('header__error_hidden'), 2500);
-      // sadEror.classList.remove('header__error_hidden');
       headerForm.reset();
     } else {
       movieContainer.innerHTML = renderMarkupSearch(results);

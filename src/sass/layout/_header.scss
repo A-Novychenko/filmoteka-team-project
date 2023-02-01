@@ -80,7 +80,7 @@
 .logo {
   display: flex;
   justify-content: center;
-  align-items:baseline;
+  align-items: baseline;
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -280,8 +280,24 @@
     width: 393px;
   }
 }
+.sad__eror-wrap {
+  transform: scale(1);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: visible;
+
+  transition: transform var(--transition-dur-and-func),
+    visibility var(--transition-dur-and-func),
+    opacity var(--transition-dur-and-func);
+}
 
 .header__error_hidden {
+  transform: scale(1.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.sad__eror-wrap.header__error_hidden {
   transform: scale(1.2);
   opacity: 0;
   visibility: hidden;
