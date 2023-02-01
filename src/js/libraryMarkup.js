@@ -14,6 +14,8 @@ let libBlockToShow;
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
 
+onBtnWatchedClick();
+
 function onBtnWatchedClick() {
   paginationList.innerHTML = '';
   apiservice.resetPage();
@@ -34,10 +36,9 @@ function onBtnQueueClick() {
   libraryListRender();
 }
 
-onBtnWatchedClick();
-
 export function libraryListRender(curentPage = 1) {
   let curentPageToRender = curentPage;
+  // console.log('curentPageToRender: ', curentPageToRender);
   // console.log('перемальовую: ', curentPageToRender);
   let watchedList;
 
