@@ -5,6 +5,7 @@ import { modalGallery } from './refs';
 import { openModalMovie } from './refs';
 import { closeModalMovieBtn } from './refs';
 import { libraryListRender } from './libraryMarkup';
+// import { onBtnWatchedClick } from './libraryMarkup';
 
 
 const libraryModalClick = document.querySelector('.js-library-data');
