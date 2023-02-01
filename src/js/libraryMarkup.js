@@ -39,22 +39,13 @@ function onBtnQueueClick() {
 let curentPageToRender;
 
 export function libraryListRender(curentPage, totalPage) {
-  // console.log('curentPage: ', curentPage);
   let curentPageToRender = curentPage || apiservice.page;
-  // console.log('apiservice.page: ', apiservice.page);
   let totalPages = totalPage || 1;
-
-  // console.log('libraryListRender___curentPageToRender: ', curentPageToRender);
-  // console.log('libraryListRender___totalPages: ', totalPages);
-
-  // console.log('curentPageToRender: ', curentPageToRender);
-  // console.log('перемальовую: ', curentPageToRender);
   let watchedList;
 
   try {
     if (libBlockToShow === 'watched') {
       watchedList = localStorage.getItem('watchedFilms'); //watchedFilms
-      // console.log('watchedList: ', watchedList);
     } else {
       watchedList = localStorage.getItem('queuedFilms');
     }
@@ -65,10 +56,7 @@ export function libraryListRender(curentPage, totalPage) {
   libraryData.innerHTML = '';
 
   try {
-    // console.log(watchedList);
-
     if (watchedList && watchedList !== '[]') {
-      // console.log('watchedList: ', watchedList);
       let watchedListToRender;
 
       if (libBlockToShow === 'watched') {
@@ -83,26 +71,19 @@ export function libraryListRender(curentPage, totalPage) {
 
       if (screenWidth < 767) {
         array_size = 4;
-        // console.log('mobile');
       } else if (screenWidth > 767 && screenWidth < 1280) {
         array_size = 8;
-        // console.log('tablet');
       } else {
         array_size = 9;
-        // console.log('desc');
       }
-      // console.log('array_size: ', array_size);
 
       if (watchedListToRender.length > array_size) {
-        // const array_size = 9;
         const sliced_array = [];
         for (let i = 0; i < watchedListToRender.length; i += array_size) {
           sliced_array.push(watchedListToRender.slice(i, i + array_size));
         }
-        // console.log('pages to paginate', sliced_array.length);
 
         totalPages = sliced_array.length;
-        // console.log('totalPages777: ', totalPages);
         librPagination(curentPageToRender, totalPages);
 
         try {
@@ -137,8 +118,7 @@ export function libraryListRender(curentPage, totalPage) {
 
 function librPagination(curentPageToRender, totalPage) {
   totalPages = totalPage;
-  // console.log('librPagination___curentPageToRender: ', curentPageToRender);
-  // console.log('librPagination___totalPages: ', totalPages);
+
   let murkup = '';
 
   let beforeTwoPage = curentPageToRender - 2;
@@ -225,8 +205,6 @@ function onLibrPaginationClick(e) {
   if (e.target.textContent === '►') {
     curentPageToRender += 1;
     libraryListRender(curentPageToRender, totalPages);
-    // librPagination(totalPages);
-    // console.log('curentPageToRender: ', curentPageToRender);
     apiservice.page = curentPageToRender;
     return;
   }
@@ -234,18 +212,13 @@ function onLibrPaginationClick(e) {
   if (e.target.textContent === '◄') {
     curentPageToRender -= 1;
     libraryListRender(curentPageToRender, totalPages);
-    // librPagination(totalPages);
-    // console.log('curentPageToRender: ', curentPageToRender);
     apiservice.page = curentPageToRender;
     return;
   }
 
   if (true) {
-    // console.log(e.target.textContent);
     curentPageToRender = Number(e.target.textContent);
-    libraryListRender(curentPageToRender);
-    // librPagination(totalPages);
-    // console.log('curentPageToRender: ', curentPageToRender);
+    libraryListRender(curentPageToRender, totalPages);
     apiservice.page = curentPageToRender;
   }
 }
