@@ -1,5 +1,5 @@
 import { headerForm, errorText } from './refs';
-import apiservice from './ApiService';
+import apiservice from './apiService';
 import { renderMarkupSearch } from './markupSearch';
 import { cleanHtml } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
