@@ -1,4 +1,4 @@
-import apiservice from './apiservice';
+import apiservice from './apiService';
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
 import { openModalMovie } from './refs';

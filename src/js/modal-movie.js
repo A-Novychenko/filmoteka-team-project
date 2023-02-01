@@ -77,7 +77,7 @@ export function clickBackdropCloseTeamModal(e) {
     // libraryListRender();
     setTimeout(() => {
       cleanHtmlTrailer();
-    }, 500);
+    }, 199);
 
     openModalMovie.classList.toggle('is-hidden');
   }
@@ -92,7 +92,7 @@ export function keyPressEscCloseMovieModal(evt) {
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     setTimeout(() => {
       cleanHtmlTrailer();
-    }, 500);
+    }, 199);
     openModalMovie.classList.toggle('is-hidden');
   }
 }
@@ -102,7 +102,7 @@ export function closeBtn() {
   // libraryListRender(localArray);
   setTimeout(() => {
     cleanHtmlTrailer();
-  }, 500);
+  }, 199);
 
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }
