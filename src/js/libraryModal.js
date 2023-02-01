@@ -4,6 +4,8 @@ import { modalGallery } from './refs';
 
 import { openModalMovie } from './refs';
 import { closeModalMovieBtn } from './refs';
+import { libraryListRender } from './libraryMarkup';
+
 
 const libraryModalClick = document.querySelector('.js-library-data');
 
@@ -69,6 +71,7 @@ export function oneToggle(evt) {
 export function clickBackdropCloseTeamModal(e) {
   if (e.target === e.currentTarget) {
     openModalMovie.classList.toggle('is-hidden');
+    libraryListRender();
   }
 }
 
@@ -79,12 +82,16 @@ export function keyPressEscCloseMovieModal(evt) {
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
 
     openModalMovie.classList.toggle('is-hidden');
+    libraryListRender();
   }
 }
 
 export function closeBtn() {
   // openModalMovie.classList.toggle('is-hidden')
-  setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
+  setTimeout(
+    () => openModalMovie.classList.add('is-hidden', libraryListRender()),//
+    150
+  );
 }
 
 export function cleanHtml() {

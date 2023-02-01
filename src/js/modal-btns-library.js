@@ -1,7 +1,8 @@
 import { openModalMovie } from './refs';
+// import { libraryListRender } from './libraryMarkup';
 
-const WATCHED_KEY = 'watchedFilms';
-const QUEUED_KEY = 'queuedFilms';
+// const WATCHED_KEY = 'watchedFilms';
+// const QUEUED_KEY = 'queuedFilms';
 
 openModalMovie.addEventListener('click', onClickModal);
 

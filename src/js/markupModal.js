@@ -21,7 +21,7 @@ export function renderMarkupModal(movies) {
     const isInWatchedList = localStorage.getItem('watchedFilms'); //watchedFilms
     // console.log('isInWatchedList: ', isInWatchedList);
     if (isInWatchedList) {
-      if (isInWatchedList) {
+      if (isInWatchedList.length) {
         // console.log('(isInWatchedList.typeOf.: ', typeOf.isInWatchedList);
         const isInArray = JSON.parse(isInWatchedList).find(
           movie => movie.id === movies.id

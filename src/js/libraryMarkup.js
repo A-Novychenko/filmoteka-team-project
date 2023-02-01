@@ -1,9 +1,9 @@
-import apiservice from './apiService';
+import apiservice from './apiservice';
 import { btnWatched, btnQueue, libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
 import { openModalMovie } from './refs';
 
-// const apiservice = new ApiService();
+// const apiservice = new apiservice();
 
 const paginationList = document.querySelector('.pagination__list');
 const paginationBox = document.querySelector('.pagination');
@@ -55,7 +55,7 @@ export function libraryListRender(curentPage = 1) {
   libraryData.innerHTML = '';
 
   try {
-// console.log(watchedList);
+    // console.log(watchedList);
 
     if (watchedList && watchedList !== '[]') {
       // console.log('watchedList: ', watchedList);
@@ -121,47 +121,47 @@ export function libraryListRender(curentPage = 1) {
 
 // ..........................................................
 
-function librPagination(total) {
+function librPagination(total = 1) {
   totalPages = total;
   let murkup = '';
 
-  let beforeTwoPage = apiService.page - 2;
-  let beforePage = apiService.page - 1;
-  let afterPage = apiService.page + 1;
-  let afterTwoPage = apiService.page + 2;
+  let beforeTwoPage = apiservice.page - 2;
+  let beforePage = apiservice.page - 1;
+  let afterPage = apiservice.page + 1;
+  let afterTwoPage = apiservice.page + 2;
 
-  if (apiService.page > 1) {
+  if (apiservice.page > 1) {
     murkup += `<li class="pagination__item pagination__item_arrows">◄</li> `;
     murkup += `<li class="pagination__item">1</li>`;
   }
 
-  if (apiService.page > 4) {
+  if (apiservice.page > 4) {
     murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
-  if (apiService.page > 3) {
+  if (apiservice.page > 3) {
     murkup += `<li class="pagination__item">${beforeTwoPage}</li>`;
   }
 
-  if (apiService.page > 2) {
+  if (apiservice.page > 2) {
     murkup += `<li class="pagination__item">${beforePage}</li>`;
   }
 
-  murkup += `<li class="pagination__item current">${apiService.page}</li>`;
+  murkup += `<li class="pagination__item current">${apiservice.page}</li>`;
 
-  if (totalPages - 1 > apiService.page) {
+  if (totalPages - 1 > apiservice.page) {
     murkup += `<li class="pagination__item">${afterPage}</li>`;
   }
 
-  if (totalPages - 2 > apiService.page) {
+  if (totalPages - 2 > apiservice.page) {
     murkup += `<li class="pagination__item">${afterTwoPage}</li>`;
   }
 
-  if (totalPages - 3 > apiService.page) {
+  if (totalPages - 3 > apiservice.page) {
     murkup += `<li class="pagination__item three-drops">...</li>`;
   }
 
-  if (totalPages > apiService.page) {
+  if (totalPages > apiservice.page) {
     murkup += `<li class="pagination__item">${totalPages}</li>`;
     murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
@@ -207,28 +207,28 @@ function onLibrPaginationClick(e) {
   }
 
   if (e.target.textContent === '►') {
-    apiService.page += 1;
-    libraryListRender(apiService.page);
+    apiservice.page += 1;
+    libraryListRender(apiservice.page);
     librPagination(totalPages);
-    // console.log('apiService.page: ', apiService.page);
+    // console.log('apiservice.page: ', apiservice.page);
 
     return;
   }
 
   if (e.target.textContent === '◄') {
-    apiService.page -= 1;
-    libraryListRender(apiService.page);
+    apiservice.page -= 1;
+    libraryListRender(apiservice.page);
     librPagination(totalPages);
-    // console.log('apiService.page: ', apiService.page);
+    // console.log('apiservice.page: ', apiservice.page);
 
     return;
   }
 
   if (true) {
     // console.log(e.target.textContent);
-    apiService.page = Number(e.target.textContent);
-    libraryListRender(apiService.page);
+    apiservice.page = Number(e.target.textContent);
+    libraryListRender(apiservice.page);
     librPagination(totalPages);
-    // console.log('apiService.page: ', apiService.page);
+    // console.log('apiservice.page: ', apiservice.page);
   }
 }
