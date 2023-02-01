@@ -11,6 +11,7 @@ export async function getMovies() {
   try {
     showLoader();
     // apiservice.resetPage();
+    await apiservice.fetchGenres();
     const response = await apiservice.fetchTrendFilms();
     const results = response.data.results;
     // console.log('results: ', results);

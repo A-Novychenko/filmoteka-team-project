@@ -1,6 +1,6 @@
-import { findGenres } from './genres';
+import { findGenres } from './findGenres';
 import { getYear } from './getYear';
-import { findGenres, isEmptyGanres } from './genres';
+import { findGenres, isEmptyGanres } from './findGenres';
 import noPoster from '../images/no-poster.jpg';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 

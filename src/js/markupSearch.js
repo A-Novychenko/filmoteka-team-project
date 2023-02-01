@@ -1,10 +1,10 @@
-import { findGenres } from './genres';
+import { findGenres } from './findGenres';
 import { getYear } from './getYear';
 
-import { findGenres } from './genres';
+import { findGenres } from './findGenres';
 import { movieContainer } from './refs';
 
-import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './genres';
+import { findGenres, isEmptyGanres, isMoreThenTwoGanres } from './findGenres';
 import noPoster from '../images/no-poster.jpg';
 
 // const gallery = document.querySelector('.js-movies-list');
