@@ -39,3 +39,20 @@
     width: 394px;
   }
 }
+
+.sad__eror-wrap {
+  position: relative;
+}
+
+.sad__icon {
+  position: absolute;
+  top: 60px;
+  right: 50%;
+  width: 100px;
+  height: 100px;
+  transform: scale(1);
+
+  transition: transform var(--transition-dur-and-func);
+  
+  fill: var(--dark-color);
+}
