@@ -5,6 +5,7 @@ import { cleanHtml } from './markupSearch';
 import { hideLoader, showLoader } from './loader';
 import pagination from './pagination';
 import { movieContainer, sadEror, pagination } from './refs';
+import { getMovies } from './renderingGalleryMarkup';
 
 // const apiService = new ApiService();
 
@@ -34,9 +35,18 @@ export async function onHeaderFormClick(evt) {
 
     if (results.length === 0) {
       errorText.classList.remove('header__error_hidden');
-      pagination.classList.add('visually-hidden');
-      setTimeout(() => errorText.classList.add('header__error_hidden'), 2500);
       sadEror.classList.remove('header__error_hidden');
+      pagination.classList.add('visually-hidden');
+      setTimeout(() => {
+        errorText.classList.add('header__error_hidden');
+        sadEror.classList.add('header__error_hidden');
+        pagination.classList.remove('visually-hidden');
+
+        getMovies();
+      }, 2500);
+
+      // setTimeout(() => sadEror.classList.remove('header__error_hidden'), 2500);
+      // sadEror.classList.remove('header__error_hidden');
       headerForm.reset();
     } else {
       movieContainer.innerHTML = renderMarkupSearch(results);
