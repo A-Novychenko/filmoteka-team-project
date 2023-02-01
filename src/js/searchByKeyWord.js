@@ -2,10 +2,9 @@ import { headerForm, errorText } from './refs';
 import apiservice from './ApiService';
 import { renderMarkupSearch } from './markupSearch';
 import { cleanHtml } from './markupSearch';
-import { getMovies } from './renderingGalleryMarkup';
 import { hideLoader, showLoader } from './loader';
 import pagination from './pagination';
-import { movieContainer } from './refs';
+import { movieContainer, sadEror, pagination } from './refs';
 
 // const apiService = new ApiService();
 
@@ -20,7 +19,10 @@ export async function onHeaderFormClick(evt) {
 
     if (!apiservice.query.trim()) {
       errorText.classList.remove('header__error_hidden');
-      setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
+      setTimeout(() => errorText.classList.add('header__error_hidden'), 2500);
+      pagination.classList.add('visually-hidden');
+      sadEror.classList.remove('header__error_hidden');
+      headerForm.reset();
       return;
     }
 
@@ -28,11 +30,13 @@ export async function onHeaderFormClick(evt) {
     const response = await apiservice.fetchFilmsByKeyWord();
     const results = response.data.results;
     headerForm.reset();
+    hideLoader();
 
     if (results.length === 0) {
       errorText.classList.remove('header__error_hidden');
-      setTimeout(() => errorText.classList.add('header__error_hidden'), 2000);
-      getMovies();
+      pagination.classList.add('visually-hidden');
+      setTimeout(() => errorText.classList.add('header__error_hidden'), 2500);
+      sadEror.classList.remove('header__error_hidden');
       headerForm.reset();
     } else {
       movieContainer.innerHTML = renderMarkupSearch(results);
