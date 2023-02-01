@@ -46,8 +46,10 @@
 
 .sad__smile {
   position: absolute;
-  top: 40px;
-  left: 0;
+  top: 50px;
+  left: 18%;
+  width: 180px;
+  height: 100px;
   
   transform: scale(1);
 
@@ -58,13 +60,17 @@
   
   @media screen and (min-width: 768px) {
     position: absolute;
-    top: 40px;
-    left: 20%;
+    top: 50px;
+    left: 30%;
+    width: 280px;
+    height: 140px;
   }
     @media screen and (min-width: 1280px) {
       position: absolute;
-      top: 40px;
-      left: 30%;
+      top: 70px;
+      left: 35%;
+      width: 350px;
+      height: 170px;
     }
 
 }
