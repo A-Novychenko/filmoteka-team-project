@@ -44,15 +44,27 @@
   position: relative;
 }
 
-.sad__icon {
+.sad__smile {
   position: absolute;
-  top: 60px;
-  right: 50%;
-  width: 100px;
-  height: 100px;
+  top: 40px;
+  left: 0;
+  
   transform: scale(1);
 
   transition: transform var(--transition-dur-and-func);
   
   fill: var(--dark-color);
+  
+  
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 40px;
+    left: 20%;
+  }
+    @media screen and (min-width: 1280px) {
+      position: absolute;
+      top: 40px;
+      left: 30%;
+    }
+
 }
