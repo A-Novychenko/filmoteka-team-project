@@ -12,6 +12,8 @@ clicksMovie.addEventListener('click', oneToggle);
 closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
+let arrId;
+
 export function oneToggle(evt) {
   /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
   // console.log(evt.target);
@@ -63,7 +65,7 @@ export function oneToggle(evt) {
     //  console.log(liId);
 
     cleanHtml();
-    const arrId = localArray.find(arr => arr.id == liId);
+    arrId = localArray.find(arr => arr.id == liId);
     //  console.log(arrId);
     if (arrId == undefined) {
       //  console.log(localArray);
@@ -111,4 +113,15 @@ export function closeBtn() {
 
 export function cleanHtml() {
   modalGallery.innerHTML = '';
+}
+
+export async function onBtnBack(evt) {
+  try {
+    const btnBack = evt.target.classList.contains('btn_modal__back');
+    if (btnBack) {
+      setTimeout(() => modalGallery.innerHTML = renderMarkupModal(arrId), 150);
+    }
+    }catch (err) {
+    console.log(err)
+  }
 }
