@@ -34,16 +34,12 @@ import { getMovies } from './js/renderingGalleryMarkup';
 
 /// ////////////footer-modal
 import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';
-import {
-  toggleTeamModal,
-  toggleTeamModal,
-  clickBackdropCloseTeamModal,
-} from './js/team-modal';
+import { toggleTeamModal, clickBackdropCloseTeamModal } from './js/team-modal';
 
 openModalTeamBtn.addEventListener('click', toggleTeamModal);
 closeModalTeamBtn.addEventListener('click', toggleTeamModal);
 modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
-//////////////// footer-modal
+////////////// footer-modal
 
 // feature/modal-btns-library
 import { onClick } from './js/modal-btns-library';

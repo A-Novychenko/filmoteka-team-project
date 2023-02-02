@@ -27,14 +27,18 @@ modalGallery.addEventListener('click', onBtnTrailer);
 // import { modalGallery } from './js/refs';
 // modalGallery.addEventListener('click', onBtnTrailer);
 
-// import { clicksMovie } from './js/refs';
-// // import { openModalMovie } from './js/refs';
-// import { closeModalMovieBtn } from './js/refs';
-// import {
-//   oneToggle,
-//   keyPressEscCloseMovieModal,
-//   closeBtn,
-// } from './js/modal-movie';
+import { clicksMovie } from './js/refs';
+// import { openModalMovie } from './js/refs';
+import { closeModalMovieBtn } from './js/refs';
+import {
+  oneToggle,
+  keyPressEscCloseMovieModal,
+  closeBtn,
+} from './js/modal-movie';
 // clicksMovie.addEventListener('click', oneToggle);
 // closeModalMovieBtn.addEventListener('click', closeBtn);
 // // openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
+import { libraryData } from './js/refs';
+libraryData.addEventListener('click', oneToggle);
+// closeModalMovieBtn.addEventListener('click', closeBtn);
+// openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);

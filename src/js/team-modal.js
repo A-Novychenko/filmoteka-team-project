@@ -3,7 +3,9 @@ import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './refs';
 export function toggleTeamModal() {
   document.addEventListener('keydown', keyPressEscCloseTeamModal);
   document.body.classList.toggle('modal-open');
+
   modalTeam.classList.toggle('is-hidden');
+  // modalTeam.classList.remove('is-hidden');
 
   if (modalTeam.classList.contains('is-hidden')) {
     document.removeEventListener('keydown', keyPressEscCloseTeamModal);
@@ -21,7 +23,9 @@ export function keyPressEscCloseTeamModal(e) {
 
   if (e.code === ESC_KEY_CODE) {
     document.removeEventListener('keydown', keyPressEscCloseTeamModal);
-    document.body.classList.toggle('modal-open');
-    modalTeam.classList.toggle('is-hidden');
+    // document.body.classList.toggle('modal-open');
+    // modalTeam.classList.toggle('is-hidden');
+    document.body.classList.remove('modal-open');
+    modalTeam.classList.add('is-hidden');
   }
 }
