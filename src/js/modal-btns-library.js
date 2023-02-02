@@ -41,7 +41,7 @@ export function onClickModal(e) {
         // console.log('filmToAdd: ', filmToAdd);
 
         if (!filmToAdd) {
-          filmToAddArr = JSON.parse(sessionStorage.getItem('copyFilm'));
+          let filmToAddArr = JSON.parse(sessionStorage.getItem('copyFilm'));
           filmToAdd = filmToAddArr[0];
           // console.log('filmToAdd: ', filmToAdd);
           // console.log('filmToAdd: ', filmToAdd[0]);
@@ -108,7 +108,7 @@ export function onClickModal(e) {
         // console.log('filmToAdd  ADD TO QUEUE', filmToAdd);
 
         if (!filmToAdd) {
-          filmToAddArr = JSON.parse(sessionStorage.getItem('copyFilm'));
+          let filmToAddArr = JSON.parse(sessionStorage.getItem('copyFilm'));
           filmToAdd = filmToAddArr[0];
           // console.log('filmToAdd: ', filmToAdd);
           // console.log('filmToAdd: ', filmToAdd[0]);
