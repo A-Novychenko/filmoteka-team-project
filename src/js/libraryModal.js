@@ -7,7 +7,6 @@ import { closeModalMovieBtn } from './refs';
 import { libraryListRender } from './libraryMarkup';
 // import { onBtnWatchedClick } from './libraryMarkup';
 
-
 const libraryModalClick = document.querySelector('.js-library-data');
 
 libraryModalClick.addEventListener('click', oneToggle);
@@ -90,7 +89,7 @@ export function keyPressEscCloseMovieModal(evt) {
 export function closeBtn() {
   // openModalMovie.classList.toggle('is-hidden')
   setTimeout(
-    () => openModalMovie.classList.add('is-hidden', libraryListRender()),//
+    () => openModalMovie.classList.add('is-hidden', libraryListRender()), //
     150
   );
 }
