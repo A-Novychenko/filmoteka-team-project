@@ -29,7 +29,8 @@ export async function onBtnTrailer(evt) {
 
       if (officialTrailer) {
         // console.log('є трейлер!!!')
-        modalGallery.innerHTML = `<iframe 
+        modalGallery.innerHTML = `<button class="btn_modal__back">⇐ BACK</button>
+        <iframe 
             class="movie_trailer"
             width='700'
             height='500'

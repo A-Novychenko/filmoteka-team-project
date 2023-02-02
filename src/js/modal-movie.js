@@ -68,7 +68,7 @@ export function oneToggle(evt) {
     //  console.log(liId);
 
     cleanHtml();
-    const arrId = localArray.find(arr => arr.id == liId);
+    arrId = localArray.find(arr => arr.id == liId);
     //  console.log(arrId);
     if (arrId == undefined) {
       //  console.log(localArray);
