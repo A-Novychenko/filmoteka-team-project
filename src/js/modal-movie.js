@@ -12,6 +12,8 @@ clicksMovie.addEventListener('click', oneToggle);
 closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
+modalGallery.addEventListener('click', onBtnBack);
+
 let arrId;
 
 export function oneToggle(evt) {
@@ -115,7 +117,7 @@ export function cleanHtml() {
   modalGallery.innerHTML = '';
 }
 
-export async function onBtnBack(evt) {
+async function onBtnBack(evt) {
   try {
     const btnBack = evt.target.classList.contains('btn_modal__back');
     if (btnBack) {
