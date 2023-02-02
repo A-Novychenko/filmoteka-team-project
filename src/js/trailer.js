@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { modalGallery } from './refs';
 
-// const modalGallery = document.querySelector('.movie_modal_gallery');
+// import { onBtnBack } from './modal-movie';
+// import { onBtnBack } from './libraryModal';
 
 modalGallery.addEventListener('click', onBtnTrailer);
+
+
 let idTrailer = '';
 
 export async function onBtnTrailer(evt) {
