@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { modalGallery } from './refs';
-import { onBtnBack } from './modal-movie';
+
+// const modalGallery = document.querySelector('.movie_modal_gallery');
 
 modalGallery.addEventListener('click', onBtnTrailer);
-modalGallery.addEventListener('click', onBtnBack);
 let idTrailer = '';
 
 export async function onBtnTrailer(evt) {
   try {
     if (evt.target.classList.contains('js-btn_trailer')) {
       const btnTrailer = evt.target.closest('.js-btn_trailer');
+      // console.log(btnTrailer);
 
       idTrailer = btnTrailer.dataset.idmovie;
 
@@ -21,9 +22,11 @@ export async function onBtnTrailer(evt) {
           movie.name.toLowerCase().includes('official trailer 2')
       );
 
+      // console.log(officialTrailer)
+
       if (officialTrailer) {
-        modalGallery.innerHTML = `<button class="btn_modal__back">⇐ BACK</button>
-        <iframe 
+        // console.log('є трейлер!!!')
+        modalGallery.innerHTML = `<iframe 
             class="movie_trailer"
             width='700'
             height='500'
@@ -39,7 +42,8 @@ export async function onBtnTrailer(evt) {
             allowfullscreen>
             </iframe>`;
       } else {
-        btnTrailer.innerHTML = `<p class="error__trailer">SORRY, TRAILER IS NOT AVAILABLE!</p>`;
+        // console.log('немає трейлера(((');
+        btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result not successful</p>`;
       }
     }
   } catch (err) {
@@ -59,6 +63,7 @@ async function fetchTrailer() {
 }
 
 export function cleanHtmlTrailer() {
+  // modalGallery.innerHTML = '';
   modalGallery.innerHTML = `<iframe 
             class="movie_trailer"
             width='700'
