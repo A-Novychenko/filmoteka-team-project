@@ -37,16 +37,23 @@
 
 //////////////////////кнопка вгору
 .button-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  right: 3%;
+  bottom: 3%;
+  width: 40px;
+  height: 40px;
+
   font-size: 20px;
   font-style: bold;
-  position: fixed;
-  right: 80px;
-  bottom: 60px;
-  width: 40px;
   // height: 50px;
-  border-radius: 5px;
-  background-color: var(--accent-color);
-  color: #ffffff;
-  // border-color: var(--accent-color);
+  // border: 5px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 3px solid var(--accent-color);
   cursor: pointer;
 }
