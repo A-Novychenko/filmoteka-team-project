@@ -97,6 +97,39 @@
     width: 100%;
 }
 
+.btn_modal__back {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+
+    border-radius: 5px;
+    border: 1px solid var(--dark-color);
+    background-color: transparent;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    
+    color: var(--dark-color);
+    
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.btn_modal__back:hover,
+.btn_modal__back:focus {
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    border-color: var(--accent-color);
+}
+
 .error__trailer {
     color: #000000;
     text-transform: uppercase;
