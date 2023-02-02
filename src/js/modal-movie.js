@@ -12,6 +12,7 @@ clicksMovie.addEventListener('click', oneToggle);
 closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
+
 modalGallery.addEventListener('click', onBtnBack);
 
 let arrId;
@@ -67,7 +68,7 @@ export function oneToggle(evt) {
     //  console.log(liId);
 
     cleanHtml();
-    arrId = localArray.find(arr => arr.id == liId);
+    const arrId = localArray.find(arr => arr.id == liId);
     //  console.log(arrId);
     if (arrId == undefined) {
       //  console.log(localArray);
@@ -117,6 +118,7 @@ export function cleanHtml() {
   modalGallery.innerHTML = '';
 }
 
+
 async function onBtnBack(evt) {
   try {
     const btnBack = evt.target.classList.contains('btn_modal__back');
@@ -130,3 +132,4 @@ async function onBtnBack(evt) {
     console.log(err);
   }
 }
+
