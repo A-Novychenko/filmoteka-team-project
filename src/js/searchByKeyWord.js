@@ -1,4 +1,4 @@
-import { headerForm, errorText } from './refs';
+import { headerForm, errorText, guard, buttonTop } from './refs';
 import apiservice from './apiService';
 import { renderMarkupSearch } from './markupSearch';
 import { cleanHtml } from './markupSearch';
@@ -6,6 +6,7 @@ import { hideLoader, showLoader } from './loader';
 import pagination from './pagination';
 import { movieContainer, sadEror, paginationDiv } from './refs';
 import { getMovies } from './renderingGalleryMarkup';
+import { observer } from './buttonTop';
 
 // const apiService = new ApiService();
 
@@ -20,6 +21,7 @@ export async function onHeaderFormClick(evt) {
     apiservice.page = 1;
 
     if (!apiservice.query.trim()) {
+      buttonTop.style.display = 'none';
       errorText.classList.remove('header__error_hidden');
       sadEror.classList.remove('header__error_hidden');
       paginationDiv.classList.add('visually-hidden');
@@ -41,6 +43,7 @@ export async function onHeaderFormClick(evt) {
     hideLoader();
 
     if (results.length === 0) {
+      buttonTop.style.display = 'none';
       errorText.classList.remove('header__error_hidden');
       sadEror.classList.remove('header__error_hidden');
       paginationDiv.classList.add('visually-hidden');
@@ -55,6 +58,7 @@ export async function onHeaderFormClick(evt) {
       headerForm.reset();
     } else {
       movieContainer.innerHTML = renderMarkupSearch(results);
+      observer.observe(guard);
 
       pagination(1, response.data.total_pages);
       hideLoader();

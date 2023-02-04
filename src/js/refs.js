@@ -7,6 +7,7 @@ export const errorSearch = document.querySelector('.js-error-search');
 export const paginationDiv = document.querySelector('.pagination');
 export const sadEror = document.querySelector('.sad__eror-wrap');
 export const buttonTop = document.querySelector('.button-top');
+export const guard = document.querySelector('.js-guard');
 
 export const btnWatched = document.querySelector('.js-btn-watched');
 export const btnQueue = document.querySelector('.js-btn-queue');

@@ -35,7 +35,7 @@ export function renderMarkupSearch(movies) {
 
       return `<li class="movie__item" data-movie="${movie.id}">
         
-      <div class="card-wrapper"><img class="card_img" src="${imgUrl}" alt="${
+      <div class="card-wrapper"><img class="card_img" loading="lazy" src="${imgUrl}" alt="${
         movie.original_title
       }"></div>
       
