@@ -52,23 +52,14 @@ html {
   display: none !important;
 }
 
-body.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-}
-
 body.team-modal-open {
   height: 100vh;
   overflow-y: hidden;
-  padding-right: 15px; /* Avoid width reflow */
-}
-body.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
+  // padding-right: 15px; /* Avoid width reflow */
 }
 
 body.movie-modal-open {
   height: 100vh;
   overflow-y: hidden;
-  padding-right: 15px; /* Avoid width reflow */
+  // padding-right: 15px; /* Avoid width reflow */
 }
