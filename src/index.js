@@ -18,9 +18,7 @@
 // import './js/team-modal';
 // import './js/trailer';
 
-
 ///////////////////////////////////////////////////////////////////////
-
 
 // import * as searchByKeyWord from './js/searchByKeyWord';
 import { headerForm, errorSearch } from './js/refs';
@@ -57,12 +55,10 @@ import ApiService from './js/apiService';
 import { getMovies } from './js/renderingGalleryMarkup';
 
 /// ////////////footer-modal
-import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';
-import { toggleTeamModal, clickBackdropCloseTeamModal } from './js/team-modal';
+import { openModalTeamBtn } from './js/refs';
+import { toggleTeamModal } from './js/team-modal';
 
 openModalTeamBtn.addEventListener('click', toggleTeamModal);
-closeModalTeamBtn.addEventListener('click', toggleTeamModal);
-modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 ////////////// footer-modal
 
 // feature/modal-btns-library

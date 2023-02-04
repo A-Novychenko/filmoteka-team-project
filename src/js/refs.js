@@ -15,9 +15,11 @@ export const errorText = document.querySelector('.js-error-text');
 export const movieContainer = document.querySelector('.js-movies-list');
 export const libraryContainer = document.querySelector('.js-library-list');
 export const clicksMovie = document.querySelector('.gallery__list');
-export const openModalMovie = document.querySelector('[data-movie-modal]')
-export const closeModalMovieBtn = document.querySelector('[data-movie-modal-close]')
-export const modalGallery = document.querySelector('.movie_modal_gallery')
+export const openModalMovie = document.querySelector('[data-movie-modal]');
+export const closeModalMovieBtn = document.querySelector(
+  '[data-movie-modal-close]'
+);
+export const modalGallery = document.querySelector('.movie_modal_gallery');
 
 export const openModalTeamBtn = document.querySelector(
   '[data-team-modal-open]'
