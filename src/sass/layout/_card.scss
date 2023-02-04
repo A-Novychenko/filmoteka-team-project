@@ -51,6 +51,10 @@
   line-height: 1.33;
   color: #ff6b08;
 
+  @media screen and (max-width: 229px) {
+    font-size: 10px;
+    line-height: 1.2;
+  }
   @media screen and (min-width: 1280px) {
     font-size: 20px;
     line-height: 1.2;
@@ -59,22 +63,31 @@
 
 .card_descr {
   display: flex;
+  flex-direction: row;
   align-items: flex-start; //center
   justify-content: space-between;
+  @media screen and (max-width: 229px) {
+    flex-direction: column;
+  }
 }
 
 .card_rating {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff6b08;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--light-color);
   border-radius: 5px;
   margin-left: 10px;
   width: 36px;
   height: 16px;
   font-size: 12px;
   line-height: 1.17;
+
+  @media screen and (max-width: 229px) {
+    flex-direction: column;
+    margin-left: 0;
+  }
 
   @media screen and (min-width: 1280px) {
     margin-left: 10px;

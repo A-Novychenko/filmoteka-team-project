@@ -77,20 +77,29 @@
 
 .modal_img {
   max-width: 240px;
+  width: 100%;
   margin-bottom: 20px;
 }
 
 .movie_modal_title {
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-family: 'Roboto';
   font-size: 30px;
   line-height: 1.17;
+
+  @media screen and (max-width: 229px) {
+    font-size: 16px;
+    text-align: center;
+  }
 }
 
 .modal_table {
   width: 100%;
   margin-bottom: 20px;
+  @media screen and (max-width: 229px) {
+    font-size: 10px;
+    text-align: center;
+  }
 }
 
 .table-header {
@@ -123,9 +132,16 @@
 
 .modal_btn_list {
   display: flex;
+  flex-direction: row;
   gap: 20px;
   align-items: center;
   margin-bottom: 10px;
+  @media screen and (max-width: 229px) {
+    display: flex;
+    flex-direction: column;
+    // font-size: 10px;
+    text-align: center;
+  }
 }
 
 .btn_modal {

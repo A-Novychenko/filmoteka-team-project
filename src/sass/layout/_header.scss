@@ -126,7 +126,10 @@
 
 .header__nav {
   display: flex;
-  column-gap: 40px;
+  column-gap: 10px;
+  @media screen and (min-width: 230px) {
+    column-gap: 40px;
+  }
 }
 
 .header__link {
@@ -139,6 +142,10 @@
   line-height: 1.17;
   text-transform: uppercase;
   text-decoration: none;
+
+  @media screen and (max-width: 231px) {
+    font-size: 10px;
+  }
 }
 .header__link_current::after {
   content: '';
