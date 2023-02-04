@@ -59,8 +59,7 @@ export function renderMarkupModal(movies) {
     console.log(err);
   }
   const mark = `<img class = "modal_img" src="${imgUrl}"   alt="">
-            <ul class="movie_modal_info">
-                <li>
+            <div class="movie_modal_info">
                     <h2 class="movie_modal_title">${movies.original_title}</h2>
                     <table class="modal_table">
                         <tr>
@@ -82,26 +81,17 @@ export function renderMarkupModal(movies) {
                             <td>${finalGenres.join(', ')}</td>
                         </tr>
                     </table>
-                </li>
-                <li>
                     <div class="about-container">
                         <h3 class="about-header">ABOUT</h3>
                         <p class="about-text">${movies.overview}</p>
-                    </div>
-                </li>
-                <li class="modal_btn_list">
+                     </div>
+                <div class="modal_btn_list">
                     ${watchedBtn}
                     ${queueBtn}
-                </li>
-                <li>
-
-                     </div>
+                </div>
                     <button class="btn_modal btn_trailer js-btn_trailer" data-idmovie=${
                       movies.id
                     }>MOVIE TRAILER</button>
-                </div>
-
-                </li>
-            </ul>`;
+            </div>`;
   return mark;
 }
