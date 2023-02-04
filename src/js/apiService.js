@@ -76,6 +76,7 @@ class ApiService {
   set query(newKeyword) {
     this.keyword = newKeyword;
   }
+
 }
 const apiservice = new ApiService();
 export default apiservice;

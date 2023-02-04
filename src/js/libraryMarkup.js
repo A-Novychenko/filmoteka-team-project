@@ -13,9 +13,12 @@ let curentPageToRender;
 
 export function libraryListRender(curentPage, totalPage) {
   LibPaginationList.innerHTML = '';
-  apiservice.resetPage();
-
+  // apiservice.resetPage();
+  // console.log('curentPageToRender ДО: ', curentPageToRender);
   let curentPageToRender = curentPage || apiservice.page;
+  // console.log('curentPage: ', curentPage);
+  // console.log('apiservice.page: ', apiservice.page);
+  // console.log('curentPageToRender ПІСЛЯ: ', curentPageToRender);
   let totalPages = totalPage || 1;
   let watchedList;
 
@@ -62,14 +65,27 @@ export function libraryListRender(curentPage, totalPage) {
           sliced_array.push(watchedListToRender.slice(i, i + array_size));
         }
 
-        totalPages = sliced_array.length;
-        librPagination(curentPageToRender, totalPages);
+        // totalPages = sliced_array.length;
+        // librPagination(curentPageToRender, totalPages);
 
         try {
-          const newMurkup = renderMarkupSearch(
-            sliced_array[curentPageToRender - 1]
-          );
-          libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+          // sliced_array[curentPageToRender - 1];
+          // console.log('sliced_array[curentPageToRender - 1]: ', sliced_array[curentPageToRender - 1]);
+          if (!sliced_array[curentPageToRender - 1]) {
+            totalPages = sliced_array.length - 1;
+            librPagination(curentPageToRender - 1, totalPages - 1);
+            const newMurkup = renderMarkupSearch(
+              sliced_array[curentPageToRender - 2]
+            );
+            libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+          } else {
+            totalPages = sliced_array.length;
+            librPagination(curentPageToRender, totalPages);
+            const newMurkup = renderMarkupSearch(
+              sliced_array[curentPageToRender - 1]
+            );
+            libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
+          }
         } catch (err) {
           console.log(err);
         }
@@ -158,40 +174,40 @@ function librPagination(curentPageToRender, totalPage) {
 
 // ..........................................................
 
-
-
 export function onLibrPaginationClick(e) {
-  // console.log('onLibrPaginationClick: ');
-  // up();
-
-  // console.log('e.target.tagName: ', e.target.tagName);
-  if (e.target.tagName !== 'LI') {
-    
+  if (e.target.tagName !== 'LI' || e.target.textContent === '...') {
     return;
   }
-  if (e.target.textContent === '...') {
-    return;
-  }
+  // if (e.target.textContent === '...') {
+  //   return;
+  // }
   // console.log('e.target.textContent: ', e.target.textContent);
 
   if (e.target.textContent === '►') {
-    
     curentPageToRender += 1;
+    // console.log('Перемальовка curentPageToRender: ', curentPageToRender);
+    // apiservice.page = curentPageToRender;
+    apiservice.increamentPage();
+    // console.log('Перемальовка1 apiservice.page: ', apiservice.page);
     libraryListRender(curentPageToRender, totalPages);
-    apiservice.page = curentPageToRender;
+
     return;
   }
 
   if (e.target.textContent === '◄') {
     curentPageToRender -= 1;
+    // apiservice.page = curentPageToRender;
+    apiservice.decrementPage();
+    // console.log('Перемальовка2 apiservice.page: ', apiservice.page);
     libraryListRender(curentPageToRender, totalPages);
-    apiservice.page = curentPageToRender;
+
     return;
   }
 
   if (true) {
     curentPageToRender = Number(e.target.textContent);
-    libraryListRender(curentPageToRender, totalPages);
     apiservice.page = curentPageToRender;
+    // console.log('Перемальовка3 apiservice.page: ', apiservice.page);
+    libraryListRender(curentPageToRender, totalPages);
   }
 }
