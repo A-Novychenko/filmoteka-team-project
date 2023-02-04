@@ -21,7 +21,7 @@
 ///////////////////////////////////////////////////////////////////////
 
 // import * as searchByKeyWord from './js/searchByKeyWord';
-import { headerForm, errorSearch } from './js/refs';
+import { headerForm, errorSearch, buttonTop } from './js/refs';
 import { onHeaderFormClick } from './js/searchByKeyWord';
 import * as trailer from './js/trailer';
 
@@ -72,3 +72,24 @@ import { onClick } from './js/modal-btns-library';
 
 // import { closeBtn } from './js/modal-movie';
 // console.log('closeBtn: ', closeBtn);
+
+
+// кнопка скрол наверх
+document.addEventListener("DOMContentLoaded", () => {
+    window.onscroll = function () {
+        if (window.pageYOffset > 800) {
+            buttonTop.classList.remove('visually-hidden')
+
+        }
+    }
+
+    buttonTop.addEventListener("click", function () {
+          buttonTop.classList.add('visually-hidden');
+        
+        window.scrollBy({
+            top: -document.documentElement.scrollHeight,
+            behavior: "smooth",
+        });
+       
+    });
+});
