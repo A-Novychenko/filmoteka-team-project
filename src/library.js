@@ -11,7 +11,6 @@
 // import './js/markupSearch';
 // import './js/modal-btns-library';
 import './js/library-header-btns.js';
-;
 import './js/modal-movie';
 // import './js/pagination';
 // import './js/refs';
@@ -29,16 +28,10 @@ import { onClickModal } from './js/modal-btns-library';
 openModalMovie.addEventListener('click', onClickModal);
 
 /// ////////////footer-modal
-import { openModalTeamBtn, closeModalTeamBtn, modalTeam } from './js/refs';
-import {
-  // toggleTeamModal,
-  toggleTeamModal,
-  clickBackdropCloseTeamModal,
-} from './js/team-modal';
+import { openModalTeamBtn } from './js/refs';
+import { toggleTeamModal } from './js/team-modal';
 
 openModalTeamBtn.addEventListener('click', toggleTeamModal);
-closeModalTeamBtn.addEventListener('click', toggleTeamModal);
-modalTeam.addEventListener('click', clickBackdropCloseTeamModal);
 //////////////// footer-modal
 
 import { modalGallery } from './js/refs';
