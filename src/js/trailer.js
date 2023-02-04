@@ -6,7 +6,6 @@ import { modalGallery } from './refs';
 
 modalGallery.addEventListener('click', onBtnTrailer);
 
-
 let idTrailer = '';
 
 export async function onBtnTrailer(evt) {
@@ -47,7 +46,7 @@ export async function onBtnTrailer(evt) {
             </iframe>`;
       } else {
         // console.log('немає трейлера(((');
-        btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result not successful</p>`;
+        btnTrailer.innerHTML = `<p class="error__trailer">Sorry, search result is not successful</p>`;
       }
     }
   } catch (err) {
