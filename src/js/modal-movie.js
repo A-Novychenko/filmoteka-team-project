@@ -29,7 +29,7 @@ export function oneToggle(evt) {
     // const sourceForModal = localStorage.getItem('sourceForModal');
     // console.log('sourceForModal: ', sourceForModal);
     // console.log('sourceForModal: ', sourceForModal);
-
+    document.body.classList.toggle('movie-modal-open');
     openModalMovie.classList.toggle('is-hidden');
     // openModalMovie.classList.remove('is-hidden');
 
@@ -79,6 +79,7 @@ export function clickBackdropCloseModal(e) {
     cleanHtmlTrailer();
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     openModalMovie.classList.toggle('is-hidden');
+    document.body.classList.remove('movie-modal-open');
 
     // libraryListRender();
     // openModalMovie.classList.add('is-hidden');
@@ -90,7 +91,7 @@ export function keyPressEscCloseMovieModal(evt) {
 
   if (evt.code === ESC_KEY_CODE) {
     // libraryListRender();
-
+    document.body.classList.remove('movie-modal-open');
     window.removeEventListener('keydown', keyPressEscCloseMovieModal);
 
     cleanHtmlTrailer();
@@ -106,6 +107,7 @@ export function closeBtn() {
   // libraryListRender(localArray);
 
   cleanHtmlTrailer();
+  document.body.classList.remove('movie-modal-open');
   window.removeEventListener('keydown', keyPressEscCloseMovieModal);
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }
