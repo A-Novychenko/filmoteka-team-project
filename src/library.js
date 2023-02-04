@@ -28,7 +28,7 @@ import { onClickModal } from './js/modal-btns-library';
 openModalMovie.addEventListener('click', onClickModal);
 
 /// ////////////footer-modal
-import { openModalTeamBtn } from './js/refs';
+import { openModalTeamBtn, buttonTop } from './js/refs';
 import { toggleTeamModal } from './js/team-modal';
 
 openModalTeamBtn.addEventListener('click', toggleTeamModal);
@@ -57,3 +57,23 @@ import { clicksMovie } from './js/refs';
 // libraryData.addEventListener('click', oneToggle);
 // closeModalMovieBtn.addEventListener('click', closeBtn);
 // openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    window.onscroll = function () {
+        if (window.pageYOffset > 500) {
+            buttonTop.classList.remove('visually-hidden')
+        }
+    }
+
+    // плавный скролл наверх
+    buttonTop.addEventListener("click", function () {
+          buttonTop.classList.add('visually-hidden');
+        
+        window.scrollBy({
+            top: -document.documentElement.scrollHeight,
+            behavior: "smooth",
+        });
+       
+    });
+});
