@@ -1,6 +1,6 @@
 import { openModalMovie } from './refs';
 
-// import { libraryListRender } from './libraryMarkup';
+import { libraryListRender } from './libraryMarkup';
 
 openModalMovie.addEventListener('click', onClickModal);
 
@@ -66,6 +66,9 @@ export function onClickModal(e) {
       }
 
       refs.watched.textContent = 'DELETE FROM WATCHED';
+      if (sourceForModal !== 'currentFilms') {
+        libraryListRender();
+      }
     } else if (refs.watched.textContent === 'DELETE FROM WATCHED') {
       const currentId = e.target.dataset.ttt;
       refs.watched.classList.toggle('current');
@@ -92,6 +95,9 @@ export function onClickModal(e) {
       }
 
       refs.watched.textContent = 'ADD TO WATCHED';
+      if (sourceForModal !== 'currentFilms') {
+        libraryListRender();
+      }
     }
   }
 
@@ -134,6 +140,9 @@ export function onClickModal(e) {
       }
 
       refs.queue.textContent = 'DELETE FROM QUEUE';
+      if (sourceForModal !== 'currentFilms') {
+        libraryListRender();
+      }
     } else if (refs.queue.textContent === 'DELETE FROM QUEUE') {
       const currentId = e.target.dataset.ttt;
       refs.queue.classList.toggle('current');
@@ -158,6 +167,9 @@ export function onClickModal(e) {
         console.log(error.message);
       }
       refs.queue.textContent = 'ADD TO QUEUE';
+      if (sourceForModal !== 'currentFilms') {
+        libraryListRender();
+      }
     }
   }
 }
