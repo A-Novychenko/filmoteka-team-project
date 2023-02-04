@@ -1,50 +1,29 @@
 import apiservice from './apiService';
-import { btnWatched, btnQueue, libraryData } from './refs';
+import { libraryData } from './refs';
 import { renderMarkupSearch } from './markupSearch';
-import { openModalMovie } from './refs';
+// import { openModalMovie } from './refs';
 
-// const apiservice = new apiservice();
-
-const paginationList = document.querySelector('.pagination__list');
-const paginationBox = document.querySelector('.pagination');
+const LibPaginationList = document.querySelector('.pagination__list');
+const LibPaginationBox = document.querySelector('.pagination');
+// LibPaginationBox.addEventListener('click', clickFunction);
+LibPaginationBox.addEventListener('click', onLibrPaginationClick);
 
 let totalPages;
-let libBlockToShow;
-
-btnWatched.addEventListener('click', onBtnWatchedClick);
-btnQueue.addEventListener('click', onBtnQueueClick);
-
-onBtnWatchedClick();
-
-export function onBtnWatchedClick() {
-  paginationList.innerHTML = '';
-  apiservice.resetPage();
-  btnWatched.classList.add('btnIsActive');
-  btnQueue.classList.remove('btnIsActive');
-  localStorage.setItem('sourceForModal', 'watchedFilms');
-  libBlockToShow = 'watched';
-  libraryListRender();
-}
-
-function onBtnQueueClick() {
-  paginationList.innerHTML = '';
-  apiservice.resetPage();
-  btnWatched.classList.remove('btnIsActive');
-  btnQueue.classList.add('btnIsActive');
-  localStorage.setItem('sourceForModal', 'queuedFilms');
-  libBlockToShow = 'queue';
-  libraryListRender();
-}
-
 let curentPageToRender;
 
 export function libraryListRender(curentPage, totalPage) {
+  LibPaginationList.innerHTML = '';
+  apiservice.resetPage();
+
   let curentPageToRender = curentPage || apiservice.page;
   let totalPages = totalPage || 1;
   let watchedList;
 
+  let libBlockToShow = localStorage.getItem('sourceForModal');
+  // console.log('libBlockToShow: ', libBlockToShow);
+
   try {
-    if (libBlockToShow === 'watched') {
+    if (libBlockToShow === 'watchedFilms') {
       watchedList = localStorage.getItem('watchedFilms'); //watchedFilms
     } else {
       watchedList = localStorage.getItem('queuedFilms');
@@ -96,7 +75,7 @@ export function libraryListRender(curentPage, totalPage) {
         }
       } else {
         const newMurkup = renderMarkupSearch(watchedListToRender);
-        paginationList.innerHTML = '';
+        LibPaginationList.innerHTML = '';
         apiservice.page = 1;
         curentPageToRender = 1;
         libraryData.innerHTML = `<ul class="library__list js-library-list">${newMurkup}</ul>`;
@@ -117,6 +96,7 @@ export function libraryListRender(curentPage, totalPage) {
 // ..........................................................
 
 function librPagination(curentPageToRender, totalPage) {
+  // console.log('librPagination: ');
   totalPages = totalPage;
 
   let murkup = '';
@@ -162,7 +142,7 @@ function librPagination(curentPageToRender, totalPage) {
     murkup += `<li class="pagination__item pagination__item_arrows">►</li>`;
   }
 
-  paginationList.innerHTML = murkup;
+  LibPaginationList.innerHTML = murkup;
   window.scrollBy(0, -10000);
   // window.scrollBy(0, -window.pageYOffset + 270);
 }
@@ -176,22 +156,26 @@ function librPagination(curentPageToRender, totalPage) {
 
 //////////////////плавна прокрутка
 
-
-
 // ..........................................................
 
-paginationBox.addEventListener('click', onLibrPaginationClick);
 
-function onLibrPaginationClick(e) {
+
+export function onLibrPaginationClick(e) {
+  // console.log('onLibrPaginationClick: ');
   // up();
+
+  // console.log('e.target.tagName: ', e.target.tagName);
   if (e.target.tagName !== 'LI') {
+    
     return;
   }
   if (e.target.textContent === '...') {
     return;
   }
+  // console.log('e.target.textContent: ', e.target.textContent);
 
   if (e.target.textContent === '►') {
+    
     curentPageToRender += 1;
     libraryListRender(curentPageToRender, totalPages);
     apiservice.page = curentPageToRender;

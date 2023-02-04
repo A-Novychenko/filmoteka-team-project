@@ -3,9 +3,12 @@ import { renderMarkupSearch } from './markupSearch';
 import { getMovies } from './renderingGalleryMarkup';
 import { movieContainer } from './refs';
 
+import { onLibrPaginationClick } from './libraryMarkup';
+
 const paginationList = document.querySelector('.pagination__list'); //
 const paginationBox = document.querySelector('.pagination');
 paginationBox.addEventListener('click', clickFunction);
+paginationBox.removeEventListener('click', onLibrPaginationClick);
 
 // const apiService = new ApiService();
 
@@ -116,10 +119,12 @@ async function clickFunction(e) {
 
     const results = response.data.results;
     movieContainer.innerHTML = renderMarkupSearch(results);
+
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
     // console.log(window.pageYOffset);
     window.scrollBy(0, -window.pageYOffset + 270);
+
     return;
   }
 }

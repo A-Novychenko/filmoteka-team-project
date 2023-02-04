@@ -12,12 +12,12 @@ clicksMovie.addEventListener('click', oneToggle);
 closeModalMovieBtn.addEventListener('click', closeBtn);
 openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
 
-
 modalGallery.addEventListener('click', onBtnBack);
 
 let arrId;
 
 export function oneToggle(evt) {
+  // console.log(77777);
   /////////////////////////////////перевірка, якщо пустий список - модалка не відкривається
   // console.log(evt.target);
   // console.log(evt.target.classList);
@@ -39,24 +39,17 @@ export function oneToggle(evt) {
     }
 
     let localArray;
-    /////////////////  вибір джерела даних залежно від того, де відкрита модалка
-
-    const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-    localArray = localMovie.data.results;
-    // console.log('localArray: ', localArray);
-
-    // if (sourceForModal === 'currentFilms') {
-    //   const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
-    //   localArray = localMovie.data.results;
-
-    // } else if (sourceForModal === 'watchedFilms') {
-    //   const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
-    //   localArray = localMovie;
-    // }
-    // if (sourceForModal === 'queuedFilms') {
-    //   const localMovie = JSON.parse(localStorage.getItem('queuedFilms'));
-    //   localArray = localMovie;
-    // }
+    const sourceForModal = localStorage.getItem('sourceForModal');
+    if (sourceForModal === 'currentFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('currentFilms'));
+      localArray = localMovie.data.results;
+    } else if (sourceForModal === 'watchedFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('watchedFilms'));
+      localArray = localMovie;
+    } else if (sourceForModal === 'queuedFilms') {
+      const localMovie = JSON.parse(localStorage.getItem('queuedFilms'));
+      localArray = localMovie;
+    }
 
     // console.log('localArray', localArray);
 
@@ -86,6 +79,8 @@ export function clickBackdropCloseTeamModal(e) {
     cleanHtmlTrailer();
 
     openModalMovie.classList.toggle('is-hidden');
+
+    // libraryListRender();
     // openModalMovie.classList.add('is-hidden');
   }
 }
@@ -101,6 +96,7 @@ export function keyPressEscCloseMovieModal(evt) {
     cleanHtmlTrailer();
 
     openModalMovie.classList.toggle('is-hidden');
+    // libraryListRender();
     // openModalMovie.classList.add('is-hidden');
   }
 }
@@ -118,6 +114,13 @@ export function cleanHtml() {
   modalGallery.innerHTML = '';
 }
 
+// export function closeBtn() {
+//   // openModalMovie.classList.toggle('is-hidden')
+//   setTimeout(
+//     () => openModalMovie.classList.add('is-hidden', libraryListRender()), //
+//     150
+//   );
+// }
 
 async function onBtnBack(evt) {
   try {
@@ -132,4 +135,3 @@ async function onBtnBack(evt) {
     console.log(err);
   }
 }
-

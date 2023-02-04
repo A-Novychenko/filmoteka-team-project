@@ -1,3 +1,27 @@
+// import './sass/index.scss';
+
+// import './js/apiService';
+// import './js/base-config';
+// import './js/findGenres';
+// import './js/getYear';
+// import './js/libraryMarkup';
+// import './js/libraryModal';
+// import './js/loader';
+// import './js/markupModal';
+// import './js/markupSearch';
+// import './js/modal-btns-library';
+// import './js/modal-movie';
+// import './js/pagination';
+// import './js/refs';
+// import './js/renderingGalleryMarkup';
+// import './js/searchByKeyWord';
+// import './js/team-modal';
+// import './js/trailer';
+
+
+///////////////////////////////////////////////////////////////////////
+
+
 // import * as searchByKeyWord from './js/searchByKeyWord';
 import { headerForm, errorSearch } from './js/refs';
 import { onHeaderFormClick } from './js/searchByKeyWord';
