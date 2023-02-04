@@ -10,7 +10,7 @@ import { cleanHtmlTrailer } from './trailer';
 
 clicksMovie.addEventListener('click', oneToggle);
 closeModalMovieBtn.addEventListener('click', closeBtn);
-openModalMovie.addEventListener('click', clickBackdropCloseTeamModal);
+openModalMovie.addEventListener('click', clickBackdropCloseModal);
 
 modalGallery.addEventListener('click', onBtnBack);
 
@@ -72,12 +72,12 @@ export function oneToggle(evt) {
   }
 }
 
-export function clickBackdropCloseTeamModal(e) {
+export function clickBackdropCloseModal(e) {
   if (e.target === e.currentTarget) {
     // libraryListRender();
 
     cleanHtmlTrailer();
-
+    window.removeEventListener('keydown', keyPressEscCloseMovieModal);
     openModalMovie.classList.toggle('is-hidden');
 
     // libraryListRender();
@@ -106,7 +106,7 @@ export function closeBtn() {
   // libraryListRender(localArray);
 
   cleanHtmlTrailer();
-
+  window.removeEventListener('keydown', keyPressEscCloseMovieModal);
   setTimeout(() => openModalMovie.classList.add('is-hidden'), 150);
 }
 
