@@ -1,6 +1,7 @@
 import apiservice from './apiService';
-import { btnWatched, btnQueue } from './refs';
+import { btnWatched, btnQueue, guard } from './refs';
 import { libraryListRender } from './libraryMarkup';
+import { observer } from './buttonTop';
 
 btnWatched.addEventListener('click', onBtnWatchedClick);
 btnQueue.addEventListener('click', onBtnQueueClick);
@@ -14,6 +15,7 @@ export function onBtnWatchedClick() {
   btnQueue.classList.remove('btnIsActive');
   localStorage.setItem('sourceForModal', 'watchedFilms');
   libraryListRender();
+   observer.observe(guard);
 }
 
 function onBtnQueueClick() {
@@ -23,4 +25,5 @@ function onBtnQueueClick() {
   btnQueue.classList.add('btnIsActive');
   localStorage.setItem('sourceForModal', 'queuedFilms');
   libraryListRender();
+   observer.observe(guard);
 }
