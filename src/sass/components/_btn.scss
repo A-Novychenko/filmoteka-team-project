@@ -43,19 +43,19 @@
   align-items: center;
 
   position: fixed;
-  right: 3%;
-  bottom: 3%;
-  width: 40px;
-  height: 40px;
+  right: 2%;
+  bottom: 10%;
 
-  font-size: 20px;
-  font-style: bold;
-  // height: 50px;
-  // border: 5px;
-  border-radius: 50%;
-  background-color: transparent;
-  color: var(--accent-color);
-  border: 3px solid var(--accent-color);
+  // background-color: chartreuse;
+
+  // font-size: 20px;
+  // font-style: bold;
+  // // height: 50px;
+  // // border: 5px;
+  // border-radius: 50%;
+  // background-color: transparent;
+  // color: var(--accent-color);
+  // border: 3px solid var(--accent-color);
   cursor: pointer;
 
   // transform: scale(1);
@@ -65,4 +65,10 @@
   &:hover {
     transform: scale(1.15);
   }
+}
+
+.button-top_icon {
+  fill: var(--accent-color);
+  width: 45px;
+  height: 45px;
 }
