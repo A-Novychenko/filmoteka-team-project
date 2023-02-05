@@ -238,6 +238,7 @@
 
 .eror__wrap {
   position: relative;
+  text-align: center;
 
   margin-right: auto;
   margin-left: auto;
@@ -261,6 +262,7 @@
   font-size: 14px;
   line-height: 1.15;
   color: var(--eror-text-color);
+  // background-color: chartreuse;м
 
   transform: scale(1);
   visibility: visible;
@@ -271,9 +273,9 @@
     visibility var(--transition-dur-and-func),
     opacity var(--transition-dur-and-func);
 
-  @media screen and (min-width: 320px) {
+  @media screen and (max-width: 767px) {
     width: 280px;
-    max-width: 100%;
+    // max-width: 100%;
   }
 
   @media screen and (min-width: 768px) {
@@ -292,13 +294,13 @@
 }
 
 .header__error_hidden {
-  transform: scale(1.2);
+  // transform: scale(1.2);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 .sad__eror-wrap.header__error_hidden {
-  transform: scale(1.2);
+  // transform: scale(1.2);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
