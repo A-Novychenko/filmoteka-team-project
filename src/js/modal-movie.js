@@ -73,6 +73,10 @@ export function closeBtn() {
 }
 
 function modalClose() {
+  closeModalMovieBtn.setAttribute('disabled', 'enabled');
+  setTimeout(() => {
+    closeModalMovieBtn.removeAttribute('disabled');
+  }, 300);
   cleanHtmlTrailer();
   window.removeEventListener('keydown', keyPressEscCloseMovieModal);
   document.body.classList.remove('movie-modal-open');
