@@ -8,7 +8,6 @@ import { movieContainer, sadEror, paginationDiv } from './refs';
 import { getMovies } from './renderingGalleryMarkup';
 import { observer } from './buttonTop';
 
-// const apiService = new ApiService();
 
 export async function onHeaderFormClick(evt) {
   try {

@@ -50,31 +50,22 @@
 }
 
 .sad__smile {
-  position: absolute;
-  top: 50px;
-  left: 18%;
-  max-width: 250px;
-  width: 100%;
-
-  transform: scale(1);
-
-  transition: transform var(--transition-dur-and-func);
-
-  fill: var(--dark-color);
-  @media screen and (min-width: 320px) {
-    width: 280px;
-    max-width: 100%;
-  }
-
-  @media screen and (min-width: 768px) {
     position: absolute;
     top: 50px;
+    left: 17%;
+    width: 200px;
+    margin-bottom: 30px;
+
+    transform: scale(1);
+    transition: transform var(--transition-dur-and-func);
+    fill: var(--dark-color);
+
+  @media screen and (min-width: 768px) {
     left: 30%;
     width: 280px;
     height: 140px;
   }
   @media screen and (min-width: 1280px) {
-    position: absolute;
     top: 70px;
     left: 35%;
     width: 350px;
