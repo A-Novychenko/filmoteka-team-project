@@ -28,9 +28,10 @@ export function keyPressEscCloseTeamModal(e) {
   const ESC_KEY_CODE = `Escape`;
 
   if (e.code === ESC_KEY_CODE) {
-    document.removeEventListener('keydown', keyPressEscCloseTeamModal);
+    // document.removeEventListener('keydown', keyPressEscCloseTeamModal);
 
-    document.body.classList.toggle('team-modal-open');
-    modalTeam.classList.toggle('is-hidden');
+    // document.body.classList.toggle('team-modal-open');
+    // modalTeam.classList.toggle('is-hidden');
+    toggleTeamModal();
   }
 }
