@@ -1,6 +1,6 @@
 import { closeModalTeamBtn, modalTeam, openModalTeamBtn } from './refs';
 
-openModalTeamBtn.addEventListener('click', toggleTeamModal);
+// openModalTeamBtn.addEventListener('click', toggleTeamModal);
 
 export function toggleTeamModal(e) {
   document.body.classList.toggle('team-modal-open');
