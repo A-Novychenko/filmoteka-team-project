@@ -18,16 +18,19 @@ export async function onHeaderFormClick(evt) {
     // console.log('keyWord: ', keyWord);
     localStorage.setItem('keyWord', keyWord);
     cleanHtml();
+    paginationDiv.classList.add('visually-hidden');
     apiservice.page = 1;
 
     if (!apiservice.query.trim()) {
       buttonTop.style.display = 'none';
       errorText.classList.remove('header__error_hidden');
-      sadEror.classList.remove('header__error_hidden');
+      // sadEror.classList.remove('header__error_hidden');
+      document.body.classList.add('sad__smile');
       paginationDiv.classList.add('visually-hidden');
       setTimeout(() => {
         errorText.classList.add('header__error_hidden');
-        sadEror.classList.add('header__error_hidden');
+        // sadEror.classList.add('header__error_hidden');
+        document.body.classList.remove('sad__smile');
         paginationDiv.classList.remove('visually-hidden');
 
         getMovies();
@@ -43,13 +46,16 @@ export async function onHeaderFormClick(evt) {
     hideLoader();
 
     if (results.length === 0) {
+      // paginationDiv.classList.add('visually-hidden');
       buttonTop.style.display = 'none';
       errorText.classList.remove('header__error_hidden');
-      sadEror.classList.remove('header__error_hidden');
-      paginationDiv.classList.add('visually-hidden');
+      // sadEror.classList.remove('header__error_hidden');
+      document.body.classList.add('sad__smile');
+
       setTimeout(() => {
         errorText.classList.add('header__error_hidden');
-        sadEror.classList.add('header__error_hidden');
+        // sadEror.classList.add('header__error_hidden');
+        document.body.classList.remove('sad__smile');
         paginationDiv.classList.remove('visually-hidden');
 
         getMovies();
@@ -58,6 +64,7 @@ export async function onHeaderFormClick(evt) {
       headerForm.reset();
     } else {
       movieContainer.innerHTML = renderMarkupSearch(results);
+      paginationDiv.classList.remove('visually-hidden');
       observer.observe(guard);
 
       pagination(1, response.data.total_pages);

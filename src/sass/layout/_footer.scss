@@ -56,11 +56,16 @@ html,
 body {
   height: 100%;
 }
-.wrapper {
+.gallery__page {
   display: flex;
   flex-direction: column;
   min-height: 100%;
 }
+// .wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100%;
+// }
 .gallery__page {
   flex: 1 0 auto;
 }
