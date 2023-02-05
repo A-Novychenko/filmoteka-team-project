@@ -1,16 +1,14 @@
 <section class="library-contaner">
   <div class="container">
     <div class="js-guard">
-      <a href="#" onclick="return"><button class="button-top">⇑</button></a>
+      <a href="#" class="button-top" style="display: none" onclick="return">
+        <svg class="button-top_icon">
+          <use href="./images/sprite.svg#circle-up"></use>
+        </svg>
+      </a>
     </div>
-    <div class="js-library-data gallery__list">
-      <!-- <div class="js-library-no-data"></div> -->
-      <!-- <div class="container"> -->
-      <!-- <ul class="library__list js-library-list"></ul> -->
-      <!-- library__list розмічає, в js-library-list  вставляєм-->
-      <!-- </div> -->
-    </div>
-    <!-- <div><button class="button-top visually-hidden">⇑</button></div> -->
+
+    <div class="js-library-data gallery__list"></div>
 
     <div class="gallery__pagination"></div>
   </div>
