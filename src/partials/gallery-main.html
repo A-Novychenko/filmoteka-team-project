@@ -6,9 +6,15 @@
         <!-- width="400" -->
         <!-- height="400" -->
       </div>
+
       <div class="js-guard">
-        <a href="#" onclick="return"><button class="button-top">⇑</button></a>
+        <a href="#" class="button-top" style="display: none" onclick="return">
+          <svg class="button-top_icon">
+            <use href="./images/sprite.svg#circle-up"></use>
+          </svg>
+        </a>
       </div>
+
       <ul class="gallery__list js-movies-list"></ul>
       <div class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
