@@ -67,19 +67,20 @@ async function fetchTrailer() {
 
 export function cleanHtmlTrailer() {
   // modalGallery.innerHTML = '';
-  modalGallery.innerHTML = `<iframe 
-            class="movie_trailer"
-            width='700'
-            height='500'
-            
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer;
-            autoplay = 0; clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture;
-            web-share"
-            allowfullscreen>
-            </iframe>`;
+  modalGallery.innerHTML = '<div class="trailer__clear"></div>';
+  // modalGallery.innerHTML = `<iframe
+  //           class="movie_trailer"
+  //           width='700'
+  //           height='500'
+
+  //           title="YouTube video player"
+  //           frameborder="0"
+  //           allow="accelerometer;
+  //           autoplay = 0; clipboard-write;
+  //           encrypted-media;
+  //           gyroscope;
+  //           picture-in-picture;
+  //           web-share"
+  //           allowfullscreen>
+  //           </iframe>`;
 }
