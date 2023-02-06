@@ -159,7 +159,7 @@ function librPagination(curentPageToRender, totalPage) {
   }
 
   LibPaginationList.innerHTML = murkup;
-  window.scrollBy(0, -10000);
+  // window.scrollBy(0, -10000);
   // window.scrollBy(0, -window.pageYOffset + 270);
 }
 
@@ -190,7 +190,7 @@ export function onLibrPaginationClick(e) {
     apiservice.increamentPage();
     // console.log('Перемальовка1 apiservice.page: ', apiservice.page);
     libraryListRender(curentPageToRender, totalPages);
-
+    window.scrollTo(0, 230);
     return;
   }
 
@@ -200,7 +200,7 @@ export function onLibrPaginationClick(e) {
     apiservice.decrementPage();
     // console.log('Перемальовка2 apiservice.page: ', apiservice.page);
     libraryListRender(curentPageToRender, totalPages);
-
+    window.scrollTo(0, 230);
     return;
   }
 
@@ -209,5 +209,6 @@ export function onLibrPaginationClick(e) {
     apiservice.page = curentPageToRender;
     // console.log('Перемальовка3 apiservice.page: ', apiservice.page);
     libraryListRender(curentPageToRender, totalPages);
+    window.scrollTo(0, 230);
   }
 }
