@@ -179,13 +179,13 @@
 
 .btn_modal__back {
   position: absolute;
-  top: 8px;
-  left: 12px;
+  top: 20px;
+  left: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 30px;
+  width: 60px;
+  height: 25px;
 
   border-radius: 5px;
   border: 1px solid var(--dark-color);
@@ -194,7 +194,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 11px;
   line-height: 1.33;
   text-transform: uppercase;
 
@@ -247,6 +247,14 @@
 
   .btn_trailer {
     width: 264px;
+  }
+
+  .btn_modal__back {
+    top: 8px;
+    left: 12px;
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
   }
 }
 

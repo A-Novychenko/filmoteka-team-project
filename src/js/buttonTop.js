@@ -9,7 +9,7 @@ const options = {
 export const observer = new IntersectionObserver(onScrollBtn, options);
 
 function onScrollBtn(entries, observer) {
-    console.log(entries);
+    // console.log(entries);
     entries.forEach((entry) => {
         if (entry.isIntersecting === false) {
             buttonTop.style.display = 'block';
