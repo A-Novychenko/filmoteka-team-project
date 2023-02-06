@@ -86,7 +86,8 @@ async function clickFunction(e) {
 
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
-    window.scrollBy(0, -window.pageYOffset + 270);
+    // window.scrollBy(0, -window.pageYOffset + 270);
+    window.scrollTo(0, 230);
     // window.scrollBy(0, -1000);
     return;
   }
@@ -104,7 +105,8 @@ async function clickFunction(e) {
     movieContainer.innerHTML = renderMarkupSearch(results);
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
-    window.scrollBy(0, -window.pageYOffset + 270);
+    // window.scrollBy(0, -window.pageYOffset + 270);
+    window.scrollTo(0, 230);
     return;
   }
 
@@ -123,8 +125,8 @@ async function clickFunction(e) {
     pagination(response.data.page, response.data.total_pages);
     // window.scrollBy(0, -1000);
     // console.log(window.pageYOffset);
-    window.scrollBy(0, -window.pageYOffset + 270);
-
+    // window.scrollBy(0, -window.pageYOffset + 270);
+    window.scrollTo(0, 230);
     return;
   }
 }
