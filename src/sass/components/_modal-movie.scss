@@ -179,23 +179,24 @@
 
 .btn_modal__back {
   position: absolute;
-  top: 20px;
-  left: 19px;
+  top: 15px;
+  right: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 25px;
+  padding: 2px 5px;
+  width: 70px;
+  height: 30px;
 
   border-radius: 5px;
   border: 1px solid var(--dark-color);
-  background-color: transparent;
+  background-color: var(--light-color);
 
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-size: 11px;
-  line-height: 1.33;
+  font-size: 10px;
+  line-height: 1;
   text-transform: uppercase;
 
   color: var(--dark-color);
@@ -250,11 +251,11 @@
   }
 
   .btn_modal__back {
-    top: 8px;
-    left: 12px;
-    width: 80px;
+    top: 7px;
+    right: 20px;
+    width: 83px;
     height: 30px;
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -283,6 +284,11 @@
   .btn_trailer {
     width: 391px;
   }
+
+  .btn_modal__back {
+    right: 12px;
+    font-size: 12px;
+    }
 }
 
 .trailer__clear {
