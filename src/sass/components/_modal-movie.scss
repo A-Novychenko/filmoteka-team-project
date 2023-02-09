@@ -90,12 +90,17 @@
 .movie_modal_title {
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-size: 30px;
-  line-height: 1.17;
+  font-size: 20px;
+  line-height: 1.15;
 
   @media screen and (max-width: 229px) {
     font-size: 16px;
     text-align: center;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    font-size: 30px;
+    line-height: 1.17;
   }
 }
 
