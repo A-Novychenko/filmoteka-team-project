@@ -32,10 +32,15 @@
 
 .movie_modal {
   position: relative;
-  max-width: 280px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+    margin: 40 auto;
+  }
+  // padding: 40px;
+
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
   background-color: var(--light-color);
   padding-top: 48px;
   padding-left: 20px;
@@ -217,6 +222,10 @@
 
 @media screen and (min-width: 768px) {
   .movie_modal {
+    padding: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     max-width: 704px;
     padding: 40px 36px;
   }
