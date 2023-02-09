@@ -304,6 +304,11 @@
   background-position-x: center;
   // background-size: contain;
   background-size: 50vh;
+
+    @media screen and (max-width: 480px) {
+   background-size: 80vw;
+  }
+
 }
 
 // .sad__eror-wrap {
