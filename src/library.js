@@ -28,10 +28,12 @@ import { onClickModal } from './js/modal-btns-library';
 openModalMovie.addEventListener('click', onClickModal);
 
 /// ////////////footer-modal
-import { openModalTeamBtn, buttonTop } from './js/refs';
-import { toggleTeamModal } from './js/team-modal';
+// import { openModalTeamBtn, buttonTop } from './js/refs';
+// import { toggleTeamModal } from './js/team-modal';
 
-openModalTeamBtn.addEventListener('click', toggleTeamModal);
+// openModalTeamBtn.addEventListener('click', toggleTeamModal);
+
+import { toggleTeamModal } from './js/team-modal';
 //////////////// footer-modal
 
 import { modalGallery } from './js/refs';
