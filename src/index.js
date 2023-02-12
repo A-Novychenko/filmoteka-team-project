@@ -54,7 +54,7 @@ import ApiService from './js/apiService';
 
 import { getMovies } from './js/renderingGalleryMarkup';
 
-import { toggleTeamModal } from './js/team-modal';
+import './js/team-modal';
 
 /// ////////////footer-modal
 // import { openModalTeamBtn } from './js/refs';

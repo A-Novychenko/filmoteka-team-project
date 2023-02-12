@@ -33,7 +33,7 @@ openModalMovie.addEventListener('click', onClickModal);
 
 // openModalTeamBtn.addEventListener('click', toggleTeamModal);
 
-import { toggleTeamModal } from './js/team-modal';
+import './js/team-modal';
 //////////////// footer-modal
 
 import { modalGallery } from './js/refs';
