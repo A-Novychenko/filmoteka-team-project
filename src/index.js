@@ -54,11 +54,13 @@ import ApiService from './js/apiService';
 
 import { getMovies } from './js/renderingGalleryMarkup';
 
-/// ////////////footer-modal
-import { openModalTeamBtn } from './js/refs';
 import { toggleTeamModal } from './js/team-modal';
 
-openModalTeamBtn.addEventListener('click', toggleTeamModal);
+/// ////////////footer-modal
+// import { openModalTeamBtn } from './js/refs';
+// import { toggleTeamModal } from './js/team-modal';
+
+// openModalTeamBtn.addEventListener('click', toggleTeamModal);
 ////////////// footer-modal
 
 // feature/modal-btns-library
