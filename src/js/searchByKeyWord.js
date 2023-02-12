@@ -8,6 +8,7 @@ import { movieContainer, sadEror, paginationDiv } from './refs';
 import { getMovies } from './renderingGalleryMarkup';
 import { observer } from './buttonTop';
 
+headerForm.addEventListener('submit', onHeaderFormClick);
 
 export async function onHeaderFormClick(evt) {
   try {
