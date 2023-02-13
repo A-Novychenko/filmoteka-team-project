@@ -14,7 +14,8 @@
 
   transform: scale(1);
   // visibility: visible;
-  // opacity: 1;
+  // // opacity: 1;
+  // pointer-events: auto;
   transition: transform var(--transition-dur-and-func),
     visibility var(--transition-dur-and-func),
     opacity var(--transition-dur-and-func);
@@ -25,7 +26,7 @@
     opacity: 0;
     pointer-events: none;
   }
-  
+
   @media screen and (min-width: 320px) {
     padding: 93px 15px 94px;
   }
