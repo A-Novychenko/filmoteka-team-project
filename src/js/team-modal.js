@@ -1,12 +1,8 @@
 import { closeModalTeamBtn, modalTeam, openModalTeamBtn } from './refs';
 
-// import { openModalTeamBtn } from './js/refs';
-// import { toggleTeamModal } from './js/team-modal';
-
 openModalTeamBtn.addEventListener('click', toggleTeamModal);
 
-
-export function toggleTeamModal(e) {
+export function toggleTeamModal() {
   document.body.classList.toggle('team-modal-open');
   modalTeam.classList.toggle('is-hidden');
 
@@ -32,10 +28,6 @@ export function keyPressEscCloseTeamModal(e) {
   const ESC_KEY_CODE = `Escape`;
 
   if (e.code === ESC_KEY_CODE) {
-    // document.removeEventListener('keydown', keyPressEscCloseTeamModal);
-
-    // document.body.classList.toggle('team-modal-open');
-    // modalTeam.classList.toggle('is-hidden');
     toggleTeamModal();
   }
 }
