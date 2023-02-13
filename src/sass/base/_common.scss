@@ -39,9 +39,9 @@ gi .link {
   list-style: none;
 }
 
-body.modal-open {
-  overflow: hidden;
-}
+// body.modal-open {
+//   overflow: hidden;
+// }
 
 html {
   scroll-behavior: smooth;
@@ -51,14 +51,14 @@ html {
   display: none !important;
 }
 
-body.team-modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-  // padding-right: 15px; /* Avoid width reflow */
-}
+// body.team-modal-open {
+//   height: 100vh;
+//   overflow-y: hidden;
+//   // padding-right: 15px; /* Avoid width reflow */
+// }
 
-body.movie-modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-  // padding-right: 15px; /* Avoid width reflow */
-}
+// body.movie-modal-open {
+//   height: 100vh;
+//   overflow-y: hidden;
+//   // padding-right: 15px; /* Avoid width reflow */
+// }
